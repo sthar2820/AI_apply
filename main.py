@@ -25,28 +25,28 @@ def get_role_name():
     return input("\nEnter role name (e.g. Software Engineer Intern): ").strip()
 
 def create_output_structure(base_dir, company_name, role_name):
-    """Create organized output directory structure"""
-    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    date_dir = datetime.now().strftime("%Y%m%d")
-
-    structure = {
-        'company': company_name.lower().replace(' ', '_'),
-        'role': role_name.lower().replace(' ', '_'),
-        'date': date_dir,
-        'timestamp': timestamp
-    }
-
-    output_path = os.path.join(
-        base_dir,
-        "applications",
-        structure['company'],
-        structure['role'],
-        structure['date'],
-        structure['timestamp']
-    )
-
+    """Create simplified output directory structure: applications/COMPANY/"""
+    
+    # Clean company name for directory
+    company_dir = company_name.replace(' ', '_').replace('/', '_').replace('\\', '_')
+    
+    # Create simple structure: applications/COMPANY/
+    output_path = os.path.join(base_dir, "applications", company_dir)
     os.makedirs(output_path, exist_ok=True)
+    
     return output_path
+
+def generate_filename(role_name, file_type):
+    """Generate filename following convention: Dinesh_Chhantyal_Resume_PositionTitle.pdf"""
+    # Clean role name for filename
+    position_title = role_name.replace(' ', '').replace('/', '').replace('\\', '').replace('&', 'and')
+    
+    if file_type.lower() == 'resume':
+        return f"Dinesh_Chhantyal_Resume_{position_title}.pdf"
+    elif file_type.lower() == 'coverletter':
+        return f"Dinesh_Chhantyal_CoverLetter_{position_title}.pdf"
+    else:
+        return f"Dinesh_Chhantyal_{file_type}_{position_title}.pdf"
 
 def cli_main():
     base_dir = os.getcwd()
@@ -67,13 +67,15 @@ def cli_main():
 
     # Generate documents based on user choice
     if choice in ['1', '3']:
-        resume_file = os.path.join(output_dir, 'resume.pdf')
+        resume_filename = generate_filename(role_name, 'resume')
+        resume_file = os.path.join(output_dir, resume_filename)
         resume_generator = ResumeGenerator(os.path.join(base_dir, "resume", "resume.yml"))
         output_file = resume_generator.generate_pdf(resume_file, output_dir)
         print(f"\nResume generated: {output_file}")
 
     if choice in ['2', '3']:
-        cover_letter_file = os.path.join(output_dir, 'cover_letter.pdf')
+        coverletter_filename = generate_filename(role_name, 'coverletter')
+        cover_letter_file = os.path.join(output_dir, coverletter_filename)
         coverletter_generator = CoverLetterGenerator(os.path.join(base_dir, "coverletter", "coverletter.yml"))
         output_file = coverletter_generator.generate_pdf(cover_letter_file, output_dir, company_name)
         print(f"\nCover letter generated: {output_file}")

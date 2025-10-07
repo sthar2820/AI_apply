@@ -8,92 +8,91 @@
 # - DONT create a new file
 
 personal:
-    name: Dinesh Chhantyal
-    location: New York, NY
-    phone: +1-318-750-6383
-    email: myagdichhantyal@gmail.com
-    website: https://www.dineshchhantyal.com
-    linkedin: https://linkedin.com/in/dineshchhantyal
+  name: Dinesh Chhantyal
+  location: Monroe, LA (Open to relocation)
+  phone: +1-318-750-6383
+  email: myagdichhantyal@gmail.com
+  website: https://www.dineshchhantyal.com
+  linkedin: https://linkedin.com/in/dineshchhantyal
 
 summary: |
-    Award-winning Full Stack Engineer & \textbf{GDSC President} shipping \textbf{AI-native} solutions with \textbf{React/Next.js} frontend architecture, \textbf{Python/Node.js} APIs & \textbf{cloud-based} infrastructure; \textbf{ICPC State Champion} turning \textbf{GenAI + RAG} concepts into intuitive, user-facing features.
+  \textbf{Software Engineer} with expertise in \textbf{AI/ML infrastructure}, \textbf{Kubernetes}, and \textbf{distributed systems}; experienced in \textbf{cloud-native technologies}, \textbf{microservices architecture}, and \textbf{policy automation systems}.
+  \textbf{ICPC State Champion} passionate about \textbf{LLMs}, \textbf{RAG systems}, and \textbf{AI model optimization}; proven track record building \textbf{scalable cloud solutions} and contributing to \textbf{open-source projects}.
 
 education:
-    - name: University of Louisiana at Monroe
-      location: Monroe, LA
-      degree: Bachelor of Science in Computer Science, Minor in Mathematics
-      GPA: 4.0 / 4.0
-      date: Aug 2022 -- May 2026 (Senior)
-      courses: Data Structures, Algorithms, Object-Oriented Programming, Database Management, Operating Systems, Computer Networks
+  - name: University of Louisiana at Monroe
+    location: Monroe, LA
+    degree: Bachelor of Science in Computer Science, Minor in Mathematics
+    GPA: 4.0 / 4.0
+    date: Aug 2022 -- May 2026 (Senior)
+    courses: Data Structures, Algorithms, Object-Oriented Programming, Database Management, Operating Systems, Computer Networks
 
 experience:
-    - title: Software Engineering Intern (ML)
-      company: Simons Foundation (SCC, Flatiron Institute)
-      location: New York, NY
-      date: July 2025 -- Aug 2025
-      achievements:
-          - Built \textbf{PyQt-based} 3D exploration pipeline for \textbf{1.2TB} of cryo-EM imagery in close collaboration with biologists, data scientists, and ground truth labelers, using \textbf{sliding window techniques} and \textbf{Ceph/S3} storage to create high-fidelity training datasets.
-          - Accelerated cell nucleus motion tracking pipeline \textbf{22x} (45→2 min) for embryonic development movies on \textbf{10-GPU cluster} (8xV100, 2xA100) through optimized batching, mixed-precision inference, and parallel frame processing.
-          - Improved cellular classification to \textbf{0.91 F1-score} by designing a custom \textbf{spatio-temporal 3D-CNN} with domain-specific augmentation strategies and iterative label refinement for accurate tracking across \textbf{600+ timepoints} and \textbf{25K+ cells}.
-          - Created \textbf{Chart-Gizmos}, an open-source visualization library integrating \textbf{Python}, \textbf{Chart.js}, and \textbf{H5Gizmos} for interactive data exploration.
+  - title: Software Developer / Product Analyst
+    company: Alfred (ScribeHQ)
+    location: Remote
+    date: July 2025 -- Present
+    achievements:
+      - Led \textbf{feature research and planning} collaborating with \textbf{cross-functional teams} to identify and prioritize critical features, conducting \textbf{market analysis} and user behavior studies to align product development with business goals and user needs for the customizable dashboard platform.
+      - Built \textbf{interactive React components} and \textbf{dynamic widgets} using \textbf{TypeScript} and \textbf{Supabase}, implementing \textbf{real-time updates} and \textbf{responsive design} that enhanced user engagement and platform functionality.
+      - Designed \textbf{modular integration system} for \textbf{educational platforms} (Canvas, Moodle), implementing \textbf{REST APIs} and \textbf{reusable components} that improved platform scalability and \textbf{development efficiency}.
+      - Authored \textbf{comprehensive technical documentation} and \textbf{API guides}, conducted \textbf{competitive analysis} and \textbf{market research} to inform product strategy, and resolved critical production issues while optimizing \textbf{performance monitoring} for enhanced user experience.
+  - title: Software Engineering Intern (ML)
+    company: Simons Foundation (SCC, Flatiron Institute)
+    location: New York, NY
+    date: July 2025 -- Aug 2025
+    achievements:
+      - Architected \textbf{distributed ML pipeline} processing \textbf{1.2TB} datasets on \textbf{10-GPU cluster} infrastructure, implementing \textbf{containerized workflows} with \textbf{Ceph/S3} storage and \textbf{parallel processing} for scalable AI model training and inference.
+      - Optimized \textbf{AI model performance} achieving \textbf{22x speedup} (45→2 min) through \textbf{distributed computing}, \textbf{mixed-precision inference}, and \textbf{efficient resource allocation} across \textbf{heterogeneous GPU clusters} (V100, A100).
+      - Designed \textbf{custom ML architecture} improving model accuracy to \textbf{0.91 F1-score} using \textbf{spatio-temporal 3D-CNN}, implementing \textbf{automated model evaluation} and \textbf{hyperparameter optimization} for large-scale scientific computing applications.
+      - Developed \textbf{Chart-Gizmos} open-source library with \textbf{Python} and \textbf{REST API} integration, enabling \textbf{microservices-based} data visualization and contributing to the \textbf{open-source ecosystem} for scientific computing tools.
 
-    - title: Software Engineer
-      company: University of Louisiana - Monroe
-      location: Monroe, LA
-      date: Jan 2023 -- Present
-      achievements:
-          - Integrated \textbf{Microsoft Teams API} with \textbf{Drupal CMS} via \textbf{OAuth 2.0} for real-time messaging and calendar synchronization, streamlining workflows and reducing administrative overhead from \textbf{4 hours to 30 minutes weekly}.
-          - Engineered a \textbf{Node.js/TypeScript/MySQL/ETL pipeline} to migrate \textbf{10,000+ legacy records} into \textbf{Drupal 10}, optimizing database schemas to accelerate query performance by \textbf{15%} and reduce storage costs by \textbf{10%} for improved system efficiency.
-          - Automated end-to-end testing for \textbf{50+ webpages} using \textbf{Selenium} and \textbf{Cypress}, integrating into a \textbf{CI/CD pipeline} with \textbf{GitLab} to enhance deployment reliability and boost pre-deployment issue detection by \textbf{75%}.
+  - title: Software Engineer
+    company: University of Louisiana - Monroe
+    location: Monroe, LA
+    date: Jan 2023 -- Present
+    achievements:
+      - Architected a \textbf{server-side system} for tracking accessibility compliance across \textbf{30,000+ university files}, developing \textbf{search algorithms} to scan and index content, with \textbf{PHP} and \textbf{Java} components for deep content analysis and remediation recommendations.
+      - Implemented a multi-tier with \textbf{RBAC} access control system for administrators, content owners, and auditors, creating a \textbf{rating and review workflow} that notifies stakeholders of compliance issues and tracks resolution progress through a \textbf{MySQL} database.
+      - Engineered a \textbf{Node.js/TypeScript/MySQL/ETL pipeline} to migrate \textbf{10,000+ legacy records} into the accessibility monitoring platform, optimizing database schemas to accelerate query performance by \textbf{15%} and reduce storage costs by \textbf{10%} for improved system efficiency.
 
-    - title: Software Developer
-      company: Clamphook - EdTech
-      location: Lalitpur, NP
-      date: Oct 2022 -- May 2023
-      achievements:
-          - Spearheaded a \textbf{Node.js} and \textbf{React}-based Computer-Based Testing (CBT) platform with \textbf{Redux Trunk} state management, \textbf{Redis} caching, and \textbf{NGINX} load balancing, implementing optimized API endpoints to support \textbf{5,000+ concurrent users} and \textbf{5x enrollment growth}.
-          - Architected a \textbf{Docker/Kubernetes}-based microservices infrastructure with \textbf{Helm} charts and automated \textbf{CI/CD} pipelines using \textbf{GitLab}, achieving \textbf{99.9% uptime} for production applications with \textbf{5,000+ downloads} on App Store.
-          - Developed real-time analytics dashboard with \textbf{TypeScript}, \textbf{MongoDB}, and \textbf{Chart.js}, featuring a gamified Duolingo-style progress tracking interface that drove an \textbf{8% increase} in user engagement and improved student retention.
-          - Conducted \textbf{code reviews}, documented \textbf{API specifications}, and troubleshot production issues while collaborating with cross-functional teams (design, product, QA) in a startup environment.
-
-    - title: Software Developer Intern
-      company: Padhao Academy
-      location: Remote
-      date: Oct 2021 -- Dec 2021
-      achievements:
-          - Implemented a secure authentication system with \textbf{JWT tokens} and \textbf{RBAC architecture} for a \textbf{Next.js} educational platform, ensuring \textbf{GDPR compliance} for 5,000+ student accounts and supporting multiple permission levels for students, instructors, and administrators.
-          - Optimized frontend performance using \textbf{Next.js}, \textbf{TypeScript}, and \textbf{Tailwind CSS} with strategic component lazy loading and state management, resulting in a \textbf{35% reduction} in page load times and improved user experience metrics.
-          - Enhanced platform discoverability through implementation of \textbf{Next.js SSR}, dynamic routing, \textbf{structured data markup} (Open Graph + JSON-LD), and intelligent resource prefetching, leading to measurable improvements in organic search rankings and user acquisition.
+  - title: Software Developer
+    company: Clamphook - EdTech
+    location: Lalitpur, NP
+    date: Oct 2022 -- May 2023
+    achievements:
+      - Architected \textbf{cloud-native microservices platform} using \textbf{Azure Kubernetes Service (AKS)}, \textbf{Docker containers}, and \textbf{Redis caching} to support \textbf{5,000+ concurrent users}, implementing \textbf{horizontal scaling} and \textbf{load balancing} for \textbf{5x enrollment growth}.
+      - Designed \textbf{distributed system architecture} with \textbf{Azure DevOps CI/CD pipelines}, \textbf{Container Registry}, and \textbf{Key Vault} for secure secrets management, achieving \textbf{99.9% uptime} through \textbf{automated deployment} and \textbf{infrastructure monitoring}.
+      - Implemented \textbf{real-time data processing} system with \textbf{Azure Cosmos DB} and \textbf{event-driven architecture}, developing analytics dashboard that processed user interactions and improved engagement by \textbf{8%} through \textbf{intelligent automation}.
+      - Established \textbf{DevOps best practices} including \textbf{code reviews}, \textbf{API documentation}, and \textbf{production monitoring}, collaborating with cross-functional teams in \textbf{agile startup environment} focused on rapid iteration and deployment.
 
 projects:
-    - name: RhymeAI
-      description: AI-powered event management platform featuring an intelligent virtual emcee that uses \textbf{multi-agent orchestration} (\textbf{Gemini}, \textbf{LangChain}, ElevenLabs) to plan and adapt to real-time situations. (Selected for \textbf{Nexus Technology Cup})
-      link: https://rhyme-ai.vercel.app/
+  - name: RhymeAI
+    description: \textbf{AI-powered multi-agent system} using \textbf{LLM orchestration} (\textbf{Gemini}, \textbf{LangChain}) and \textbf{prompt engineering} for intelligent event management, implementing \textbf{distributed AI architecture} and \textbf{real-time adaptation} algorithms. (Selected for \textbf{Nexus Technology Cup})
+    link: https://rhyme-ai.vercel.app/
 
-    - name: NoteMeet
-      description: AI meeting assistant with \textbf{React} front-end, serverless \textbf{FastAPI}, and \textbf{Terraform}-managed \textbf{AWS} stack (\textbf{Lambda}, \textbf{S3}, \textbf{DynamoDB}, Transcribe) for automatic recording, transcription, and \textbf{RAG}-powered summaries that cut manual note effort by \textbf{80%}. (\textbf{Tech Expo Winner})
-      link: https://notemeet.dineshchhantyal.com
+  - name: NoteMeet
+    description: \textbf{Cloud-native AI platform} with \textbf{Terraform}-managed \textbf{AWS infrastructure} (\textbf{Lambda}, \textbf{S3}, \textbf{DynamoDB}), featuring \textbf{RAG-powered} summarization, \textbf{microservices architecture}, and \textbf{event-driven processing} that automated \textbf{80%} of manual workflows. (\textbf{Tech Expo Winner})
+    link: https://notemeet.dineshchhantyal.com
 
-    - name: OfferMart
-      description: Full stack sustainable reselling marketplace (\textbf{Next.js}, \textbf{Node.js}, \textbf{MongoDB}) with \textbf{RBAC auth}, real-time verification, \textbf{dynamic pricing} logic, and \textbf{Stripe} integration; scales to \textbf{1,000+ concurrent transactions} with strong data integrity guarantees.
-      link: https://offermart.vercel.app/
+  - name: Alfred
+    description: Built \textbf{distributed dashboard system} using \textbf{React} and \textbf{Supabase} with \textbf{microservices architecture}, implementing \textbf{OAuth security}, \textbf{real-time synchronization}, and \textbf{offline-first design} for scalable productivity automation.
+    link: https://get-alfred.ai
 
-    - name: CodeStroke Pro
-      description: \textbf{FastAPI} clinical decision support system with form-driven workflows for stroke protocols and medication dosing, featuring responsive \textbf{React} UI and comprehensive audit trails that reduced decision latency by \textbf{40%}. (Helps save lives)
-      link: https://codestrokepro.org
+  - name: CodeStroke Pro
+    description: Developed \textbf{policy-driven automation system} using \textbf{FastAPI} and \textbf{React}, implementing \textbf{workflow orchestration}, \textbf{compliance monitoring}, and \textbf{audit trails} that reduced decision latency by \textbf{40%} in clinical environments. (Helps save lives)
+    link: https://codestrokepro.org
 
 skills:
-    - name: Frontend
-      items: React.js, Next.js, TypeScript, JavaScript (ES6+), HTML5/CSS3, Tailwind CSS, Responsive Design, Component-Driven Development
-    - name: Backend / APIs
-      items: Python, Node.js, FastAPI, Express, RESTful API Design, WebSockets, Authentication \& RBAC, API Gateway
-    - name: Databases \& Data
-      items: MongoDB, MySQL, PostgreSQL, Redis, Data Modeling, ETL, Caching
-    - name: AI / Automation
-      items: RAG, Vector Databases, LLM Orchestration, OpenAI API, Gemini, GitHub Copilot, Generative AI, PyTorch, TensorFlow
-    - name: DevOps \& Cloud
-      items: AWS (Lambda, S3, DynamoDB), GCP, Docker, Kubernetes, Terraform, CI/CD, Microservices, Cloud-Native Applications
-    - name: Testing \& Quality
-      items: Cypress, Selenium, Unit/Integration Testing, Regression Suites, Continuous Testing
-    - name: Other
-      items: Git, Agile/Scrum, Code Review, Documentation, Performance Optimization
+  - name: Programming Languages
+    items: \textbf{Python (5 years)}, \textbf{Java (3 years)}, Go (Learning), JavaScript/TypeScript (4 years), C\# (2 years)
+  - name: Cloud-Native \& Kubernetes
+    items: \textbf{Kubernetes}, \textbf{Docker}, \textbf{Microservices Architecture}, Container Orchestration, \textbf{Distributed Systems}, Service Mesh, Policy Management
+  - name: AI \& Machine Learning
+    items: \textbf{LLMs}, \textbf{RAG Systems}, \textbf{Prompt Engineering}, PyTorch, TensorFlow, \textbf{AI Model Optimization}, Vector Databases, \textbf{LLM Orchestration}
+  - name: Cloud Platforms \& Infrastructure
+    items: \textbf{Azure} (AKS, DevOps, Functions), \textbf{Google Cloud} (AI Platform, Vertex AI, GKE), \textbf{AWS} (Lambda, EKS), Terraform, CI/CD Pipelines
+  - name: Backend \& Systems
+    items: \textbf{REST API Design}, Java Spring Boot, FastAPI, \textbf{Distributed Architecture}, Authentication \& RBAC, \textbf{Policy Automation}
+  - name: Databases \& Messaging
+    items: \textbf{PostgreSQL}, \textbf{MongoDB}, Redis, \textbf{Kafka}, Message Queues, Event-Driven Architecture

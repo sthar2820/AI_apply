@@ -1,35 +1,56 @@
+# BUSINESS COVER LETTER FORMATTING RULES:
+# Follow this exact pattern and structure:
+# IMPORTANT: Do not use dashes (-) or em-dashes (—) in sentences. Use periods, commas, or restructure sentences instead.
+#
+# [Date] - Required: Date submitted
+# [Your street address] - Required: Your street address, city, state and zip
+# [Your phone number with area code]
+# [Your e-mail address]
+#
+# [Name, title, name of business] - Name, title, name of business, street address, city, state, and zip code
+# [Street address]
+# [City, state, and zip code]
+#
+# [Greeting with a colon:] - Greeting with a colon:
+#
+# [Opening paragraph] - Opening paragraph that contains the position, name of company, and banger to sell yourself so that they keep reading
+#
+# [One or more body paragraphs] - One or more body paragraphs. Refer to your résumé and elaborate on it
+#
+# [Conclusion] - Conclusion. Should express your appreciation. Request an interview. Include phone number with area code and e-mail address.
+#
+# [Closing with a comma] - Closing with a comma
+#
+# sign: Dinesh Chhantyal
+#
+# [Typed name]
+
 personal_information:
-    name: "Dinesh Chhantyal"
-    address:
-        line: "New York, NY"
-        postal_code: "10003"
-        country: "United States"
-    phone:
-        mobile: "+1-318-750-6383"
-    email: "myagdichhantyal@gmail.com"
-    homepage: "https://www.dineshchhantyal.com"
+  name: "Dinesh Chhantyal"
+  address:
+    line: "Monroe, LA"
+    postal_code: "71203"
+    country: "United States"
+  phone:
+    mobile: "+1-318-750-6383"
+  email: "myagdichhantyal@gmail.com"
+  homepage: "https://www.dineshchhantyal.com"
 
 recipient:
-    name: "Hiring Team"
-    company: "IXL Learning"
-    title: "Software Engineer, New Grad"
-    address: "Raleigh, NC"
+  name: "Hiring Manager"
+  company: "Apple Inc."
+  title: "Software Engineer, IS&T Early Career Opportunities"
+  address: "Cupertino, CA"
 
 letter:
-    date: "August 24, 2025"
-    opening: "Dear IXL Learning Hiring Team,"
-    body: |
-        I am thrilled to apply for the Software Engineer, New Grad position at IXL Learning. As an award-winning Full Stack Engineer with over 4 years of experience in EdTech platforms, I am passionate about leveraging technology to improve education and empower learners globally.
+  date: "October 7, 2025"
+  opening: "Dear Apple Hiring Team"
+  enclosure: "Enclosure: Resume"
+  body: |
+    I am excited to apply for the Software Engineer position in Apple's IS&T Early Career Opportunities program. As an ICPC State Champion with expertise in Java, Python, and JavaScript, I bring both technical excellence and leadership experience that aligns with Apple's innovative culture.
 
-        My journey in EdTech began at Padhao Academy, where I developed a secure authentication system for an educational platform, ensuring GDPR compliance for over 5,000 student accounts. I optimized frontend performance using Next.js and Tailwind CSS, reducing page load times by 35%, and implemented SEO strategies that improved user acquisition and platform discoverability.
+    What sets me apart is my proven track record of building enterprise-scale solutions. At the Simons Foundation, I engineered systems processing 1.2TB of data while collaborating with cross-functional research teams. At Alfred, I led engineering initiatives that delivered full-stack applications with measurable impact, including 80% workflow automation. My current role at University of Louisiana Monroe has deepened my server-side development expertise, where I architect Java-based enterprise systems and optimize database performance for 30,000+ files.
 
-        At Clamphook EdTech, I spearheaded the development of a scalable Computer-Based Testing (CBT) platform using Node.js and React, supporting 5,000+ concurrent users and driving a 5x growth in enrollment. I also built real-time analytics dashboards with MongoDB and Chart.js, enhancing student engagement and retention. Collaborating with cross-functional teams, I ensured high system uptime and delivered impactful features in a fast-paced startup environment.
+    Beyond technical skills, I bring leadership perspective as Google Developer Group President and a passion for technology that makes a difference. Apple's commitment to creating products that enrich lives resonates deeply with my own values, and I am eager to contribute to the IS&T organization's mission of building the infrastructure that powers Apple's innovation.
 
-        My most recent EdTech contribution is NoteMeet, an AI-powered meeting assistant that automates transcription and summarization tasks using AWS serverless architecture and RAG-powered summaries. This project reduced manual note-taking effort by 80%, showcasing my ability to integrate cutting-edge technologies into user-centric solutions.
-
-        I am particularly drawn to IXL Learning’s mission of creating innovative products that positively impact millions of learners and educators. The opportunity to contribute to your diverse range of educational tools, from IXL.com to Rosetta Stone, aligns perfectly with my passion for improving education through technology. I am eager to bring my technical expertise, problem-solving skills, and collaborative mindset to your team.
-
-        I would welcome the opportunity to discuss how my background and experiences align with IXL Learning’s goals and how I can contribute to your impactful products.
-
-    closing: "Sincerely,"
-    enclosure: "Enclosure: Resume"
+    I would welcome the opportunity to discuss how my combination of technical expertise, leadership experience, and collaborative approach can contribute to Apple's continued success. Please feel free to contact me at +1-318-750-6383 or myagdichhantyal@gmail.com.

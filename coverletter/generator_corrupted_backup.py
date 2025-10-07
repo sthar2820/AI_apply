@@ -92,21 +92,105 @@ class CoverLetterGenerator(DocumentGenerator):
         recipient = self.data["recipient"]
         letter = self.data["letter"]
 
-        content = [
-            r"""
-\documentclass[12pt, letterpaper]{article}
-\usepackage[utf8]{inputenc}
-\usepackage[margin=1in]{geometry}
-\usepackage{helvet}
-\renewcommand{\familydefault}{\sfdefault}
-\usepackage{hyperref}
-\usepackage{setspace}
-\usepackage{xcolor}
-\usepackage{tikz}
-\usetikzlibrary{shapes.geometric, positioning}
+        # Clean up the website URL for display
+        website_display = personal['homepage'].replace('https://www.', '').replace('https://', '')
+        
+        latex_content = f"""\\documentclass[12pt, letterpaper]{{article}}
+\\usepackage[utf8]{{inputenc}}
+\\usepackage[margin=1in]{{geometry}}
+\\usepackage{{helvet}}
+\\renewcommand{{\\familydefault}}{{\\sfdefault}}
+\\usepackage{{hyperref}}
+\\usepackage{{setspace}}
+\\usepackage{{xcolor}}
+\\usepackage{{tikz}}
+\\usetikzlibrary{{shapes.geometric, positioning}}
 
-% Define cool colors
-\definecolor{primaryyellow}{RGB}{255, 193, 7}
+% Define professional colors
+\\definecolor{{primaryyellow}}{{RGB}}{{255, 193, 7}}
+\\definecolor{{accentorange}}{{RGB}}{{255, 152, 0}}
+\\definecolor{{lightblue}}{{RGB}}{{74, 144, 226}}
+\\definecolor{{softgray}}{{RGB}}{{240, 240, 240}}
+
+% Remove page numbers
+\\pagenumbering{{gobble}}
+
+% Hyperlink styling - minimal for professional appearance
+\\hypersetup{{
+    colorlinks=false,
+    pdfborder={{0 0 0}}
+}}
+
+% Balanced formatting - not too tight, not too loose
+\\setlength{{\\parindent}}{{0pt}}
+\\setlength{{\\parskip}}{{8pt}}
+\\setlength{{\\baselineskip}}{{13pt}}
+\\singlespacing
+\\raggedright
+
+\\begin{{document}}
+
+% Professional letterhead banner header
+\\begin{{tikzpicture}}[remember picture,overlay]
+% Main header banner
+\\fill[primaryyellow] (current page.north west) rectangle ([yshift=-1.5cm]current page.north east);
+% Subtle accent line
+\\fill[accentorange] ([yshift=-1.5cm]current page.north west) rectangle ([yshift=-1.6cm]current page.north east);
+\\end{{tikzpicture}}
+
+% Header content in banner
+\\begin{{tikzpicture}}[remember picture,overlay]
+\\node[anchor=north west, text=black, font=\\Large\\bfseries] at ([xshift=1in, yshift=-0.4cm]current page.north west) {{{personal['name']}}};
+\\node[anchor=north west, text=black, font=\\footnotesize] at ([xshift=1in, yshift=-0.75cm]current page.north west) {{{personal['address']['line']}, {personal['address']['postal_code']}, {personal['address']['country']}}};
+\\node[anchor=north east, text=black, font=\\footnotesize] at ([xshift=-1in, yshift=-0.6cm]current page.north east) {{{personal['phone']['mobile']}}};
+\\node[anchor=north east, text=black, font=\\footnotesize] at ([xshift=-1in, yshift=-0.85cm]current page.north east) {{\\href{{mailto:{personal['email']}}}{{{personal['email']}}}}};
+\\node[anchor=north east, text=black, font=\\footnotesize] at ([xshift=-1in, yshift=-1.1cm]current page.north east) {{\\href{{{personal['homepage']}}}{{{website_display}}}}};
+\\end{{tikzpicture}}
+
+% Professional footer
+\\begin{{tikzpicture}}[remember picture,overlay]
+\\fill[softgray, opacity=0.3] ([yshift=0.8cm]current page.south west) rectangle (current page.south east);
+\\node[anchor=south, text=gray, font=\\tiny] at ([yshift=0.4cm]current page.south) {{Professional correspondence from {personal['name']} | {personal['phone']['mobile']} | {personal['email']}}};
+\\end{{tikzpicture}}
+
+\\vspace{{2cm}}
+
+% Date (flush left)
+\\noindent {letter['date']}
+
+\\vspace{{6pt}}
+
+% Recipient information (flush left)
+\\noindent {recipient['name']}\\\\
+{recipient.get('title', '')}\\\\
+{recipient['company']}\\\\
+{recipient['address']}
+
+\\vspace{{6pt}}
+
+% Salutation with colon (professional)
+\\noindent {letter['opening']}:
+
+\\vspace{{6pt}}
+
+% Body paragraphs with balanced spacing
+{self.format_body_paragraphs(letter['body'])}
+
+\\vspace{{12pt}}
+
+% Complimentary close with comma
+Sincerely,
+
+\\vspace{{18pt}}
+
+% Typed name (clean, no abstract shapes)
+{personal['name']}
+
+\\end{{document}}
+"""
+        return latex_content
+
+    def save_cover_letter(self, output_file_path, company_name):
 \definecolor{accentorange}{RGB}{255, 152, 0}
 \definecolor{lightblue}{RGB}{74, 144, 226}
 \definecolor{softgray}{RGB}{240, 240, 240}
@@ -129,23 +213,30 @@ class CoverLetterGenerator(DocumentGenerator):
 
 \begin{document}
 
-% Cool abstract header shapes
-\begin{tikzpicture}[remember picture,overlay]
-\fill[primaryyellow, opacity=0.7] (current page.north east) +(-3cm,-1cm) circle (0.6cm);
-\fill[accentorange, opacity=0.5] (current page.north east) +(-2cm,-1.5cm) circle (0.4cm);
-\fill[lightblue, opacity=0.3] (current page.north east) +(-1cm,-0.8cm) circle (0.3cm);
-\end{tikzpicture}""",
-            f"""
-\\vspace{{-20pt}}
+% Professional letterhead banner header
+\\begin{{tikzpicture}}[remember picture,overlay]
+% Main header banner
+\\fill[primaryyellow] (current page.north west) rectangle ([yshift=-1.5cm]current page.north east);
+% Subtle accent line
+\\fill[accentorange] ([yshift=-1.5cm]current page.north west) rectangle ([yshift=-1.6cm]current page.north east);
+\\end{{tikzpicture}}
 
-% Your address and contact information (flush left) - moved higher
-\\noindent {personal['address']['line']}\\\\
-{personal['address']['postal_code']}, {personal['address']['country']}\\\\
-{personal['phone']['mobile']}\\\\
-\\href{{mailto:{personal['email']}}}{{{personal['email']}}}\\\\
-\\href{{{personal['homepage']}}}{{{personal['homepage']}}}
+% Header content in banner
+\\begin{{tikzpicture}}[remember picture,overlay]
+\\node[anchor=north west, text=black, font=\\Large\\bfseries] at ([xshift=1in, yshift=-0.4cm]current page.north west) {{{personal['name']}}};
+\\node[anchor=north west, text=black, font=\\footnotesize] at ([xshift=1in, yshift=-0.75cm]current page.north west) {{{personal['address']['line']}, {personal['address']['postal_code']}, {personal['address']['country']}}};
+\\node[anchor=north east, text=black, font=\\footnotesize] at ([xshift=-1in, yshift=-0.6cm]current page.north east) {{{personal['phone']['mobile']}}};
+\\node[anchor=north east, text=black, font=\\footnotesize] at ([xshift=-1in, yshift=-0.85cm]current page.north east) {{\\href{{mailto:{personal['email']}}}{{{personal['email']}}}}}; 
+\\node[anchor=north east, text=black, font=\\footnotesize] at ([xshift=-1in, yshift=-1.1cm]current page.north east) {{\\href{{{personal['homepage']}}}{{{personal['homepage'].replace('https://www.', '')}}}}};
+\\end{{tikzpicture}}
 
-\\vspace{{8pt}}
+% Professional footer
+\\begin{{tikzpicture}}[remember picture,overlay]
+\\fill[softgray, opacity=0.3] ([yshift=0.8cm]current page.south west) rectangle (current page.south east);
+\\node[anchor=south, text=gray, font=\\tiny] at ([yshift=0.4cm]current page.south) {{Professional correspondence from {personal['name']} | {personal['phone']['mobile']} | {personal['email']}}};
+\\end{{tikzpicture}}
+
+\\vspace{{2cm}}
 
 % Date (flush left)
 \\noindent {letter['date']}
@@ -160,18 +251,22 @@ class CoverLetterGenerator(DocumentGenerator):
 
 \\vspace{{6pt}}
 
-% Salutation with colon (no extra space after)
+% Salutation with colon (professional)
 \\noindent {letter['opening']}:
 
-% Body paragraphs with clean spacing
+\\vspace{{6pt}}
+
+% Body paragraphs with balanced spacing
 {self.format_body_paragraphs(letter['body'])}
 
 \\vspace{{12pt}}
 
-% Clean signature section
+% Complimentary close with comma
 Sincerely,
 
+\\vspace{{18pt}}
 
+% Typed name (clean, no abstract shapes)
 {personal['name']}
 """,
             r"\end{document}",

@@ -226,7 +226,7 @@ def get_awards_section():
 
 @app.tool(
     name="get_certifications_section",
-    description="Get the certifications section from the resume YAML file.",
+    description="Get all the certifications from the resume YAML file.",
 )
 def get_certifications_section():
     content = get_section_from_resume("resume.certifications")

@@ -8,13 +8,18 @@ from generators.base import DocumentGenerator
 class ResumeGenerator(DocumentGenerator):
     def __init__(self, yaml_file):
         super().__init__(yaml_file)
-        self.latex_preamble = self.get_latex_preamble()
+        self.yaml_file = yaml_file  # Store the yaml_file path
         with open(yaml_file, "r", encoding="utf-8") as f:
             self.data = yaml.safe_load(f)
+        self.latex_preamble = self.get_latex_preamble()
 
     def get_latex_preamble(self):
         """Returns the LaTeX preamble with all package imports and custom commands"""
-        return r"""\documentclass[letterpaper,10pt]{article}
+        personal = getattr(self, 'data', {}).get("personal", {})
+        name = personal.get("name", "Professional Resume")
+
+        return (
+            r"""\documentclass[letterpaper,10pt]{article}
 
 \usepackage{latexsym}
 \usepackage[empty]{fullpage}
@@ -33,7 +38,7 @@ class ResumeGenerator(DocumentGenerator):
 \usepackage{accsupp}
 \usepackage[hidelinks,pdfusetitle]{hyperref}
 \hypersetup{
-  pdftitle={Resume},
+  pdftitle={Professional Resume},
   pdflang={en-US},
   pdfcreator={pdfLaTeX},
   pdfduplex={Simplex},
@@ -42,7 +47,18 @@ class ResumeGenerator(DocumentGenerator):
   pdfnewwindow=true,
   colorlinks=false,
   linktoc=all,
-  pdfpagemode=UseNone
+  pdfpagemode=UseNone,
+  pdfdisplaydoctitle=true,
+  pdfborder={0 0 0}
+}
+
+% Add PDF metadata for ATS systems using hypersetup instead of pdfinfo
+\hypersetup{
+  pdftitle={"""
+            + name
+            + r""" - Professional Resume},
+  pdfsubject={Professional Experience and Qualifications},
+  pdfkeywords={resume, qualifications, skills, experience, professional}
 }
 
 % Page setup
@@ -85,6 +101,7 @@ class ResumeGenerator(DocumentGenerator):
 \newcommand{\resumeItemListStart}{\begin{itemize}}
 \newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
 """
+        )
 
     def escape_latex(self, text):
         """Escape special LaTeX characters"""
@@ -95,7 +112,10 @@ class ResumeGenerator(DocumentGenerator):
         replacements = [
             ("#", "\\#"),  # Escape the # character
             ("&", "\\&"),
+            # Only escape % if it's not already escaped
+            ("\\%", "PERCENT_PLACEHOLDER"),  # Temporarily replace already escaped %
             ("%", "\\%"),
+            ("PERCENT_PLACEHOLDER", "\\%"),  # Restore already escaped %
             # ('$', '\\$'),
             ("_", "\\_"),
             # ('{', '\\{'),
@@ -217,6 +237,7 @@ class ResumeGenerator(DocumentGenerator):
     def extract_keywords(self):
         """Extract potential keywords from skills and experience for ATS optimization"""
         keywords = set()
+        import re
 
         # Extract from skills
         for skill_category in self.data.get("skills", []):
@@ -232,8 +253,6 @@ class ResumeGenerator(DocumentGenerator):
             # Extract technical terms from achievements
             for achievement in job["achievements"]:
                 # Find words in textbf that are likely technical terms
-                import re
-
                 tech_terms = re.findall(r"\\textbf\{([^}]+)\}", achievement)
                 keywords.update(tech_terms)
 
@@ -243,6 +262,30 @@ class ResumeGenerator(DocumentGenerator):
                     achievement,
                 )
                 keywords.update(tech_matches)
+
+                # Add common action verbs that ATS systems look for
+                action_verbs = [
+                    "led",
+                    "managed",
+                    "developed",
+                    "created",
+                    "designed",
+                    "implemented",
+                    "built",
+                    "optimized",
+                    "improved",
+                    "reduced",
+                    "increased",
+                    "achieved",
+                    "deployed",
+                    "architected",
+                    "streamlined",
+                    "collaborated",
+                    "coordinated",
+                ]
+                for verb in action_verbs:
+                    if re.search(r"\b" + verb + r"\b", achievement.lower()):
+                        keywords.add(verb.capitalize())
 
         # Add project technologies
         for project in self.data.get("projects", []):
@@ -283,6 +326,61 @@ class ResumeGenerator(DocumentGenerator):
         content.append("\\end{comment}")
         return "\n".join(content)
 
+    def generate_certifications(self, certifications):
+        """Generate the certifications section"""
+        content = []
+        content.append("\\section*{\\textbf{Certifications}}")
+        content.append("\\resumeItemListStart{}")
+        for cert in certifications:
+            title = self.escape_latex(cert["title"])
+            issuer = self.escape_latex(cert["issuer"])
+            date = self.escape_latex(cert["date"])
+
+            formatted_cert = (
+                f"\\resumeItem{{"
+                f"\\textbf{{{title}}} -- {issuer} "
+                f"\\hfill {date}"
+                f"}}"
+            )
+
+            content.append(formatted_cert)
+        content.append("\\resumeItemListEnd")
+        return "\n".join(content)
+
+    def generate_leadership(self, leadership):
+        """Generate the leadership section"""
+        content = []
+        content.append("\\section*{\\textbf{Leadership \\& Awards}}")
+        content.append("\\resumeItemListStart{}")
+        for item in leadership:
+            name = self.escape_latex(item["name"])
+            description = (
+                self.escape_latex(item["description"])
+                if "description" in item
+                else ""
+            )
+            date = self.escape_latex(item["date"])
+
+            if description:
+                formatted_item = (
+                    f"\\resumeItem{{"
+                    f"\\textbf{{{name}}} "  # Bold name
+                    f"\\hfill {date}\\\\"  # Right-aligned date
+                    f"{description}"  # Description on new line
+                    f"}}"
+                )
+            else:
+                formatted_item = (
+                    f"\\resumeItem{{"
+                    f"\\textbf{{{name}}} "
+                    f"\\hfill {date}"
+                    f"}}"
+                )
+
+            content.append(formatted_item)
+        content.append("\\resumeItemListEnd")
+        return "\n".join(content)
+
     def generate_activities(self, activities):
         """Generate the activities section"""
         content = []
@@ -313,7 +411,9 @@ class ResumeGenerator(DocumentGenerator):
         """Generate the complete LaTeX resume from YAML"""
         # Optional sections
         summary_text = self.data.get("summary")
-        activities = self.data.get("activities", []) or self.data.get("leadership", [])
+        activities = self.data.get("activities", [])
+        leadership = self.data.get("leadership", [])
+        certifications = self.data.get("certifications", [])
 
         content = [
             self.latex_preamble,
@@ -327,13 +427,24 @@ class ResumeGenerator(DocumentGenerator):
 
         content.extend(
             [
+                self.generate_education(self.data.get("education", [])),  # Education after summary
+                self.generate_skills(
+                    self.data.get("skills", [])
+                ),  # Skills before experience
                 self.generate_experience(self.data.get("experience", [])),
                 self.generate_projects(self.data.get("projects", [])),
-                self.generate_skills(self.data.get("skills", [])),
-                self.generate_education(self.data.get("education", [])),
             ]
         )
 
+        # Add certifications section if present
+        if certifications:
+            content.append(self.generate_certifications(certifications))
+
+        # Add leadership section if present
+        if leadership:
+            content.append(self.generate_leadership(leadership))
+
+        # Add activities section if present (for backward compatibility)
         if activities:
             content.append(self.generate_activities(activities))
 
@@ -344,19 +455,18 @@ class ResumeGenerator(DocumentGenerator):
 
         return "\n\n".join(content)
 
-    def save_resume(self, yaml_file, output_dir="output"):
-        """Save the generated LaTeX resume to a file"""
+    def save_resume(self, yaml_file, output_file_path):
+        """Save the generated LaTeX resume to a specific file"""
+        output_dir = os.path.dirname(output_file_path)
         if not os.path.exists(output_dir):
             os.makedirs(output_dir)
 
         latex_content = self.generate_resume(yaml_file)
-        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-        output_file = os.path.join(output_dir, f"resume_{timestamp}.tex")
-
-        with open(output_file, "w", encoding="utf-8") as f:
+        
+        with open(output_file_path, "w", encoding="utf-8") as f:
             f.write(latex_content)
 
-        return output_file
+        return output_file_path
 
     def compile_pdf(self, tex_file):
         """Compile LaTeX file to PDF using pdflatex with ATS-friendly settings"""
@@ -364,11 +474,36 @@ class ResumeGenerator(DocumentGenerator):
             # Get the directory containing the tex file
             output_dir = os.path.dirname(tex_file)
 
+            # Try to find pdflatex in common locations
+            pdflatex_paths = [
+                "pdflatex",  # If it's in PATH
+                "/usr/local/texlive/2024/bin/universal-darwin/pdflatex",
+                "/usr/local/texlive/2024/bin/x86_64-darwin/pdflatex",
+                "/Library/TeX/texbin/pdflatex",
+            ]
+
+            pdflatex_cmd = None
+            for path in pdflatex_paths:
+                if os.path.exists(path) or path == "pdflatex":
+                    try:
+                        subprocess.run(
+                            [path, "--version"], check=True, capture_output=True
+                        )
+                        pdflatex_cmd = path
+                        break
+                    except (subprocess.CalledProcessError, FileNotFoundError):
+                        continue
+
+            if not pdflatex_cmd:
+                raise Exception(
+                    "pdflatex not found. Please install LaTeX (MacTeX) or add it to PATH"
+                )
+
             # Run pdflatex twice to ensure proper generation of references
             for _ in range(2):
                 subprocess.run(
                     [
-                        "pdflatex",
+                        pdflatex_cmd,
                         "-interaction=nonstopmode",
                         "-output-directory=" + output_dir,
                         # ATS-friendly settings - remove -dPDFA flag since it's causing issues
@@ -399,16 +534,24 @@ class ResumeGenerator(DocumentGenerator):
             print(f"Error: {str(e)}")
             raise
 
-    def generate_pdf(self, yaml_file, output_dir="output"):
-        """Generate both LaTeX and PDF files from YAML"""
+    def generate_pdf(self, output_file_path, output_dir="output"):
+        """Generate both LaTeX and PDF files from YAML with custom filename"""
         try:
-            # First generate the tex file
-            tex_file = self.save_resume(yaml_file, output_dir)
+            # Use the provided output file path for the final PDF
+            base_name = os.path.splitext(output_file_path)[0]
+            tex_file = base_name + ".tex"
+            
+            # Generate LaTeX content
+            latex_content = self.generate_resume(self.yaml_file)
+            
+            # Write LaTeX file
+            with open(tex_file, "w", encoding="utf-8") as f:
+                f.write(latex_content)
 
-            # Then compile it to PDF
+            # Compile to PDF
             pdf_file = self.compile_pdf(tex_file)
 
-            # delete the tex file
+            # Delete the tex file
             if os.path.exists(tex_file):
                 os.remove(tex_file)
 
