@@ -38,19 +38,19 @@ personal_information:
 
 recipient:
   name: "Hiring Manager"
-  company: "Apple Inc."
-  title: "Software Engineer, IS&T Early Career Opportunities"
-  address: "Cupertino, CA"
+  company: "Intelliswift Software"
+  title: "Full Stack Software Developer III"
+  address: "Plano, TX"
 
 letter:
-  date: "October 7, 2025"
-  opening: "Dear Apple Hiring Team"
+  date: "October 14, 2025"
+  opening: "Dear Hiring Manager"
   enclosure: "Enclosure: Resume"
   body: |
-    I am excited to apply for the Software Engineer position in Apple's IS&T Early Career Opportunities program. As an ICPC State Champion with expertise in Java, Python, and JavaScript, I bring both technical excellence and leadership experience that aligns with Apple's innovative culture.
+    I am writing to express my strong interest in the Full Stack Software Developer III position at Intelliswift Software. My experience in building and scaling full-stack applications using Python, Flask, React, PostgreSQL, and Redis aligns directly with the technical requirements of this role and your commitment to agile, end-to-end product ownership.
 
-    What sets me apart is my proven track record of building enterprise-scale solutions. At the Simons Foundation, I engineered systems processing 1.2TB of data while collaborating with cross-functional research teams. At Alfred, I led engineering initiatives that delivered full-stack applications with measurable impact, including 80% workflow automation. My current role at University of Louisiana Monroe has deepened my server-side development expertise, where I architect Java-based enterprise systems and optimize database performance for 30,000+ files.
+    In previous roles, I have a proven record of shipping production-grade software for thousands of users. At Alfred, I led sprint planning and delivered 43 production commits in React and TypeScript, while at Clamphook, I architected a Flask and Redis microservices platform to support over 5,000 concurrent learners. In both positions, I focused on creating resilient REST APIs, implementing CI/CD with Docker, and ensuring high availability in Linux environments. My commitment to quality is demonstrated by my experience in troubleshooting production issues and establishing rigorous, Git-driven workflows.
 
-    Beyond technical skills, I bring leadership perspective as Google Developer Group President and a passion for technology that makes a difference. Apple's commitment to creating products that enrich lives resonates deeply with my own values, and I am eager to contribute to the IS&T organization's mission of building the infrastructure that powers Apple's innovation.
+    As a leader, evidenced by my roles as GDSC President and an ICPC State Champion, I am dedicated to fostering collaborative environments and improving team velocity through clear documentation and best practices. I am confident my technical skills and leadership experience will enable me to contribute significantly to Intelliswift's success.
 
-    I would welcome the opportunity to discuss how my combination of technical expertise, leadership experience, and collaborative approach can contribute to Apple's continued success. Please feel free to contact me at +1-318-750-6383 or myagdichhantyal@gmail.com.
+    I look forward to discussing my qualifications further. Please feel free to contact me at +1-318-750-6383 or myagdichhantyal@gmail.com.

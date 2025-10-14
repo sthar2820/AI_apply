@@ -156,16 +156,24 @@ class ResumeGenerator(DocumentGenerator):
         content.append("\\section*{\\textbf{Education}}")
         content.append("\\resumeSubHeadingListStart")
 
-        for school in education:
+        for school in education or []:
+            if not isinstance(school, dict):
+                continue
             content.append("\\resumeSubheading")
-            content.append(f"{{{school['name']}}}{{{school['location']}}}")
+            name = school.get('name', '')
+            location = school.get('location', '')
+            degree = school.get('degree', '')
+            gpa = school.get('GPA', '')
+            date = school.get('date', '')
+            courses = school.get('courses')
+            content.append(f"{{{name}}}{{{location}}}")
             content.append(
-                f"{{{school['degree']}, {{GPA: {school['GPA']}}}}}{{{school['date']}}}"
+                f"{{{degree}, {{GPA: {gpa}}}}}{{{date}}}"
             )
 
-            if "courses" in school:
+            if courses:
                 content.append("\\resumeItemListStart")
-                content.append(f"\\resumeItem{{{school['courses']}}}")
+                content.append(f"\\resumeItem{{{courses}}}")
                 content.append("\\resumeItemListEnd")
 
         content.append("\\resumeSubHeadingListEnd")
@@ -177,15 +185,19 @@ class ResumeGenerator(DocumentGenerator):
         content.append("\\section*{\\textbf{Experience}}")
         content.append("\\resumeSubHeadingListStart")
 
-        for job in experience:
+        for job in experience or []:
+            if not isinstance(job, dict):
+                continue
             content.append("\\resumeSubheading")
-            content.append(f"{{{self.escape_latex(job['title'])}}}{{{job['date']}}}")
-            content.append(
-                f"{{{self.escape_latex(job['company'])}}}{{{self.escape_latex(job['location'])}}}"
-            )
+            title = self.escape_latex(job.get('title', ''))
+            date = job.get('date', '')
+            company = self.escape_latex(job.get('company', ''))
+            location = self.escape_latex(job.get('location', ''))
+            content.append(f"{{{title}}}{{{date}}}")
+            content.append(f"{{{company}}}{{{location}}}")
 
             content.append("\\resumeItemListStart")
-            for achievement in job["achievements"]:
+            for achievement in (job.get("achievements") or []):
                 # Remove any leading dash and whitespace for clean bulleting
                 achievement_clean = achievement.lstrip("- ").strip()
                 escaped_achievement = self.escape_latex(achievement_clean)
@@ -203,7 +215,9 @@ class ResumeGenerator(DocumentGenerator):
         content = []
         content.append("\\section*{\\textbf{Projects}}")
         content.append("\\resumeItemListStart{}")
-        for project in projects:
+        for project in projects or []:
+            if not isinstance(project, dict):
+                continue
             name = self.escape_latex(project.get("name", ""))
             description = self.escape_latex(project.get("description", ""))
             link = project.get("link")
@@ -225,9 +239,11 @@ class ResumeGenerator(DocumentGenerator):
         content.append("\\begin{itemize}[leftmargin=0.15in, label={}]")
         content.append("\\small{\\item{")
 
-        for category in skills:
+        for category in skills or []:
+            if not isinstance(category, dict):
+                continue
             content.append(
-                f"\\textbf{{{category['name']}}}{{: {category['items']}}} \\\\"
+                f"\\textbf{{{category.get('name','')}}}{{: {category.get('items','')}}} \\\\" 
             )
 
         content.append("}}")

@@ -105,11 +105,12 @@ class CoverLetterGenerator(DocumentGenerator):
 \usepackage{tikz}
 \usetikzlibrary{shapes.geometric, positioning}
 
-% Define cool colors
-\definecolor{primaryyellow}{RGB}{255, 193, 7}
-\definecolor{accentorange}{RGB}{255, 152, 0}
-\definecolor{lightblue}{RGB}{74, 144, 226}
-\definecolor{softgray}{RGB}{240, 240, 240}
+% Define professional theme colors (matching your website)
+\definecolor{darkblue}{RGB}{15, 23, 42}
+\definecolor{accentorange}{RGB}{251, 146, 60}
+\definecolor{lightgray}{RGB}{148, 163, 184}
+\definecolor{white}{RGB}{255, 255, 255}
+\definecolor{textgray}{RGB}{71, 85, 105}
 
 % Remove page numbers
 \pagenumbering{gobble}
@@ -120,37 +121,39 @@ class CoverLetterGenerator(DocumentGenerator):
     pdfborder={0 0 0}
 }
 
-% Balanced formatting - not too tight, not too loose
+% Compact document formatting to fit on one page
 \setlength{\parindent}{0pt}
-\setlength{\parskip}{8pt}
-\setlength{\baselineskip}{13pt}
-\singlespacing
+\setlength{\parskip}{9pt}
+\setlength{\baselineskip}{14pt}
+\setstretch{1.1}
 \raggedright
 
 \begin{document}
 
-% Cool abstract header shapes
+% Clean, professional header with excellent typography
 \begin{tikzpicture}[remember picture,overlay]
-\fill[primaryyellow, opacity=0.7] (current page.north east) +(-3cm,-1cm) circle (0.6cm);
-\fill[accentorange, opacity=0.5] (current page.north east) +(-2cm,-1.5cm) circle (0.4cm);
-\fill[lightblue, opacity=0.3] (current page.north east) +(-1cm,-0.8cm) circle (0.3cm);
-\end{tikzpicture}""",
+% Clean header background
+\fill[darkblue] (current page.north west) rectangle ([yshift=-2.3cm]current page.north east);
+% Elegant accent line
+\fill[accentorange] ([yshift=-2.3cm]current page.north west) rectangle ([yshift=-2.4cm]current page.north east);
+
+% Professional layout: Name larger, contact info smaller and grouped
+\node[anchor=west, text=white, inner sep=0pt] at ([xshift=1in, yshift=-0.8cm]current page.north west) {
+\fontsize{24}{28}\selectfont\bfseries """ + personal['name'] + r"""
+};
+
+% Consolidated contact info - all on one line for cleaner look
+\node[anchor=west, text=white, inner sep=0pt] at ([xshift=1in, yshift=-1.5cm]current page.north west) {
+\fontsize{9.5}{11}\selectfont """ + personal['phone']['mobile'] + r""" $\cdot$ """ + personal['email'] + r""" $\cdot$ """ + personal['homepage'].replace('https://www.', '').replace('https://', '') + r""" $\cdot$ """ + personal['address']['line'] + r"""
+};
+\end{tikzpicture}
+
+\vspace{0.7cm}""",
             f"""
-\\vspace{{-20pt}}
-
-% Your address and contact information (flush left) - moved higher
-\\noindent {personal['address']['line']}\\\\
-{personal['address']['postal_code']}, {personal['address']['country']}\\\\
-{personal['phone']['mobile']}\\\\
-\\href{{mailto:{personal['email']}}}{{{personal['email']}}}\\\\
-\\href{{{personal['homepage']}}}{{{personal['homepage']}}}
-
-\\vspace{{8pt}}
-
-% Date (flush left)
+% Date
 \\noindent {letter['date']}
 
-\\vspace{{6pt}}
+\\vspace{{12pt}}
 
 % Recipient information (flush left)
 \\noindent {recipient['name']}\\\\
@@ -171,8 +174,14 @@ class CoverLetterGenerator(DocumentGenerator):
 % Clean signature section
 Sincerely,
 
+\\vspace{{48pt}}
 
 {personal['name']}
+
+% Yellow footer strip at bottom of page
+\\begin{{tikzpicture}}[remember picture,overlay]
+\\fill[accentorange] ([yshift=0.5cm]current page.south west) rectangle ([yshift=0.6cm]current page.south east);
+\\end{{tikzpicture}}
 """,
             r"\end{document}",
         ]
