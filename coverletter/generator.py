@@ -1,206 +1,197 @@
 from datetime import datetime
 import os
 import subprocess
-import yaml
 from generators.base import DocumentGenerator
+
+
+def latex_escape(text: str) -> str:
+    """Escape LaTeX special characters in plain text."""
+    if text is None:
+        return ""
+    replacements = {
+        "\\": r"\textbackslash{}",
+        "&": r"\&",
+        "%": r"\%",
+        "$": r"\$",
+        "#": r"\#",
+        "_": r"\_",
+        "{": r"\{",
+        "}": r"\}",
+        "~": r"\textasciitilde{}",
+        "^": r"\textasciicircum{}",
+    }
+    out = []
+    for ch in str(text):
+        out.append(replacements.get(ch, ch))
+    return "".join(out)
 
 
 class CoverLetterGenerator(DocumentGenerator):
     def __init__(self, yaml_file):
         super().__init__(yaml_file)
 
-    def generate_cover_letter(self):
-        personal = self.data["personal_information"]
-        recipient = self.data["recipient"]
-        letter = self.data["letter"]
+    def format_body_paragraphs(self, body_text: str) -> str:
+        """Ensure paragraphs are separated by a blank line and flush-left (full block)."""
+        paragraphs = [p.strip().replace("\n", " ") for p in body_text.strip().split("\n\n") if p.strip()]
+        return "\n\n".join(latex_escape(p) for p in paragraphs)
 
-        cover_letter = f"""
-        {personal['name']}
-        {personal.get('title', '')}
-        {personal['address']['line']}, {personal['address']['postal_code']}, {personal['address']['country']}
-        Mobile: {personal['phone']['mobile']}
-        Fixed: {personal['phone'].get('fixed','')}
-        Fax: {personal['phone'].get('fax','')}
-        Email: {personal['email']}
-        Homepage: {personal['homepage']}
-        Extra Info: {personal.get('extra_info','')}
-        Quote: {personal.get('quote','')}
-
-        To: {recipient['name']}
-        Address: {recipient['address']}
-
-        Date: {letter['date']}
-        {letter['opening']}
-
-        {letter['body']}
-
-        {letter['closing']}
-        Enclosure: {letter['enclosure']}
-        """
-        return cover_letter.strip()
-
-    def format_body_paragraphs(self, body_text):
-        """Format body paragraphs with proper spacing for readability"""
-        paragraphs = body_text.strip().split('\n\n')
-        formatted_paragraphs = []
-        
-        for paragraph in paragraphs:
-            # Clean up the paragraph and add proper formatting
-            clean_paragraph = paragraph.strip().replace('\n', ' ')
-            formatted_paragraphs.append(clean_paragraph)
-        
-        # Join paragraphs with better spacing for readability
-        return '\n\n'.join(formatted_paragraphs)
-
-    def replace_placeholders(self, company_name):
-        """
-        Interactively ask user for missing placeholder values in the YAML data.
-        Only prompts for values that contain placeholder text.
-        """
+    def replace_placeholders(self, company_name: str):
+        """Fill placeholders and normalize fields from YAML data, including date format."""
         data = self.data.copy()
-        # Escape LaTeX special characters
-        data["letter"]["body"] = data["letter"]["body"].replace("%", "\\%").replace("&", "\\&")
-        if "[Hiring Manager's Name]" in data["recipient"]["name"]:
-            manager_name = input("Enter hiring manager's name: ").strip()
-            data["recipient"]["name"] = data["recipient"]["name"].replace(
-                "[Hiring Manager's Name]", manager_name
-            )
-        if "[Company Address]" in data["recipient"]["address"]:
-            company_address = input("Enter company address: ").strip()
-            data["recipient"]["address"] = data["recipient"]["address"].replace(
-                "[Company Address]", company_address
-            )
-        if "[Company Name]" in data["recipient"]["address"]:
-            data["recipient"]["address"] = data["recipient"]["address"].replace(
-                "[Company Name]", company_name
-            )
-        # Escape special characters in recipient information
-        data["recipient"]["title"] = data["recipient"]["title"].replace("&", "\\&")
-        data["letter"]["date"] = datetime.now().strftime("%Y-%m-%d")
-        data["letter"]["opening"] = data["letter"]["opening"].replace(
-            "[Company Name]", company_name
-        )
-        data["letter"]["body"] = data["letter"]["body"].replace(
-            "[Company Name]", company_name
-        )
+
+        # Date: use long US format (e.g., October 15, 2025)
+        data["letter"]["date"] = datetime.now().strftime("%B %d, %Y")
+
+        # Replace company placeholders in opening/body
+        for key in ("opening", "body"):
+            if key in data["letter"] and data["letter"][key]:
+                data["letter"][key] = data["letter"][key].replace("[Company Name]", company_name)
+
+        # Basic escaping for recipient/title
+        if "title" in data.get("recipient", {}):
+            data["recipient"]["title"] = data["recipient"]["title"].replace("&", "\\&")
+
         self.data = data
         return data
 
-    def generate_tex(self, company_name):
+    def generate_tex(self, company_name: str):
         self.replace_placeholders(company_name)
         personal = self.data["personal_information"]
         recipient = self.data["recipient"]
         letter = self.data["letter"]
 
-        content = [
-            r"""
-\documentclass[12pt, letterpaper]{article}
-\usepackage[utf8]{inputenc}
-\usepackage[margin=1in]{geometry}
-\usepackage{helvet}
-\renewcommand{\familydefault}{\sfdefault}
-\usepackage{hyperref}
-\usepackage{setspace}
-\usepackage{xcolor}
-\usepackage{tikz}
-\usetikzlibrary{shapes.geometric, positioning}
+        # Sender block: address and contact only (no name), flush left
+        addr_line = personal['address'].get('line', '')
+        postal = personal['address'].get('postal_code', '')
+        # Format like: "Monroe, LA 71203" (no country)
+        address_first_line = f"{addr_line} {postal}".strip()
 
-% Define professional theme colors (matching your website)
-\definecolor{darkblue}{RGB}{15, 23, 42}
-\definecolor{accentorange}{RGB}{251, 146, 60}
-\definecolor{lightgray}{RGB}{148, 163, 184}
-\definecolor{white}{RGB}{255, 255, 255}
-\definecolor{textgray}{RGB}{71, 85, 105}
+        email = personal.get('email', '')
+        phone = personal.get('phone', {}).get('mobile', '')
+        homepage = personal.get('homepage', '')
+        linkedin = personal.get('linkedin', '')
 
-% Remove page numbers
-\pagenumbering{gobble}
+        # Prepare display URLs without scheme for readability
+        def display_url(url: str) -> str:
+            return url.replace('https://www.', 'www.').replace('http://www.', 'www.').replace('https://', '').replace('http://', '')
 
-% Hyperlink styling - minimal for professional appearance
-\hypersetup{
-    colorlinks=false,
-    pdfborder={0 0 0}
-}
+        sender_plain_lines = []
+        if address_first_line:
+            sender_plain_lines.append(f"{latex_escape(address_first_line)}")
+        if phone:
+            sender_plain_lines.append(f"{latex_escape(phone)}")
+        if email:
+            sender_plain_lines.append(f"\\href{{mailto:{email}}}{{{latex_escape(email)}}}")
+        # Prefer LinkedIn if provided; also include homepage if present
+        if linkedin:
+            sender_plain_lines.append(f"\\href{{{linkedin}}}{{{latex_escape(display_url(linkedin))}}}")
+        if homepage:
+            sender_plain_lines.append(f"\\href{{{homepage}}}{{{latex_escape(display_url(homepage))}}}")
 
-% Compact document formatting to fit on one page
-\setlength{\parindent}{0pt}
-\setlength{\parskip}{9pt}
-\setlength{\baselineskip}{14pt}
-\setstretch{1.1}
-\raggedright
+        if sender_plain_lines:
+            # Add \noindent to first line, then break lines with \\
+            first = "\\noindent " + sender_plain_lines[0]
+            rest = sender_plain_lines[1:]
+            if rest:
+                sender_block = first + "\\\\\n" + "\\\\\n".join(rest)
+            else:
+                sender_block = first
+        else:
+            sender_block = ""
 
-\begin{document}
+        # Recipient block with explicit line breaks (\\) between lines
+        recipient_lines = [
+            recipient.get('name', ''),
+            recipient.get('title', ''),
+            recipient.get('company', ''),
+            recipient.get('address', ''),
+        ]
+        recipient_items = [latex_escape(line) for line in recipient_lines if line]
+        if recipient_items:
+            recipient_block = "\\\\\n".join(recipient_items)
+        else:
+            recipient_block = ""
 
-% Clean, professional header with excellent typography
-\begin{tikzpicture}[remember picture,overlay]
-% Clean header background
-\fill[darkblue] (current page.north west) rectangle ([yshift=-2.3cm]current page.north east);
-% Elegant accent line
-\fill[accentorange] ([yshift=-2.3cm]current page.north west) rectangle ([yshift=-2.4cm]current page.north east);
+        opening = letter.get('opening', 'Dear Hiring Manager')
+        # Ensure colon after salutation
+        if not opening.endswith(":"):
+            opening_with_colon = opening.rstrip(' ,:') + ":"
+        else:
+            opening_with_colon = opening
 
-% Professional layout: Name larger, contact info smaller and grouped
-\node[anchor=west, text=white, inner sep=0pt] at ([xshift=1in, yshift=-0.8cm]current page.north west) {
-\fontsize{24}{28}\selectfont\bfseries """ + personal['name'] + r"""
-};
+        body_formatted = self.format_body_paragraphs(letter.get('body', ''))
 
-% Consolidated contact info - all on one line for cleaner look
-\node[anchor=west, text=white, inner sep=0pt] at ([xshift=1in, yshift=-1.5cm]current page.north west) {
-\fontsize{9.5}{11}\selectfont """ + personal['phone']['mobile'] + r""" $\cdot$ """ + personal['email'] + r""" $\cdot$ """ + personal['homepage'].replace('https://www.', '').replace('https://', '') + r""" $\cdot$ """ + personal['address']['line'] + r"""
-};
-\end{tikzpicture}
+        typed_name = latex_escape(personal["name"])
 
-\vspace{0.7cm}""",
-            f"""
+        latex_content = f"""\\documentclass[12pt, letterpaper]{{article}}
+\\usepackage[utf8]{{inputenc}}
+            \\usepackage[margin=0.75in]{{geometry}}
+\\usepackage{{helvet}}
+\\usepackage{{calligra}}
+\\renewcommand{{\\familydefault}}{{\\sfdefault}}
+\\usepackage[hidelinks]{{hyperref}}
+\\usepackage{{setspace}}
+
+% Black-and-white, full-block format
+\\pagenumbering{{gobble}}
+\\setlength{{\\parindent}}{{0pt}}
+\\setlength{{\\parskip}}{{12pt}}
+\\singlespacing
+\\raggedright
+
+\\begin{{document}}
+
 % Date
-\\noindent {letter['date']}
+\\noindent {latex_escape(letter['date'])}
 
 \\vspace{{12pt}}
 
-% Recipient information (flush left)
-\\noindent {recipient['name']}\\\\
-{recipient.get('title', '')}\\\\
-{recipient['company']}\\\\
-{recipient['address']}
-
-\\vspace{{6pt}}
-
-% Salutation with colon (no extra space after)
-\\noindent {letter['opening']}:
-
-% Body paragraphs with clean spacing
-{self.format_body_paragraphs(letter['body'])}
+% Sender address and contact (no name)
+{sender_block}
 
 \\vspace{{12pt}}
 
-% Clean signature section
+% Recipient block
+\\noindent {recipient_block}
+
+\\vspace{{12pt}}
+
+% Salutation with colon
+\\noindent {latex_escape(opening_with_colon)}
+
+% Body paragraphs (single spaced, blank line between)
+{body_formatted}
+
+\\vspace{{12pt}}
+
+% Complimentary close with comma
 Sincerely,
 
-\\vspace{{48pt}}
+% Digital signature line
+\\vspace{{6pt}}
+{{\\fontsize{{20}}{{24}}\\selectfont\\calligra Dinesh Chhantyal}}
+\\vspace{{4pt}}
 
-{personal['name']}
+% Typed name
+{typed_name}
 
-% Yellow footer strip at bottom of page
-\\begin{{tikzpicture}}[remember picture,overlay]
-\\fill[accentorange] ([yshift=0.5cm]current page.south west) rectangle ([yshift=0.6cm]current page.south east);
-\\end{{tikzpicture}}
-""",
-            r"\end{document}",
-        ]
+\\end{{document}}
+"""
+        return latex_content
 
-        return "\n".join(content)
-
-    def save_cover_letter(self, output_file_path, company_name):
+    def save_cover_letter(self, output_file_path, company_name: str):
         output_dir = os.path.dirname(output_file_path)
         os.makedirs(output_dir, exist_ok=True)
-        
+
         tex_content = self.generate_tex(company_name)
         base_name = os.path.splitext(output_file_path)[0]
         tex_file = base_name + ".tex"
-        
+
         with open(tex_file, "w", encoding="utf-8") as tex:
             tex.write(tex_content)
         return tex_file
 
-    def generate_pdf(self, output_file_path, output_dir, company_name):
+    def generate_pdf(self, output_file_path, output_dir, company_name: str):
         try:
             tex_file = self.save_cover_letter(output_file_path, company_name)
             pdf_file = self.compile_pdf(tex_file, output_dir)
@@ -264,8 +255,3 @@ Sincerely,
             raise Exception("PDF file was not generated")
         except Exception as e:
             raise Exception(f"Failed to generate PDF: {str(e)}")
-
-
-# Example Usage
-# generator = CoverLetterGenerator('cover_letter.yml')
-# print(generator.generate_cover_letter())

@@ -8,3 +8,7 @@ __pycache__/
 resume/resume.yml
 coverletter/coverletter.yml
 applications/*
+
+# Personal data
+mcp/about_dinesh_chhantyal.yml
+mcp/about_dinesh_chhantyal.json

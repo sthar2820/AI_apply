@@ -9,90 +9,107 @@
 
 personal:
   name: Dinesh Chhantyal
-  location: Monroe, LA (Open to relocation)
+  location: Monroe, LA
   phone: +1-318-750-6383
   email: myagdichhantyal@gmail.com
-  website: https://www.dineshchhantyal.com
   linkedin: https://linkedin.com/in/dineshchhantyal
+  website: https://dineshchhantyal.com
 
-summary: |
-  \textbf{Software Engineer} with expertise in \textbf{AI/ML infrastructure}, \textbf{Kubernetes}, and \textbf{distributed systems}; experienced in \textbf{cloud-native technologies}, \textbf{microservices architecture}, and \textbf{policy automation systems}.
-  \textbf{ICPC State Champion} passionate about \textbf{LLMs}, \textbf{RAG systems}, and \textbf{AI model optimization}; proven track record building \textbf{scalable cloud solutions} and contributing to \textbf{open-source projects}.
-
+summary: >
+  Full-stack developer designing and implementing integration solutions with \textbf{TypeScript}/\textbf{Node.js}, \textbf{REST APIs}, and data transformation middleware.
+  Translates business requirements into technical solutions; builds reliable, scalable integrations that connect enterprise systems and streamline client workflows.
 education:
   - name: University of Louisiana at Monroe
     location: Monroe, LA
     degree: Bachelor of Science in Computer Science, Minor in Mathematics
-    GPA: 4.0 / 4.0
-    date: Aug 2022 -- May 2026 (Senior)
-    courses: Data Structures, Algorithms, Object-Oriented Programming, Database Management, Operating Systems, Computer Networks
+    GPA: 3.97 / 4.0
+    date: Aug 2022 – May 2026 (Senior)
+    courses: Data Structures, Algorithms, Object Oriented Programming, Database Management, Operating Systems, Computer Networks
 
 experience:
   - title: Software Developer / Product Analyst
     company: Alfred (ScribeHQ)
     location: Remote
-    date: July 2025 -- Present
+    date: July 2025 – Present
     achievements:
-      - Led \textbf{feature research and planning} collaborating with \textbf{cross-functional teams} to identify and prioritize critical features, conducting \textbf{market analysis} and user behavior studies to align product development with business goals and user needs for the customizable dashboard platform.
-      - Built \textbf{interactive React components} and \textbf{dynamic widgets} using \textbf{TypeScript} and \textbf{Supabase}, implementing \textbf{real-time updates} and \textbf{responsive design} that enhanced user engagement and platform functionality.
-      - Designed \textbf{modular integration system} for \textbf{educational platforms} (Canvas, Moodle), implementing \textbf{REST APIs} and \textbf{reusable components} that improved platform scalability and \textbf{development efficiency}.
-      - Authored \textbf{comprehensive technical documentation} and \textbf{API guides}, conducted \textbf{competitive analysis} and \textbf{market research} to inform product strategy, and resolved critical production issues while optimizing \textbf{performance monitoring} for enhanced user experience.
+      - Build Alfreds \textbf{agentic LLM backend} with \textbf{LangChain/LangGraph} and a mixture of experts style agentic flow to route chat messages to tools like web search, FAQ lookup, and todo updates, validated on more than \textbf{500} internal conversations.
+      - Implement a Supabase Edge Function chat pipeline that streams LLM replies with server sent events, reducing first token latency from about \textbf{2 seconds} to under \textbf{1 second} in local tests and improving perceived responsiveness.
+      - Analyzed \textbf{500+} internal conversations to evaluate prompt relevance and tool routing, improving outcomes through human-in-the-loop review and iterative refinement.
+      - Design modular integrations for \textbf{Canvas} and \textbf{Moodle} using \textbf{REST APIs} and reusable components, improving platform scalability and accelerating integration development efficiency.
+
+  - title: Full Stack Developer
+    company: University of Louisiana - Monroe
+    location: Monroe, LA
+    date: Jan 2023 – Present
+    achievements:
+      - Integrated \textbf{Microsoft Teams} with \textbf{Drupal} via \textbf{OAuth 2.0} and scheduled jobs, shrinking manual content updates from \textbf{4 hours to 30 minutes} while surfacing operational metrics to stakeholders.
+      - Engineered a \textbf{Python}/\textbf{MySQL} ETL to migrate \textbf{10,000+} legacy records into \textbf{Drupal 10}; improved query performance by \textbf{15\%} and reduced storage costs by \textbf{10\%}.
+      # - Maintained and updated campus CMS sites (\textbf{Drupal}, \textbf{WordPress}), managed WCAG accessibility remediation and technical SEO fixes, and configured \textbf{Google Analytics} for site performance monitoring.
+      - Automated \textbf{ADA/WCAG 2.1} scans for \textbf{30,000+} assets using axe core, Lighthouse, and PAC in \textbf{GitHub Actions CI/CD}, generating remediation reports that guided accessibility fixes across campus sites.
+
   - title: Software Engineering Intern (ML)
     company: Simons Foundation (SCC, Flatiron Institute)
     location: New York, NY
-    date: July 2025 -- Aug 2025
+    date: July 2025 – Aug 2025
     achievements:
-      - Architected \textbf{distributed ML pipeline} processing \textbf{1.2TB} datasets on \textbf{10-GPU cluster} infrastructure, implementing \textbf{containerized workflows} with \textbf{Ceph/S3} storage and \textbf{parallel processing} for scalable AI model training and inference.
-      - Optimized \textbf{AI model performance} achieving \textbf{22x speedup} (45→2 min) through \textbf{distributed computing}, \textbf{mixed-precision inference}, and \textbf{efficient resource allocation} across \textbf{heterogeneous GPU clusters} (V100, A100).
-      - Designed \textbf{custom ML architecture} improving model accuracy to \textbf{0.91 F1-score} using \textbf{spatio-temporal 3D-CNN}, implementing \textbf{automated model evaluation} and \textbf{hyperparameter optimization} for large-scale scientific computing applications.
-      - Developed \textbf{Chart-Gizmos} open-source library with \textbf{Python} and \textbf{REST API} integration, enabling \textbf{microservices-based} data visualization and contributing to the \textbf{open-source ecosystem} for scientific computing tools.
-
-  - title: Software Engineer
-    company: University of Louisiana - Monroe
-    location: Monroe, LA
-    date: Jan 2023 -- Present
-    achievements:
-      - Architected a \textbf{server-side system} for tracking accessibility compliance across \textbf{30,000+ university files}, developing \textbf{search algorithms} to scan and index content, with \textbf{PHP} and \textbf{Java} components for deep content analysis and remediation recommendations.
-      - Implemented a multi-tier with \textbf{RBAC} access control system for administrators, content owners, and auditors, creating a \textbf{rating and review workflow} that notifies stakeholders of compliance issues and tracks resolution progress through a \textbf{MySQL} database.
-      - Engineered a \textbf{Node.js/TypeScript/MySQL/ETL pipeline} to migrate \textbf{10,000+ legacy records} into the accessibility monitoring platform, optimizing database schemas to accelerate query performance by \textbf{15%} and reduce storage costs by \textbf{10%} for improved system efficiency.
+      - Built an interactive \textbf{3D PyQt+Napari} pipeline for \textbf{1.2TB} of embryo imaging data, combining sliding window processing with distributed GPU workflows to analyze \textbf{600+} timepoints.
+      # - Orchestrated \textbf{SLURM} GPU jobs with \textbf{Ceph/S3} streaming and memory aware loaders, cutting inference time from \textbf{45 minutes to 2 minutes} (\textbf{22x}) and documenting operational playbooks for reproducible runs.
+      - Improved nucleus state classification \textbf{macro F1 from 0.84 to 0.91} by refining a custom \textbf{PyTorch 3D CNN} through targeted error analysis, augmentation, and iterative researcher feedback.
 
   - title: Software Developer
     company: Clamphook - EdTech
     location: Lalitpur, NP
-    date: Oct 2022 -- May 2023
+    date: Oct 2022 – May 2023
     achievements:
-      - Architected \textbf{cloud-native microservices platform} using \textbf{Azure Kubernetes Service (AKS)}, \textbf{Docker containers}, and \textbf{Redis caching} to support \textbf{5,000+ concurrent users}, implementing \textbf{horizontal scaling} and \textbf{load balancing} for \textbf{5x enrollment growth}.
-      - Designed \textbf{distributed system architecture} with \textbf{Azure DevOps CI/CD pipelines}, \textbf{Container Registry}, and \textbf{Key Vault} for secure secrets management, achieving \textbf{99.9% uptime} through \textbf{automated deployment} and \textbf{infrastructure monitoring}.
-      - Implemented \textbf{real-time data processing} system with \textbf{Azure Cosmos DB} and \textbf{event-driven architecture}, developing analytics dashboard that processed user interactions and improved engagement by \textbf{8%} through \textbf{intelligent automation}.
-      - Established \textbf{DevOps best practices} including \textbf{code reviews}, \textbf{API documentation}, and \textbf{production monitoring}, collaborating with cross-functional teams in \textbf{agile startup environment} focused on rapid iteration and deployment.
+      - Engineered a \textbf{Flask+React} CBT platform with Redis caching, Nginx load balancing, and monitoring capable of serving \textbf{5,000+} concurrent examinees and unlocking \textbf{5x} enrollment growth.
+      - Delivered a real time analytics dashboard with Flask SocketIO and Chart.js that visualized exam performance and helped increase daily active learners by about \textbf{8\%}.
 
 projects:
-  - name: RhymeAI
-    description: \textbf{AI-powered multi-agent system} using \textbf{LLM orchestration} (\textbf{Gemini}, \textbf{LangChain}) and \textbf{prompt engineering} for intelligent event management, implementing \textbf{distributed AI architecture} and \textbf{real-time adaptation} algorithms. (Selected for \textbf{Nexus Technology Cup})
-    link: https://rhyme-ai.vercel.app/
-
   - name: NoteMeet
-    description: \textbf{Cloud-native AI platform} with \textbf{Terraform}-managed \textbf{AWS infrastructure} (\textbf{Lambda}, \textbf{S3}, \textbf{DynamoDB}), featuring \textbf{RAG-powered} summarization, \textbf{microservices architecture}, and \textbf{event-driven processing} that automated \textbf{80%} of manual workflows. (\textbf{Tech Expo Winner})
+    description: AI meeting assistant integrating \textbf{Google Meet API} and third-party services using \textbf{REST APIs} and \textbf{AWS} microservices (\textbf{Lambda}, \textbf{S3}, \textbf{DynamoDB}, \textbf{EventBridge}) with event-driven architecture achieving ~95\% reliability.
     link: https://notemeet.dineshchhantyal.com
 
-  - name: Alfred
-    description: Built \textbf{distributed dashboard system} using \textbf{React} and \textbf{Supabase} with \textbf{microservices architecture}, implementing \textbf{OAuth security}, \textbf{real-time synchronization}, and \textbf{offline-first design} for scalable productivity automation.
-    link: https://get-alfred.ai
+  - name: Offermart
+    description: AI powered multi agent LLM application using orchestration (\textbf{Gemini}, \textbf{LangChain}) and prompt engineering to run live event scripts with real time adaptation, and containerized with \textbf{Docker} for reproducible deployment and isolated scaling. (Nexus Technology)
+    link: https://rhyme-ai.vercel.app/
 
-  - name: CodeStroke Pro
-    description: Developed \textbf{policy-driven automation system} using \textbf{FastAPI} and \textbf{React}, implementing \textbf{workflow orchestration}, \textbf{compliance monitoring}, and \textbf{audit trails} that reduced decision latency by \textbf{40%} in clinical environments. (Helps save lives)
-    link: https://codestrokepro.org
+  - name: Personal MCP
+    description: Developed a \textbf{Model Context Protocol (MCP) server} exposing \textbf{REST APIs} that allow external clients to integrate with local tools and data sources. Demonstrates API contract design, middleware concepts, and system-to-system communication patterns.
+    link: https://dineshchhantyal.com
 
 skills:
-  - name: Programming Languages
-    items: \textbf{Python (5 years)}, \textbf{Java (3 years)}, Go (Learning), JavaScript/TypeScript (4 years), C\# (2 years)
-  - name: Cloud-Native \& Kubernetes
-    items: \textbf{Kubernetes}, \textbf{Docker}, \textbf{Microservices Architecture}, Container Orchestration, \textbf{Distributed Systems}, Service Mesh, Policy Management
-  - name: AI \& Machine Learning
-    items: \textbf{LLMs}, \textbf{RAG Systems}, \textbf{Prompt Engineering}, PyTorch, TensorFlow, \textbf{AI Model Optimization}, Vector Databases, \textbf{LLM Orchestration}
-  - name: Cloud Platforms \& Infrastructure
-    items: \textbf{Azure} (AKS, DevOps, Functions), \textbf{Google Cloud} (AI Platform, Vertex AI, GKE), \textbf{AWS} (Lambda, EKS), Terraform, CI/CD Pipelines
-  - name: Backend \& Systems
-    items: \textbf{REST API Design}, Java Spring Boot, FastAPI, \textbf{Distributed Architecture}, Authentication \& RBAC, \textbf{Policy Automation}
-  - name: Databases \& Messaging
-    items: \textbf{PostgreSQL}, \textbf{MongoDB}, Redis, \textbf{Kafka}, Message Queues, Event-Driven Architecture
+  - name: Integration \& APIs
+    items: TypeScript, JavaScript, Node.js, React, REST APIs, OAuth 2.0, API Gateway, Data Transformation, Integration
+
+  - name: Databases \& Backend
+    items: MySQL, PostgreSQL, SQL, Data Modeling, Database Design, Microservices, Event-Driven Architecture
+
+  - name: Cloud \& DevOps
+    items: AWS (Lambda, S3, DynamoDB, EventBridge, EC2), Docker, Git/GitHub, GitHub Actions CI/CD, DevOps, Cloud-Native
+
+  - name: Development Practices
+    items: REST API Design, API Integration, Problem-Solving, Debugging \& Troubleshooting, Code Reviews, Agile/SCRUM
+
+  - name: Certifications
+    items: AWS Certified Solutions Architect – Associate (Nov 2025), AWS AI Practitioner (Oct 2025), Databricks Gen AI Engineer (2025)
+
+leadership:
+  - name: Google Developer Student Club, President
+    date: Sep 2024 – Present
+    description: Lead a community of 200+ developers at ULM, organizing AI and cloud workshops, hackathons, and coding challenges with Google, sponsors, and campus partners.
+  - name: IEEE Shreveport Section, Webmaster
+    date: Jan 2025 – Present
+    description: Plan and promote IEEE Shreveport Section events while managing the sections website and registration systems.
+
+awards:
+  - title: State Champion – ICPC Louisiana Regional
+    issuer: ICPC
+    date: Nov 2023
+  - title: 1st Place – AWS Project Presentation
+    issuer: AWS
+    date: Mar 2025
+  - title: 2nd Place – BEE Integration Competition
+    issuer: MAA (Louisiana-Mississippi Section)
+    date: Feb 2025
+
+more about me: https://dineshchhantyal.com/about_dinesh_chhantyal.json

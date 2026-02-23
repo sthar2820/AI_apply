@@ -32,9 +32,12 @@ class ResumeGenerator(DocumentGenerator):
 \usepackage[english]{babel}
 \usepackage{tabularx}
 \usepackage{setspace}
+\usepackage[T1]{fontenc}
 \usepackage{helvet}
 \renewcommand{\familydefault}{\sfdefault}
 % ATS-friendly packages
+\input{glyphtounicode}
+\pdfgentounicode=1
 \usepackage{accsupp}
 \usepackage[hidelinks,pdfusetitle]{hyperref}
 \hypersetup{
@@ -135,6 +138,11 @@ class ResumeGenerator(DocumentGenerator):
         for old, new in replacements:
             text = text.replace(old, new)
 
+        # Fix ATS spacing: replace \textbf{word} with {\bfseries word}
+        # to preserve word boundaries in PDF text extraction
+        import re
+        text = re.sub(r'\\textbf\{([^}]*)\}', r'{\\bfseries \1}', text)
+
         return text
 
     def generate_header(self, personal):
@@ -204,8 +212,8 @@ class ResumeGenerator(DocumentGenerator):
                 content.append(f"\\resumeItem{{{escaped_achievement}}}")
             content.append("\\resumeItemListEnd")
 
-            # Add extra spacing between jobs
-            content.append("\\vspace{6pt}")
+            # Add minimal spacing between jobs
+            content.append("\\vspace{2pt}")
 
         content.append("\\resumeSubHeadingListEnd")
         return "\n".join(content)
@@ -223,9 +231,9 @@ class ResumeGenerator(DocumentGenerator):
             link = project.get("link")
             if link:
                 # Make the project name itself a hyperlink (no visual indication in PDF)
-                item = f"\\resumeItem{{\\href{{{link}}}{{\\textbf{{{name}}}}} | {description}}}"
+                item = f"\\resumeItem{{\\href{{{link}}}{{\\textbf{{{name}}}}} $|$ {description}}}"
             else:
-                item = f"\\resumeItem{{\\textbf{{{name}}} | {description}}}"
+                item = f"\\resumeItem{{\\textbf{{{name}}} $|$ {description}}}"
             content.append(item)
         content.append("\\resumeItemListEnd")
         return "\n".join(content)
@@ -233,20 +241,19 @@ class ResumeGenerator(DocumentGenerator):
     def generate_skills(self, skills):
         """Generate the skills section"""
         content = []
-        content.append(
-            "\\section*{\\textbf{Skills}}"
-        )  # Changed to standard ATS-friendly heading
-        content.append("\\begin{itemize}[leftmargin=0.15in, label={}]")
-        content.append("\\small{\\item{")
+        content.append("\\section*{\\textbf{Skills}}")
+        content.append("\\begin{itemize}[leftmargin=0.15in, label={}, itemsep=0pt, topsep=0pt, parsep=0pt]")
 
         for category in skills or []:
             if not isinstance(category, dict):
                 continue
-            content.append(
-                f"\\textbf{{{category.get('name','')}}}{{: {category.get('items','')}}} \\\\" 
-            )
+            name = self.escape_latex(category.get("name", ""))
+            items = self.escape_latex(category.get("items", ""))
+            # Prevent double escaping on pre-escaped ampersands (e.g., "\&" in YAML)
+            name = name.replace("\\\\&", "\\&")
+            items = items.replace("\\\\&", "\\&")
+            content.append(f"\\item \\textbf{{{name}}}: {items}")
 
-        content.append("}}")
         content.append("\\end{itemize}")
         return "\n".join(content)
 
@@ -363,26 +370,27 @@ class ResumeGenerator(DocumentGenerator):
         content.append("\\resumeItemListEnd")
         return "\n".join(content)
 
-    def generate_leadership(self, leadership):
-        """Generate the leadership section"""
+    def generate_leadership(self, leadership, awards=None):
+        """Generate the leadership section with optional awards"""
         content = []
         content.append("\\section*{\\textbf{Leadership \\& Awards}}")
         content.append("\\resumeItemListStart{}")
-        for item in leadership:
-            name = self.escape_latex(item["name"])
+
+        for item in leadership or []:
+            name = self.escape_latex(item.get("name", ""))
             description = (
-                self.escape_latex(item["description"])
+                self.escape_latex(item.get("description", ""))
                 if "description" in item
                 else ""
             )
-            date = self.escape_latex(item["date"])
+            date = self.escape_latex(item.get("date", ""))
 
             if description:
                 formatted_item = (
                     f"\\resumeItem{{"
-                    f"\\textbf{{{name}}} "  # Bold name
-                    f"\\hfill {date}\\\\"  # Right-aligned date
-                    f"{description}"  # Description on new line
+                    f"\\textbf{{{name}}} "
+                    f"\\hfill {date}\\\\"
+                    f"{description}"
                     f"}}"
                 )
             else:
@@ -394,6 +402,21 @@ class ResumeGenerator(DocumentGenerator):
                 )
 
             content.append(formatted_item)
+
+        titles = []
+        for award in awards or []:
+            if not isinstance(award, dict):
+                continue
+            title = award.get("title")
+            if title:
+                titles.append(self.escape_latex(title))
+
+        if titles:
+            joined_titles = ", ".join(titles)
+            content.append(
+                f"\\resumeItem{{\\textbf{{Awards}}: {joined_titles}}}"
+            )
+
         content.append("\\resumeItemListEnd")
         return "\n".join(content)
 
@@ -430,6 +453,7 @@ class ResumeGenerator(DocumentGenerator):
         activities = self.data.get("activities", [])
         leadership = self.data.get("leadership", [])
         certifications = self.data.get("certifications", [])
+        awards = self.data.get("awards", [])
 
         content = [
             self.latex_preamble,
@@ -457,8 +481,8 @@ class ResumeGenerator(DocumentGenerator):
             content.append(self.generate_certifications(certifications))
 
         # Add leadership section if present
-        if leadership:
-            content.append(self.generate_leadership(leadership))
+        if leadership or awards:
+            content.append(self.generate_leadership(leadership, awards))
 
         # Add activities section if present (for backward compatibility)
         if activities:

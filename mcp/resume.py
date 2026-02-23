@@ -1,12 +1,10 @@
 from mcp.server.fastmcp import FastMCP as App
 import yaml
 from functools import lru_cache
-import xml.etree.ElementTree as ET
-from typing import Any, Dict, Optional
+from typing import Any, Dict, List, Optional
 
 app = App()
 resume_path = "/Users/dineshchhantyal/Documents/ResumeCoverLetterGenerator/mcp/about_dinesh_chhantyal.yml"
-xml_knowledge_path = "/Users/dineshchhantyal/Documents/ResumeCoverLetterGenerator/mcp/knowledge_source.xml"
 
 
 @lru_cache(maxsize=1)
@@ -31,20 +29,20 @@ def get_section_from_resume(section: str) -> str:
 # ------------------ Helper formatters ------------------
 
 
-def _get_dict(path: str) -> Optional[Dict[str, Any]]:
-    """Return a nested dict for a given dot-path from YAML, or None."""
+def _get(path: str) -> Any:
+    """Return a value for a given dot-path from YAML, or None."""
     data: Any = load_resume_data()
     for key in path.split("."):
         if isinstance(data, dict) and key in data:
             data = data[key]
         else:
             return None
-    return data if isinstance(data, dict) else None
+    return data
 
 
 def _about_me_brief_text() -> str:
-    personal = _get_dict("resume.personal") or {}
-    summary = get_section_from_resume("resume.summary").strip()
+    personal = _get("resume.personal") or {}
+    summary = (get_section_from_resume("resume.summary") or "").strip()
     name = personal.get("name", "")
     location = personal.get("location", "")
     email = personal.get("email", "")
@@ -65,9 +63,9 @@ def _about_me_brief_text() -> str:
 
 
 def _about_me_detailed_text() -> str:
-    personal = _get_dict("resume.personal") or {}
-    education = _get_dict("resume.education")
-    top_experience = get_section_from_resume("resume.experience.job").strip()
+    personal = _get("resume.personal") or {}
+    education = _get("resume.education") or []
+    top_experience = get_section_from_resume("resume.experience").strip()
     skills = get_section_from_resume("resume.skills").strip()
     projects = get_section_from_resume("resume.projects").strip()
     lines = []
@@ -75,41 +73,20 @@ def _about_me_detailed_text() -> str:
         lines.append(f"Name: {personal['name']}")
     if personal.get("location"):
         lines.append(f"Location: {personal['location']}")
-    summary = get_section_from_resume("resume.summary").strip()
+    summary = (get_section_from_resume("resume.summary") or "").strip()
     if summary:
         lines.append(f"Summary: {summary}")
-    if education:
-        edu_name = (
-            education.get("institution", {}).get("name", "")
-            if isinstance(education, dict)
-            else ""
-        )
-        edu_degree = (
-            education.get("institution", {}).get("degree", "")
-            if isinstance(education, dict)
-            else ""
-        )
-        edu_gpa = (
-            education.get("institution", {}).get("gpa", "")
-            if isinstance(education, dict)
-            else ""
-        )
-        edu_date = (
-            education.get("institution", {}).get("date", "")
-            if isinstance(education, dict)
-            else ""
-        )
+    if isinstance(education, list) and education:
+        edu = education[0]
         edu_line = ", ".join(
-            [
-                p
-                for p in [
-                    edu_name,
-                    edu_degree,
-                    f"GPA {edu_gpa}" if edu_gpa else "",
-                    edu_date,
-                ]
-                if p
+            p
+            for p in [
+                edu.get("name", ""),
+                edu.get("degree", ""),
+                f"GPA {edu.get('gpa', '')}" if edu.get("gpa") else "",
+                edu.get("date", ""),
             ]
+            if p
         )
         if edu_line:
             lines.append(f"Education: {edu_line}")
@@ -122,12 +99,93 @@ def _about_me_detailed_text() -> str:
     return "\n\n".join(lines) if lines else "No details found."
 
 
-def _xml_root() -> Optional[ET.Element]:
-    try:
-        tree = ET.parse(xml_knowledge_path)
-        return tree.getroot()
-    except Exception:
-        return None
+@app.tool(
+    name="export_plain_resume",
+    description="Export a clean, plain-text resume assembled from the YAML knowledge source.",
+)
+def export_plain_resume() -> str:
+    """Return a plain-text resume formatted with header, summary, education, skills, experience and projects."""
+    r = (_get("resume") or {})
+
+    personal = r.get("personal", {})
+    name = personal.get("name", "")
+    location = personal.get("location", "")
+    phone = personal.get("phone", "")
+    email = personal.get("email", "")
+    website = personal.get("website", "")
+    linkedin = personal.get("linkedin", "")
+
+    lines: List[str] = []
+    # Header
+    contact = " | ".join([p for p in [phone, email, website, linkedin, location] if p])
+    if name:
+        lines.append(name)
+    if contact:
+        lines.append(contact)
+    lines.append("")
+
+    # Summary
+    summary = (r.get("summary") or "").strip()
+    if summary:
+        lines.append("SUMMARY")
+        lines.append(summary)
+        lines.append("")
+
+    # Education
+    education = r.get("education", [])
+    if isinstance(education, list) and education:
+        lines.append("EDUCATION")
+        for edu in education:
+            if isinstance(edu, dict):
+                edu_parts = [
+                    edu.get("name", ""),
+                    edu.get("degree", ""),
+                    edu.get("date", ""),
+                ]
+                lines.append(". ".join(p for p in edu_parts if p))
+        lines.append("")
+
+    # Skills
+    skills = r.get("skills", [])
+    if isinstance(skills, list) and skills:
+        lines.append("SKILLS")
+        for cat in skills:
+            cat_name = cat.get("name", "")
+            items = cat.get("items", [])
+            if cat_name and items:
+                lines.append(f"{cat_name}: {', '.join(items)}")
+        lines.append("")
+
+    # Experience
+    exp = r.get("experience", [])
+    if isinstance(exp, list) and exp:
+        lines.append("EXPERIENCE")
+        for job in exp:
+            title = job.get("title", "")
+            company = job.get("company", "")
+            date = job.get("date", "")
+            loc = job.get("location", "")
+            header = ", ".join([p for p in [title, company, loc, date] if p])
+            if header:
+                lines.append(header)
+            achievements = job.get("achievements", [])
+            if isinstance(achievements, list):
+                for a in achievements:
+                    lines.append(f"- {a.strip()}")
+            lines.append("")
+
+    # Projects
+    projects = r.get("projects", [])
+    if isinstance(projects, list) and projects:
+        lines.append("PROJECTS")
+        for p in projects:
+            proj_name = p.get("name", "")
+            desc = p.get("description", "")
+            if proj_name:
+                lines.append(f"• {proj_name} — {desc}" if desc else f"• {proj_name}")
+        lines.append("")
+
+    return "\n".join(lines)
 
 
 # ------------------ Basic Tools ------------------
@@ -143,6 +201,19 @@ def get_personal_section():
         f"Personal Section:\n{content}"
         if content
         else "No content found for personal section."
+    )
+
+
+@app.tool(
+    name="get_education_section",
+    description="Get the education section from the resume YAML file, including institution, degree, GPA, dates, and courses.",
+)
+def get_education_section():
+    content = get_section_from_resume("resume.education")
+    return (
+        f"Education Section:\n{content}"
+        if content
+        else "No content found for education section."
     )
 
 
@@ -199,15 +270,28 @@ def get_summary_section():
 
 
 @app.tool(
-    name="get_involvements_section",
-    description="Get the involvements section from the resume YAML file.",
+    name="get_research_section",
+    description="Get the research section from the resume YAML file, including research focus areas and topics.",
 )
-def get_involvements_section():
-    content = get_section_from_resume("resume.involvements")
+def get_research_section():
+    content = get_section_from_resume("resume.research")
     return (
-        f"Involvements Section:\n{content}"
+        f"Research Section:\n{content}"
         if content
-        else "No content found for involvements section."
+        else "No content found for research section."
+    )
+
+
+@app.tool(
+    name="get_leadership_section",
+    description="Get the leadership and involvements section from the resume YAML file, including organizations and roles.",
+)
+def get_leadership_section():
+    content = get_section_from_resume("resume.leadership")
+    return (
+        f"Leadership Section:\n{content}"
+        if content
+        else "No content found for leadership section."
     )
 
 
@@ -234,6 +318,19 @@ def get_certifications_section():
         f"Certifications Section:\n{content}"
         if content
         else "No content found for certifications section."
+    )
+
+
+@app.tool(
+    name="get_references_section",
+    description="Get the professional references from the resume YAML file.",
+)
+def get_references_section():
+    content = get_section_from_resume("resume.references")
+    return (
+        f"References Section:\n{content}"
+        if content
+        else "No content found for references section."
     )
 
 
@@ -346,25 +443,31 @@ def about_me_answer(question: str):
     ):
         return about_me_brief()
     if any(k in q for k in ["education", "degree", "gpa", "university", "school"]):
-        return get_section_from_resume("resume.education") or "No education info found."
+        return get_education_section()
     if any(k in q for k in ["experience", "work", "intern", "job", "employment"]):
         return get_experience_section()
     if any(k in q for k in ["project", "projects", "portfolio", "built"]):
         return get_projects_section()
     if any(k in q for k in ["skill", "skills", "tech", "stack"]):
         return get_skills_section()
+    if any(k in q for k in ["research", "paper", "thesis", "number theory", "embryo"]):
+        return get_research_section()
     if any(k in q for k in ["award", "awards", "honor", "recognition"]):
         return get_awards_section()
     if any(k in q for k in ["cert", "certification", "certifications"]):
         return get_certifications_section()
-    if any(k in q for k in ["leadership", "involvement", "club", "organization"]):
-        return get_involvements_section()
-    if any(k in q for k in ["kaggle", "competition", "leaderboard"]):
+    if any(k in q for k in ["leadership", "involvement", "club", "organization", "president"]):
+        return get_leadership_section()
+    if any(k in q for k in ["reference", "references", "recommend"]):
+        return get_references_section()
+    if any(k in q for k in ["kaggle", "leaderboard"]):
         return get_kaggle_competitions_section()
     if any(k in q for k in ["competitive programming", "icpc", "coding contest"]):
         return get_competitive_programming_section()
-    if any(k in q for k in ["scholarship", "scholarships"]):
+    if any(k in q for k in ["scholarship", "scholarships", "financial aid"]):
         return get_scholarships_section()
+    if any(k in q for k in ["open source", "contribution", "oss"]):
+        return get_open_source_contributions_section()
     # Fallback to generic QA over YAML dump
     return ask_resume_question(question)
 
@@ -383,7 +486,7 @@ You are a professional resume editor. Your task is to rewrite the candidate's ex
 Job Description:
 {job_description}
 
-Candidate’s Experience:
+Candidate's Experience:
 {resume_experience}
 
 Instructions:
@@ -442,24 +545,24 @@ Return ONLY the revised projects section.
 
 
 @app.tool(
-    name="involvements_tool",
-    description="Refine involvements section based on job description",
+    name="leadership_tool",
+    description="Refine leadership/involvements section based on job description",
 )
-def involvements_tool(job_description: str, involvements: str) -> str:
+def leadership_tool(job_description: str, leadership: str) -> str:
     return f"""
-You are refining the candidate’s involvements section for the job below:
+You are refining the candidate's leadership section for the job below:
 
 Job Description:
 {job_description}
 
-Involvements:
-{involvements}
+Leadership & Involvements:
+{leadership}
 
 Instructions:
-- Focus on leadership, teamwork, or initiatives that match the job’s values.
+- Focus on leadership, teamwork, or initiatives that match the job's values.
 - Emphasize transferable skills and impact.
 
-Return ONLY the improved involvements section.
+Return ONLY the improved leadership section.
 """
 
 
@@ -505,104 +608,6 @@ Please answer concisely and based only on the resume.
 """
 
 
-# ------------------ XML Extractor Tools (optional, fallback only) ------------------
-
-
-@app.tool(
-    name="get_xml_personal",
-    description="Extract personal/contact info from knowledge_source.xml (fallback; YAML is the source of truth).",
-)
-def get_xml_personal():
-    root = _xml_root()
-    if root is None:
-        return "XML not available."
-    personal = root.find("personal")
-    if personal is None:
-        return "No personal info in XML."
-    fields = [
-        ("name", personal.findtext("name", default="")),
-        ("location", personal.findtext("location", default="")),
-        ("phone", personal.findtext("phone", default="")),
-        ("email", personal.findtext("email", default="")),
-        ("website", personal.findtext("website", default="")),
-        ("linkedin", personal.findtext("linkedin", default="")),
-        ("github", personal.findtext("github", default="")),
-    ]
-    lines = [f"{k}: {v}" for k, v in fields if v]
-    return "\n".join(lines) if lines else "No personal fields populated in XML."
-
-
-@app.tool(
-    name="get_xml_summary",
-    description="Extract the summary from knowledge_source.xml (fallback; YAML is primary).",
-)
-def get_xml_summary():
-    root = _xml_root()
-    if root is None:
-        return "XML not available."
-    summary = root.findtext("summary", default="").strip()
-    return summary or "No summary in XML."
-
-
-@app.tool(
-    name="get_xml_experience_titles",
-    description="List experience titles and companies from knowledge_source.xml (fallback).",
-)
-def get_xml_experience_titles():
-    root = _xml_root()
-    if root is None:
-        return "XML not available."
-    exp = root.find("experience")
-    if exp is None:
-        return "No experience in XML."
-    rows = []
-    for job in exp.findall("job"):
-        title = (job.findtext("title") or "").strip()
-        company = (job.findtext("company") or "").strip()
-        if title or company:
-            rows.append(" - ".join([p for p in [title, company] if p]))
-    return "\n".join(rows) if rows else "No job titles found in XML."
-
-
-@app.tool(
-    name="get_xml_projects_names",
-    description="List project placeholders/names from knowledge_source.xml (fallback).",
-)
-def get_xml_projects_names():
-    root = _xml_root()
-    if root is None:
-        return "XML not available."
-    projects = root.find("projects")
-    if projects is None:
-        return "No projects in XML."
-    names = []
-    for proj in projects.findall("project"):
-        # Some entries may lack name; attempt to read a <name> node if present
-        name_node = proj.findtext("name")
-        if name_node and name_node.strip():
-            names.append(name_node.strip())
-    return "\n".join(names) if names else "No project names in XML."
-
-
-@app.tool(
-    name="get_xml_skill_categories",
-    description="List skill category names from knowledge_source.xml (fallback).",
-)
-def get_xml_skill_categories():
-    root = _xml_root()
-    if root is None:
-        return "XML not available."
-    skills = root.find("skills")
-    if skills is None:
-        return "No skills in XML."
-    cats = []
-    for sc in skills.findall("skill_category"):
-        name = sc.attrib.get("name", "").strip()
-        if name:
-            cats.append(name)
-    return "\n".join(cats) if cats else "No skill categories in XML."
-
-
 # ------------------ Refine All ------------------
 
 
@@ -614,7 +619,7 @@ def refine_all(
     job_description: str,
     experience: str = "",
     projects: str = "",
-    involvements: str = "",
+    leadership: str = "",
     skills: str = "",
     summary: str = "",
 ):
@@ -625,8 +630,8 @@ def refine_all(
         output["experience"] = experience_tool(job_description, experience)
     if projects:
         output["projects"] = projects_tool(job_description, projects)
-    if involvements:
-        output["involvements"] = involvements_tool(job_description, involvements)
+    if leadership:
+        output["leadership"] = leadership_tool(job_description, leadership)
     if skills:
         output["skills"] = skills_tool(job_description, skills)
     return output

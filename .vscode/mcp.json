@@ -1,12 +1,12 @@
 {
-    "servers": {
-        "resume_refinement_contents": {
-            "type": "stdio",
-            "command": "/Users/dineshchhantyal/Documents/ResumeCoverLetterGenerator/.venv/bin/python3",
-            "args": [
-                "/Users/dineshchhantyal/Documents/ResumeCoverLetterGenerator/mcp/resume.py"
-            ]
-        }
-    },
-    "inputs": []
+	"servers": {
+		"resume_refinement_contents": {
+			"type": "stdio",
+			"command": "/Users/dineshchhantyal/Documents/ResumeCoverLetterGenerator/.venv/bin/python3",
+			"args": [
+				"/Users/dineshchhantyal/Documents/ResumeCoverLetterGenerator/mcp/resume.py"
+			]
+		}
+	},
+	"inputs": []
 }

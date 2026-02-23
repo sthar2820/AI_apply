@@ -9,92 +9,116 @@
 
 personal:
   name: Dinesh Chhantyal
-  location: Monroe, LA (Open to relocation)
+  location: Monroe, LA
   phone: +1-318-750-6383
   email: myagdichhantyal@gmail.com
-  website: https://www.dineshchhantyal.com
   linkedin: https://linkedin.com/in/dineshchhantyal
+  website: https://dineshchhantyal.com
 
 summary: >
-  Full-stack software engineer skilled in Python/Flask, React/Next.js, PostgreSQL, Redis, and AWS; shipped production platforms for 5,000+ users with resilient REST integrations.
-  ICPC State Champion and GDSC President with end-to-end ownership, CI/CD automation, and test coverage using Selenium and Cypress.
-
+  Product-focused fullstack engineer (ICPC state champion) building \textbf{AI-first} interfaces with \textbf{React}, \textbf{TypeScript}, and \textbf{Node.js}.
+  Ships engaging chat UIs, complex \textbf{data visualizations}, and \textbf{agentic workflows} in fast-paced startup environments from zero to paying customers.
 education:
   - name: University of Louisiana at Monroe
     location: Monroe, LA
     degree: Bachelor of Science in Computer Science, Minor in Mathematics
     GPA: 3.97 / 4.0
-    date: Aug 2022 -- May 2026 (Senior)
-    courses: Data Structures, Algorithms, Object-Oriented Programming, Database Management, Operating Systems, Computer Networks
+    date: Aug 2022 – May 2026 (Senior)
+    courses: Data Structures, Algorithms, Object Oriented Programming, Database Management, Operating Systems, Computer Networks
 
 experience:
-  - title: Software Developer / Product Analyst
-    company: Alfred (ScribeHQ)
+  - title: Co-Founder & Technical Lead / Software Developer
+    company: alfred_.ai
     location: Remote
-    date: July 2025 -- Present
+    date: July 2025 – Present
     achievements:
-      - Directed feature discovery and sprint planning with product, design, and engineering partners, translating market research and user telemetry into \textbf{prioritized roadmap releases} for the customizable dashboard platform.
-      - Shipped the LeetCode Daily Challenge experience across \textbf{43 production commits}, delivering visual progress analytics, reusable React/TypeScript hooks, and Supabase-backed preference sync so learners track goals in real time.
-      - Built modular LMS adapters for Canvas and Moodle via Supabase edge functions, automating data ingestion and responsive filtering that extend Alfred’s platform to \textbf{new education partners without one-off engineering}.
+      - Architected a modular \textbf{5-widget dashboard} with drag-and-drop layouts, \textbf{Redux Toolkit} state, and a cross-widget connection system that auto-generates tasks from emails and time blocks from todos in \textbf{React 19} and \textbf{TypeScript}.
+      - Built an \textbf{agentic LLM} chat backend with \textbf{LangGraph} to route messages to tools like web search, FAQ lookup, and todo updates, validated on \textbf{500+} internal conversations with streaming \textbf{server-sent events} reducing first-token time from \textbf{4s to under 800ms}.
+      - Delivered a PWA-enabled frontend on \textbf{Vite}, \textbf{Tailwind CSS}, and \textbf{Radix UI} with \textbf{PostHog} and \textbf{Mixpanel} analytics and custom journey tracking to drive data-informed product iterations.
+
+  - title: Full Stack Developer
+    company: University of Louisiana - Monroe
+    location: Monroe, LA
+    date: Jan 2023 – Present
+    achievements:
+      - Redesigned web presence for Museum of Natural History and Alumni departments, resulting in a \textbf{25\%} increase in average session duration through improved \textbf{UI/UX} and responsive layouts.
+      - Automated end-to-end testing for \textbf{50+} webpages using \textbf{Selenium} and \textbf{Cypress}, boosting pre-deployment issue detection by \textbf{75\%} within the \textbf{CI/CD} pipeline.
+      - Engineered a \textbf{Python}/\textbf{MySQL} ETL pipeline to migrate \textbf{10,000+} legacy records with data validation and integrity checks, improving query performance by \textbf{15\%}.
+
   - title: Software Engineering Intern
     company: Simons Foundation (SCC, Flatiron Institute)
     location: New York, NY
-    date: July 2025 -- Aug 2025
+    date: July 2025 – Aug 2025
     achievements:
-      - Built \textbf{PyQt-based} 3D exploration pipeline for \textbf{1.2TB} of cryo-EM imagery in close collaboration with biologists, data scientists, and ground truth labelers, using \textbf{sliding window techniques} and \textbf{Ceph} storage to generate high-quality training datasets for \textbf{vision models}.
-      - Accelerated cell nucleus motion tracking pipeline by \textbf{22x} (45 min $\rightarrow$ 2 min) for embryonic development movies using a \textbf{SLURM-managed 10-GPU cluster} (8xV100, 2xA100) through optimized batching, mixed-precision inference, and parallel frame processing.
-      - Improved cellular classification to \textbf{0.91 F1-score} by designing a custom \textbf{spatio-temporal 3D-CNN} in \textbf{PyTorch} with domain-specific augmentation strategies and iterative label refinement for accurate tracking across \textbf{600+ timepoints} and \textbf{25K+ cells}.
-      - Created \textbf{Chart-Gizmos}, an open-source library of reusable components (\textbf{Python} + \textbf{Chart.js}/\textbf{H5Gizmos}) for interactive data exploration.
-
-  - title: Web Developer
-    company: University of Louisiana - Monroe
-    location: Monroe, LA
-    date: Jan 2023 -- Present
-    achievements:
-      - Integrated \textbf{Microsoft Teams API} with \textbf{Drupal CMS} via \textbf{OAuth 2.0} to enable real-time messaging and calendar synchronization, reducing manual coordination by \textbf{85\%} (4h $\rightarrow$ 30m weekly) through automated workflows.
-      - Built a \textbf{Python/MySQL ETL} pipeline and optimized schemas to migrate \textbf{10K+} legacy records into Drupal 10, improving query latency by \textbf{15\%} and lowering storage costs by \textbf{10\%} through indexing and column strategy.
-      - Implemented automated ADA/WCAG 2.1 accessibility audits across university web platforms and \textbf{30,000+} files using \textbf{axe-core}, \textbf{Lighthouse}, and \textbf{PAC (PDF Accessibility Checker)}; integrated checks into CI/CD with actionable reports to prioritize remediation.
+      - Engineered an interactive 3D \textbf{PyQt + Napari} visualization pipeline for \textbf{1.2TB} of volumetric imaging data, enabling nuclear feature exploration across \textbf{600+} timepoints and \textbf{25K+} nuclei.
+      - Released \textbf{Chart-Gizmos}, an open-source \textbf{Python} plugin integrating \textbf{Chart.js} into H5Gizmos to enable reproducible, browser-based exploratory \textbf{data visualization} of large imaging datasets.
+      - Designed distributed GPU workflows achieving a \textbf{22x} inference speedup (\textbf{45 min to 2 min}) and built a custom \textbf{PyTorch} 3D-CNN lifting macro-F1 from \textbf{0.84 to 0.91}.
 
   - title: Software Developer
     company: Clamphook - EdTech
     location: Lalitpur, NP
-    date: Oct 2022 -- May 2023
+    date: Oct 2022 – May 2023
     achievements:
-      - Spearheaded a \textbf{Flask} and \textbf{React}-based Computer-Based Testing (CBT) platform with \textbf{Redux Trunk} state management, \textbf{Redis} caching, and \textbf{NGINX} load balancing, implementing optimized API endpoints to support \textbf{5,000+ concurrent users} and \textbf{5x enrollment growth}.
-      - Architected a \textbf{Docker/Kubernetes}-based microservices infrastructure with \textbf{Helm} charts and automated \textbf{CI/CD} pipelines using \textbf{GitLab}, achieving \textbf{99.9\% uptime} for production applications with \textbf{5,000+ downloads} on App Store.
-      - Developed real-time analytics dashboard with \textbf{TypeScript}, \textbf{MongoDB}, and \textbf{Chart.js}, featuring a gamified Duolingo-style progress tracking interface that drove an \textbf{8\% increase} in user engagement and improved student retention.
+      - Engineered a \textbf{React}-based CBT platform with \textbf{Flask} backend, \textbf{Redis} caching, and \textbf{Nginx} load balancing, serving \textbf{5,000+} concurrent users with \textbf{99.9\%} uptime and supporting \textbf{5x} enrollment growth.
+      - Pioneered a real-time analytics dashboard with gamification features using \textbf{Flask-SocketIO}, \textbf{Chart.js}, and \textbf{WebSockets}, driving an \textbf{8\%} increase in daily active users.
 
 projects:
   - name: RhymeAI
-    description: \textbf{AI-powered multi-agent system} using \textbf{LLM orchestration} (\textbf{Gemini}, \textbf{LangChain}) and \textbf{prompt engineering} for intelligent event management with \textbf{real-time adaptation} algorithms. (Selected for \textbf{Nexus Technology Cup})
-    link: https://rhyme-ai.vercel.app/
-
+    description: Built a multi-agent AI platform using \textbf{Next.js} and \textbf{TypeScript} that automates live event hosting with narratives and multilingual voice-overs via \textbf{Gemini 2.5 Pro}, \textbf{LangChain}, and \textbf{ElevenLabs TTS}. (NexusLA Runner-up)
+    link: https://rhyme-ai.vercel.app
   - name: NoteMeet
-    description: Architected an \textbf{AI-powered meeting assistant} with \textbf{RAG system} using \textbf{LangChain} and \textbf{OpenAI GPT} for automated meeting joining, recording, and summarization. Built on \textbf{event-driven AWS infrastructure} (\textbf{Lambda}, \textbf{S3}, \textbf{DynamoDB}) achieving \textbf{95\% transcription accuracy} and \textbf{40\% productivity increase}. (\textbf{Tech Expo Winner})
+    description: Built an AI meeting assistant with \textbf{React}, \textbf{TypeScript}, \textbf{Node.js/Express}, and \textbf{AWS} (\textbf{Lambda}, \textbf{S3}, \textbf{DynamoDB}) featuring a \textbf{RAG} system with \textbf{LangChain} and \textbf{OpenAI GPT} achieving \textbf{95\%} transcription accuracy. (Tech Expo Winner)
     link: https://notemeet.dineshchhantyal.com
-
-  - name: TimeClock
-    description: Created \textbf{TypeScript-based frontend} with \textbf{React} and \textbf{Socket.io} for real-time workforce management, featuring \textbf{interactive dashboards}, \textbf{automated timesheets}, and \textbf{manager interfaces} that reduced administrative overhead by \textbf{64%}.
-    link: https://github.com/dineshchhantyal/TimeClock
-
-  - name: CodeStroke Pro
-    description: Developed a \textbf{healthcare information platform} for ULM Pharmacy's stroke training initiative as central hub for \textbf{clinical protocols} and resources. Implemented \textbf{responsive design} increasing mobile accessibility by \textbf{40\%} for medical professionals.
-    link: https://codestrokepro.org
+  - name: Movie Flower Garden
+    description: Interactive \textbf{data visualization} representing movie data as flowers using \textbf{D3.js} and \textbf{SVG}, increasing user engagement time by over \textbf{200\%} compared to traditional table layouts.
 
 skills:
-  - name: Programming Languages
-    items: Python, TypeScript/JavaScript (ES6+), Java, SQL, C, Rust, Bash, Dart, PHP
-  - name: AI \& Machine Learning
-    items: PyTorch, TensorFlow/Keras, LLMs (GPT, Gemini), LangChain, RAG, Computer Vision, Deep Learning, Scikit-learn
-  - name: Backend
-    items: Node.js/Express, FastAPI, Flask, Django, PostgreSQL, MySQL, MongoDB, Redis, ETL Pipelines, GraphQL, Microservices
-  - name: Full-Stack
-    items: React, Next.js, TypeScript, HTML5/CSS3, Tailwind CSS, Redux, D3.js, REST APIs, Responsive Design, Server Actions
-  - name: DevOps
-    items: AWS (Lambda, S3, EC2, DynamoDB, SageMaker), Docker, Kubernetes, CI/CD (GitHub Actions), GCP, Terraform, NGINX, Vercel
-  - name: Development Tools
-    items: Git/GitHub, Agile/SCRUM, Testing (Selenium, Cypress, Jest), Postman, JIRA, OAuth 2.0, JWT, Jupyter, VS Code
-  - name: Certifications \& Awards
-    items: AWS AI Practitioner (Oct 2025), Databricks Gen AI Engineer (May 2025), NVIDIA Deep Learning (Jul 2025)
-  - name: Leadership \& Extracurriculars
-    items: ICPC State Champion (Nov 2024), GDSC President (250+ members), IEEE Webmaster Shreveport
+  - name: Languages
+    items: TypeScript, JavaScript (ES6+), Python, Java, SQL, HTML5/CSS3, Bash
+
+  - name: Frontend
+    items: React, Next.js, Redux, D3.js, Chart.js, Tailwind CSS, Radix UI, Vite, Webpack, SVG, Bootstrap
+
+  - name: Backend \& Cloud
+    items: Node.js/Express, Flask, REST APIs, GraphQL, WebSockets, AWS (Lambda, S3, DynamoDB), Docker, CI/CD
+
+  - name: AI/ML \& Data
+    items: LangChain, LangGraph, RAG, PyTorch, TensorFlow, Pandas, NumPy, OpenCV, PostgreSQL, MongoDB, Redis
+
+  - name: Tools \& Methods
+    items: Git, Agile/SCRUM, Selenium, Cypress, Jest, Postman, JIRA, Terraform, SLURM, OAuth 2.0, Socket.IO
+
+  - name: Design \& Analytics
+    items: Figma, UI/UX Design, PostHog, Mixpanel, SEO, Responsive Design, Adobe Creative Suite, Canva
+
+certifications:
+  - title: AWS Certified Solutions Architect - Associate
+    issuer: AWS
+    date: Nov 2025
+  - title: Databricks Certified Generative AI Engineer Associate
+    issuer: Databricks
+    date: May 2025
+  - title: "Data Parallelism: Training on Multiple GPUs"
+    issuer: NVIDIA
+    date: Jul 2025
+  - title: Fundamentals of Deep Learning
+    issuer: NVIDIA
+    date: Jul 2025
+
+leadership:
+  - name: Google Developer Student Club, President
+    date: Sep 2024 – Present
+  - name: IEEE Shreveport Section, Webmaster
+    date: Jan 2025 – Present
+
+awards:
+  - title: State Champion – ICPC Louisiana Regional
+    issuer: ICPC
+    date: Nov 2024
+  - title: US Rank 1 – IEEE Xtreme Programming
+    issuer: IEEE
+    date: Oct 2024
+  - title: 1st Place – AWS Project Presentation
+    issuer: AWS
+    date: Mar 2025
+more about me: https://dineshchhantyal.com/about_dinesh_chhantyal.json
