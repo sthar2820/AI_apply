@@ -1,0 +1,80 @@
+personal:
+  name: Jane Doe
+  location: San Francisco, CA
+  phone: +1-555-0100
+  email: jane.doe@example.com
+  website: https://www.example.com
+  linkedin: https://linkedin.com/in/janedoe
+
+summary: |
+  Early career \textbf{cloud engineer} who builds reliable, cost efficient
+  infrastructure on \textbf{AWS}. Experienced deploying containerized services to
+  \textbf{ECS} and \textbf{EC2}, automating delivery with \textbf{CI/CD}, and
+  managing infrastructure as code with \textbf{Terraform}. AWS Certified Cloud
+  Practitioner with a focus on reliability and clean automation.
+
+experience:
+  - title: Software Engineer
+    company: Example Corp
+    location: San Francisco, CA
+    date: Jun 2024 to Present
+    achievements:
+      - Migrated a legacy monolith module to a \textbf{Dockerized} service on
+        \textbf{AWS ECS}, cutting deployment time from 40 minutes to under 8 minutes.
+      - Built and tuned \textbf{CI/CD} pipelines with \textbf{GitHub Actions}
+        that automated build, test, and deploy across environments.
+      - Raised backend test coverage from 55 percent to 88 percent with 200+
+        tests, reducing production incidents by 30 percent.
+      - Optimized \textbf{PostgreSQL} queries and added caching to cut average
+        response time by 35 percent under steady production load.
+  - title: Software Engineering Intern
+    company: Sample Labs
+    location: Remote
+    date: Jun 2023 to Aug 2023
+    achievements:
+      - Built a \textbf{Python} data ingestion pipeline that processed 2 million
+        records per day at 99.9 percent reliability.
+      - Added \textbf{Docker} based local setup and integration tests that
+        shortened onboarding for new contributors.
+
+projects:
+  - name: Example Cloud App
+    description: Event driven app on \textbf{AWS} using \textbf{Lambda},
+      \textbf{S3}, and \textbf{DynamoDB} with a \textbf{TypeScript} backend.
+    link: https://github.com/janedoe/example-project
+  - name: Sample CLI Toolkit
+    description: A \textbf{Python} command line toolkit for batch file
+      processing, packaged for pip with 90 percent test coverage.
+    link: https://github.com/janedoe/sample-cli-toolkit
+
+skills:
+  - name: Cloud \& Infra
+    items: AWS (Lambda, EC2, ECS, S3), Terraform, Docker, Linux, Nginx
+  - name: DevOps \& CI/CD
+    items: GitHub Actions, CI/CD, Docker, Bash
+  - name: Languages \& Data
+    items: Python, TypeScript, SQL, PostgreSQL, Redis, DynamoDB
+
+education:
+  - name: Example University
+    location: San Francisco, CA
+    degree: BS Computer Science
+    GPA: 3.9/4.0
+    date: Aug 2020 to May 2024
+    courses: Distributed Systems, Operating Systems, Databases, Algorithms
+
+certifications:
+  - name: AWS Certified Cloud Practitioner
+    issuer: Amazon Web Services
+    date: 2024
+
+leadership:
+  - name: Computer Science Club, President
+    description: Led a student club of 80 members and organized 10 technical
+      workshops, growing event attendance by 40 percent year over year.
+    date: Sep 2022 to May 2023
+
+awards:
+  - title: Hackathon Winner, Dean's List
+    issuer: Example University
+    date: 2021 to 2024

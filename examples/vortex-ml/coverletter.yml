@@ -1,0 +1,34 @@
+# BUSINESS COVER LETTER FORMATTING RULES:
+# IMPORTANT: Do not use dashes (-) or em-dashes in sentences. Use periods, commas, or restructure sentences instead.
+#
+# personal_information: your name, address, phone, email, homepage
+# recipient: name, company, title, address
+# letter: date, opening greeting, body paragraphs, enclosure
+
+personal_information:
+  name: "Jane Doe"
+  address:
+    line: "San Francisco, CA"
+    postal_code: "94105"
+    country: "United States"
+  phone:
+    mobile: "+1-555-0100"
+  email: "jane.doe@example.com"
+  homepage: "https://www.example.com"
+
+recipient:
+  name: "Hiring Team"
+  company: "Vortex AI"
+  title: "Machine Learning Engineer"
+  address: "San Francisco, CA"
+
+letter:
+  date: "January 1, 2025"
+  opening: "Dear Vortex AI Team:"
+  enclosure: "Enclosure: Resume"
+  body: |
+    I am excited to apply for the Machine Learning Engineer role at Vortex AI. I build and train models in Python and PyTorch, and I care about rigorous evaluation and clean data pipelines that hold up in production.
+
+    As a machine learning engineer, I have trained PyTorch ranking models that improved offline evaluation metrics by 14 percent, designed batch and streaming data pipelines in Spark and Airflow over 200M records, and stood up a reproducible model evaluation harness with held out splits and slice based metrics. I have also handled feature engineering on noisy datasets and deployed models behind a FastAPI service on AWS with drift and latency monitoring.
+
+    I would welcome the chance to support your team across the full model lifecycle. Please reach me at +1-555-0100 or jane.doe@example.com.

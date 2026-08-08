@@ -1,0 +1,34 @@
+# BUSINESS COVER LETTER FORMATTING RULES:
+# IMPORTANT: Do not use dashes (-) or em-dashes in sentences. Use periods, commas, or restructure sentences instead.
+#
+# personal_information: your name, address, phone, email, homepage
+# recipient: name, company, title, address
+# letter: date, opening greeting, body paragraphs, enclosure
+
+personal_information:
+  name: "Jane Doe"
+  address:
+    line: "San Francisco, CA"
+    postal_code: "94105"
+    country: "United States"
+  phone:
+    mobile: "+1-555-0100"
+  email: "jane.doe@example.com"
+  homepage: "https://www.example.com"
+
+recipient:
+  name: "Hiring Team"
+  company: "Stark Industries"
+  title: "Cloud Engineer"
+  address: "San Francisco, CA"
+
+letter:
+  date: "January 1, 2025"
+  opening: "Dear Stark Industries Team:"
+  enclosure: "Enclosure: Resume"
+  body: |
+    I am excited to apply for the Cloud Engineer role at Stark Industries. I enjoy building reliable, cost efficient infrastructure on AWS and automating the work that keeps services healthy.
+
+    I have deployed containerized services to AWS ECS and EC2, cutting deployment time from 40 minutes to under 8 minutes, and I build CI/CD pipelines with GitHub Actions that automate build, test, and deploy. I manage infrastructure as code with Terraform, work daily with Docker and Linux, and I am an AWS Certified Cloud Practitioner. I also focus on reliability, having reduced production incidents by 30 percent through stronger testing.
+
+    I would welcome the chance to help your team scale responsibly and keep cloud spend in check. Please reach me at +1-555-0100 or jane.doe@example.com.

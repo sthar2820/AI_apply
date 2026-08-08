@@ -1,0 +1,147 @@
+# =============================================================================
+# This is your source of truth. Replace every value with your real information.
+# The resume-builder agent and the LaTeX generator read from this file.
+# Never let the agent claim anything not listed here.
+# =============================================================================
+
+_meta:
+  subject: "Jane Doe"
+  description: >
+    Canonical source-of-truth profile for the job application agent. All resume,
+    cover letter, and application-form answers are generated from these facts.
+  last_updated: "2025-01-01"
+  usage: >
+    Edit every field below to match your own background before running the agent.
+    Treat this file as the single source of truth; if a fact is not here, the
+    agent should not assert it.
+
+personal:
+  name: "Jane Doe"
+  location: "San Francisco, CA"
+  phone: "+1-555-0100"
+  email: "jane.doe@example.com"
+  website: "https://www.example.com"
+  linkedin: "https://linkedin.com/in/janedoe"
+  github: "https://github.com/janedoe"
+
+# These two fields drive how the agent answers work-authorization and
+# sponsorship questions on application forms. Edit to match your situation.
+work_authorization:
+  status: "Authorized to work in the US"
+  requires_sponsorship: false
+
+summary: >
+  New-grad full-stack software engineer with hands-on experience building and
+  shipping web applications using Python, TypeScript, React, and FastAPI.
+  Comfortable across the stack, from PostgreSQL data models to containerized
+  AWS deployments, with a focus on reliable, well-tested code.
+
+education:
+  - institution: "Example University"
+    location: "San Francisco, CA"
+    degree: "BS Computer Science"
+    gpa: "3.9/4.0"
+    start: "Aug 2020"
+    end: "May 2024"
+    courses:
+      - "Data Structures and Algorithms"
+      - "Operating Systems"
+      - "Databases"
+      - "Web Application Development"
+      - "Distributed Systems"
+
+experience:
+  - title: "Software Engineer"
+    company: "Example Corp"
+    location: "San Francisco, CA"
+    start: "Jun 2024"
+    end: "Present"
+    bullets:
+      - "Built and shipped 12 REST API endpoints with FastAPI and PostgreSQL, cutting average response time by 35 percent through query optimization and caching."
+      - "Migrated a legacy monolith module to a Dockerized service deployed on AWS ECS, reducing deployment time from 40 minutes to under 8 minutes."
+      - "Implemented a React and TypeScript dashboard used by 500 internal users, increasing weekly active usage by 25 percent."
+      - "Raised backend test coverage from 55 percent to 88 percent by adding 200+ unit and integration tests, reducing production incidents by 30 percent."
+    technologies: "Python, FastAPI, PostgreSQL, TypeScript, React, Docker, AWS"
+
+  - title: "Software Engineering Intern"
+    company: "Sample Labs"
+    location: "Remote"
+    start: "Jun 2023"
+    end: "Aug 2023"
+    bullets:
+      - "Developed a data ingestion pipeline in Python that processed 2 million records per day with 99.9 percent reliability."
+      - "Built 3 reusable React components adopted across 4 internal tools, reducing duplicated frontend code by 20 percent."
+      - "Wrote automated tests that caught 15 regressions before release, improving sprint velocity by 10 percent."
+    technologies: "Python, TypeScript, React, PostgreSQL, Docker"
+
+  - title: "Teaching Assistant"
+    company: "Example University"
+    location: "San Francisco, CA"
+    start: "Sep 2022"
+    end: "May 2023"
+    bullets:
+      - "Led weekly lab sections for 60 students in an introductory programming course, improving average exam scores by 12 percent."
+      - "Graded 400+ assignments and provided written feedback within 48 hours, maintaining a 95 percent on-time return rate."
+      - "Held 4 office hours per week and resolved 90 percent of student questions without escalation to the instructor."
+    technologies: "Python, Java, Git"
+
+projects:
+  - name: "Example Task Tracker"
+    description: >
+      Open-source full-stack task management app with a FastAPI backend and a
+      React frontend, featuring JWT auth and PostgreSQL persistence.
+    link: "https://github.com/janedoe/example-task-tracker"
+
+  - name: "Sample CLI Toolkit"
+    description: >
+      A Python command-line toolkit for batch file processing and CSV
+      transformation, packaged for pip with 90 percent test coverage.
+    link: "https://github.com/janedoe/sample-cli-toolkit"
+
+skills:
+  languages:
+    - "Python"
+    - "TypeScript"
+    - "JavaScript"
+    - "Java"
+    - "SQL"
+  backend:
+    - "FastAPI"
+    - "Node.js"
+    - "REST APIs"
+    - "PostgreSQL"
+  frontend:
+    - "React"
+    - "HTML"
+    - "CSS"
+    - "Tailwind CSS"
+  data_and_cloud:
+    - "PostgreSQL"
+    - "Redis"
+    - "AWS (EC2, S3, ECS)"
+  devops:
+    - "Docker"
+    - "GitHub Actions"
+    - "CI/CD"
+    - "Linux"
+
+certifications:
+  - name: "AWS Certified Cloud Practitioner"
+    issuer: "Amazon Web Services"
+    year: "2024"
+
+leadership:
+  - role: "President"
+    organization: "Computer Science Club"
+    location: "Example University"
+    start: "Sep 2022"
+    end: "May 2023"
+    description: >
+      Led a student club of 80 members, organizing 10 technical workshops and
+      growing event attendance by 40 percent year over year.
+
+awards:
+  - name: "Hackathon Winner"
+    issuer: "Example University Hackathon"
+    year: "2023"
+    description: "First place out of 50 teams for a full-stack productivity app."

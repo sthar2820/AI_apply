@@ -1,0 +1,34 @@
+# BUSINESS COVER LETTER FORMATTING RULES:
+# IMPORTANT: Do not use dashes (-) or em-dashes in sentences. Use periods, commas, or restructure sentences instead.
+#
+# personal_information: your name, address, phone, email, homepage
+# recipient: name, company, title, address
+# letter: date, opening greeting, body paragraphs, enclosure
+
+personal_information:
+  name: "Jane Doe"
+  address:
+    line: "San Francisco, CA"
+    postal_code: "94105"
+    country: "United States"
+  phone:
+    mobile: "+1-555-0100"
+  email: "jane.doe@example.com"
+  homepage: "https://www.example.com"
+
+recipient:
+  name: "Hiring Team"
+  company: "Wonka Labs"
+  title: "Software Engineer, New Grad"
+  address: "San Francisco, CA"
+
+letter:
+  date: "January 1, 2025"
+  opening: "Dear Wonka Labs Team:"
+  enclosure: "Enclosure: Resume"
+  body: |
+    I am excited to apply for the Software Engineer, New Grad role at Wonka Labs. I am an early career engineer with strong computer science fundamentals and a genuine eagerness to learn across any part of the stack, and your team first culture is exactly where I want to grow.
+
+    I write reliable, well tested code end to end in Python, TypeScript, and Java. At Example Corp I shipped REST API endpoints with FastAPI and PostgreSQL, built a React and TypeScript dashboard used by 500 internal users, and raised backend test coverage from 55 percent to 88 percent. As an intern at Sample Labs I built a Python data pipeline processing 2 million records a day, and as a teaching assistant and Computer Science Club president I learned to collaborate, mentor, and communicate clearly.
+
+    I would welcome the chance to contribute to Wonka Labs and keep learning alongside your engineers. Please reach me at +1-555-0100 or jane.doe@example.com.

@@ -71,17 +71,19 @@ class ResumeGenerator(DocumentGenerator):
 \renewcommand{\headrulewidth}{0pt}
 \renewcommand{\footrulewidth}{0pt}
 
-% Margins
-\usepackage[margin=0.25in]{geometry}  % Set all margins to 0.25 inches
+% Margins: balanced top/bottom (0.3in) and standard side (0.5in) per user pref
+% Smaller top/bottom buys budget for inter-bullet breathing room in Experience
+\usepackage[top=0.3in,bottom=0.3in,left=0.5in,right=0.5in]{geometry}
 
 \urlstyle{same}
 \raggedbottom
 \raggedright
 \setlength{\tabcolsep}{0in}
 
-% Section formatting
+% Section formatting (industry standard \large smallcaps per Jake template)
+% Small inter-section breathing room via less negative pre-section vspace
 \titleformat{\section}{
-  \vspace{-5pt}\scshape\raggedright\small
+  \vspace{-2pt}\scshape\raggedright\large
 }{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
 
 % Custom commands
@@ -92,11 +94,11 @@ class ResumeGenerator(DocumentGenerator):
 }
 
 \newcommand{\resumeSubheading}[4]{
-  \vspace{-2pt}\item
+  \vspace{1pt}\item
     \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
       \textbf{\small#1} & \small#2 \\
       \textit{\small#3} & \textit{\small #4} \\
-    \end{tabular*}\vspace{-7pt}
+    \end{tabular*}\vspace{-5pt}
 }
 
 \newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
@@ -175,8 +177,9 @@ class ResumeGenerator(DocumentGenerator):
             date = school.get('date', '')
             courses = school.get('courses')
             content.append(f"{{{name}}}{{{location}}}")
+            degree_line = f"{degree}, {{GPA: {gpa}}}" if gpa else degree
             content.append(
-                f"{{{degree}, {{GPA: {gpa}}}}}{{{date}}}"
+                f"{{{degree_line}}}{{{date}}}"
             )
 
             if courses:
@@ -212,8 +215,8 @@ class ResumeGenerator(DocumentGenerator):
                 content.append(f"\\resumeItem{{{escaped_achievement}}}")
             content.append("\\resumeItemListEnd")
 
-            # Add minimal spacing between jobs
-            content.append("\\vspace{2pt}")
+            # Uniform 1pt breathing (matches projects + skills for consistency)
+            content.append("\\vspace{1pt}")
 
         content.append("\\resumeSubHeadingListEnd")
         return "\n".join(content)
@@ -235,6 +238,8 @@ class ResumeGenerator(DocumentGenerator):
             else:
                 item = f"\\resumeItem{{\\textbf{{{name}}} $|$ {description}}}"
             content.append(item)
+            # Uniform 1pt breathing (matches roles + skills for consistency)
+            content.append("\\vspace{1pt}")
         content.append("\\resumeItemListEnd")
         return "\n".join(content)
 
@@ -242,7 +247,7 @@ class ResumeGenerator(DocumentGenerator):
         """Generate the skills section"""
         content = []
         content.append("\\section*{\\textbf{Skills}}")
-        content.append("\\begin{itemize}[leftmargin=0.15in, label={}, itemsep=0pt, topsep=0pt, parsep=0pt]")
+        content.append("\\begin{itemize}[leftmargin=0.15in, label={}, itemsep=1pt, topsep=0pt, parsep=0pt]")
 
         for category in skills or []:
             if not isinstance(category, dict):
@@ -355,13 +360,14 @@ class ResumeGenerator(DocumentGenerator):
         content.append("\\section*{\\textbf{Certifications}}")
         content.append("\\resumeItemListStart{}")
         for cert in certifications:
-            title = self.escape_latex(cert["title"])
-            issuer = self.escape_latex(cert["issuer"])
-            date = self.escape_latex(cert["date"])
+            title = self.escape_latex(cert.get("title") or cert.get("name", ""))
+            issuer = self.escape_latex(cert.get("issuer", ""))
+            date = self.escape_latex(cert.get("date", ""))
 
+            issuer_part = f", {issuer}" if issuer else ""
             formatted_cert = (
                 f"\\resumeItem{{"
-                f"\\textbf{{{title}}} -- {issuer} "
+                f"\\textbf{{{title}}}{issuer_part} "
                 f"\\hfill {date}"
                 f"}}"
             )
@@ -465,14 +471,15 @@ class ResumeGenerator(DocumentGenerator):
             content.append("\\section*{\\textbf{Summary}}")
             content.append("\\small{" + self.escape_latex(summary_text.strip()) + "}")
 
+        # Cofounder / Founding-Engineer order per [[feedback_resume_bullet_patterns_research]]:
+        # Summary -> Experience -> Projects -> Skills -> Education -> Leadership
+        # Cofounder evidence outranks school for AI startup / non-FAANG audiences.
         content.extend(
             [
-                self.generate_education(self.data.get("education", [])),  # Education after summary
-                self.generate_skills(
-                    self.data.get("skills", [])
-                ),  # Skills before experience
                 self.generate_experience(self.data.get("experience", [])),
                 self.generate_projects(self.data.get("projects", [])),
+                self.generate_skills(self.data.get("skills", [])),
+                self.generate_education(self.data.get("education", [])),
             ]
         )
 

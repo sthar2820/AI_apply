@@ -1,0 +1,67 @@
+personal:
+    name: Jane Doe
+    location: San Francisco, CA
+    phone: +1-555-0100
+    email: jane.doe@example.com
+    website: https://www.example.com
+    linkedin: https://linkedin.com/in/janedoe
+
+summary: |
+    \textbf{Full stack software engineer} shipping end to end web applications with \textbf{React}, \textbf{FastAPI}, and \textbf{Node.js} backed by \textbf{PostgreSQL}. Comfortable across the stack, from \textbf{REST} and \textbf{GraphQL} APIs to containerized \textbf{AWS} deployments with automated \textbf{CI/CD}.
+
+experience:
+    - title: Software Engineer
+      company: Example Corp
+      location: San Francisco, CA
+      date: Jan 2024 to Present
+      achievements:
+          - Shipped an end to end \textbf{React}/\textbf{FastAPI} platform serving \textbf{10,000+} users at \textbf{99.9\% uptime} with automated \textbf{CI/CD}.
+          - Designed \textbf{REST} and \textbf{GraphQL} APIs with \textbf{OAuth 2.0}, reducing average response latency from \textbf{800ms to 200ms}.
+          - Built a \textbf{Python} \textbf{ETL} pipeline processing \textbf{1M+} records daily, improving query performance by \textbf{40\%}.
+
+    - title: Software Engineering Intern
+      company: Sample Labs
+      location: Remote
+      date: Jun 2023 to Aug 2023
+      achievements:
+          - Migrated a legacy service to \textbf{Docker} and \textbf{Kubernetes}, cutting deploy time from \textbf{20 minutes to 3 minutes}.
+          - Automated end to end tests for \textbf{50+} pages with \textbf{Selenium} in CI/CD, lifting defect detection by \textbf{60\%}.
+
+projects:
+    - name: Example Project (Open Source)
+      description: Event driven app on \textbf{AWS} (Lambda, S3, DynamoDB) with \textbf{Next.js} and \textbf{PostgreSQL}.
+      link: https://github.com/janedoe/example-project
+
+    - name: Sample Tool (Personal)
+      description: Built a \textbf{FastAPI} and \textbf{React} tool with \textbf{Redis} queues and sandboxed \textbf{Docker} execution.
+      link: https://github.com/janedoe/sample-tool
+
+skills:
+    - name: Languages
+      items: Python, TypeScript, JavaScript, Java, SQL, Bash
+    - name: Frontend
+      items: React, Next.js, Redux, Tailwind CSS, HTML5/CSS3
+    - name: Backend
+      items: FastAPI, Node.js, Express, Flask, Django, REST, GraphQL, OAuth 2.0
+    - name: Data \& Cloud
+      items: PostgreSQL, MySQL, Redis, DynamoDB, S3, AWS (Lambda, EC2, ECS)
+    - name: DevOps
+      items: Docker, Kubernetes, Terraform, GitHub Actions, CI/CD, Nginx
+
+education:
+    - name: Example University
+      location: San Francisco, CA
+      degree: Bachelor of Science in Computer Science
+      GPA: 3.9 / 4.0
+      date: Aug 2020 to May 2024
+      courses: Data Structures, Algorithms, Distributed Systems, Database Management, Software Engineering
+
+leadership:
+    - name: Computer Science Club, President
+      description: Led a team of board members; organized hackathons and technical workshops.
+      date: Sep 2022 to May 2024
+
+awards:
+    - title: Hackathon Winner, Dean's List
+      issuer: Example University
+      date: 2023 to 2024

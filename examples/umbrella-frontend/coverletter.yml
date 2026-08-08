@@ -1,0 +1,34 @@
+# BUSINESS COVER LETTER FORMATTING RULES:
+# IMPORTANT: Do not use dashes (-) or em-dashes in sentences. Use periods, commas, or restructure sentences instead.
+#
+# personal_information: your name, address, phone, email, homepage
+# recipient: name, company, title, address
+# letter: date, opening greeting, body paragraphs, enclosure
+
+personal_information:
+  name: "Jane Doe"
+  address:
+    line: "San Francisco, CA"
+    postal_code: "94105"
+    country: "United States"
+  phone:
+    mobile: "+1-555-0100"
+  email: "jane.doe@example.com"
+  homepage: "https://www.example.com"
+
+recipient:
+  name: "Hiring Team"
+  company: "Umbrella Web"
+  title: "Frontend Engineer"
+  address: "San Francisco, CA"
+
+letter:
+  date: "January 1, 2025"
+  opening: "Dear Umbrella Web Team:"
+  enclosure: "Enclosure: Resume"
+  body: |
+    I am excited to apply for the Frontend Engineer role at Umbrella Web. I build responsive, well tested user interfaces, and I care about turning clean designs into reliable components that users enjoy.
+
+    I work day to day in React, Next.js, and TypeScript, styling responsive UIs with Tailwind CSS and managing state with Redux. At Example Corp I built a React dashboard used by 500 internal users and shipped a React platform serving more than 10,000 users at 99.9 percent uptime. I have integrated frontends with REST and GraphQL APIs and kept the UI green with automated tests in CI/CD.
+
+    I would welcome the chance to contribute to your frontend team. Please reach me at +1-555-0100 or jane.doe@example.com.

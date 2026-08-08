@@ -1,0 +1,69 @@
+personal:
+    name: Jane Doe
+    location: San Francisco, CA
+    phone: +1-555-0100
+    email: jane.doe@example.com
+    website: https://www.example.com
+    linkedin: https://linkedin.com/in/janedoe
+
+summary: |
+    \textbf{Frontend engineer} building responsive web interfaces in \textbf{React}, \textbf{Next.js}, \textbf{TypeScript}, and \textbf{Tailwind CSS}. Experienced with \textbf{Redux} state management, component testing, and \textbf{REST} and \textbf{GraphQL} integration.
+
+experience:
+    - title: Software Engineer
+      company: Example Corp
+      location: San Francisco, CA
+      date: Jan 2024 to Present
+      achievements:
+          - Built a \textbf{React} and \textbf{TypeScript} dashboard used by \textbf{500} internal users, increasing weekly active usage by \textbf{25\%}.
+          - Shipped a \textbf{React} platform serving \textbf{10,000+} users at \textbf{99.9\% uptime} with automated \textbf{CI/CD}.
+          - Integrated \textbf{REST} and \textbf{GraphQL} APIs with \textbf{OAuth 2.0}, reducing average response latency from \textbf{800ms to 200ms}.
+
+    - title: Software Engineering Intern
+      company: Sample Labs
+      location: Remote
+      date: Jun 2023 to Aug 2023
+      achievements:
+          - Built \textbf{3} reusable \textbf{React} components adopted across \textbf{4} internal tools, reducing duplicated frontend code by \textbf{20\%}.
+          - Automated end to end tests for \textbf{50+} pages with \textbf{Selenium} in CI/CD, lifting defect detection by \textbf{60\%}.
+
+projects:
+    - name: Example Project (Open Source)
+      description: Event driven app with \textbf{Next.js} and \textbf{PostgreSQL} on \textbf{AWS} (Lambda, S3, DynamoDB).
+      link: https://github.com/janedoe/example-project
+
+    - name: Sample Tool (Personal)
+      description: Built a \textbf{React} and \textbf{FastAPI} tool with \textbf{Redis} queues and sandboxed \textbf{Docker} execution.
+      link: https://github.com/janedoe/sample-tool
+
+skills:
+    - name: Frontend
+      items: React, Next.js, Redux, Tailwind CSS, HTML5/CSS3, responsive UI
+    - name: Languages
+      items: TypeScript, JavaScript, Python, Java, SQL, Bash
+    - name: APIs \& Testing
+      items: REST, GraphQL, OAuth 2.0, Selenium, CI/CD
+    - name: Backend
+      items: FastAPI, Flask, Django, Node.js, Express, microservices
+    - name: Data \& Cloud
+      items: PostgreSQL, MySQL, Redis, DynamoDB, S3, AWS (Lambda, EC2, ECS)
+    - name: DevOps
+      items: Docker, Kubernetes, Terraform, GitHub Actions, Nginx
+
+education:
+    - name: Example University
+      location: San Francisco, CA
+      degree: Bachelor of Science in Computer Science
+      GPA: 3.9 / 4.0
+      date: Aug 2020 to May 2024
+      courses: Data Structures, Algorithms, Web Application Development, Database Management, Software Engineering
+
+leadership:
+    - name: Computer Science Club, President
+      description: Led a team of board members; organized hackathons and technical workshops.
+      date: Sep 2022 to May 2024
+
+awards:
+    - title: Hackathon Winner, Dean's List
+      issuer: Example University
+      date: 2023 to 2024

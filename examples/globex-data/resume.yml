@@ -1,0 +1,77 @@
+personal:
+    name: Jane Doe
+    location: San Francisco, CA
+    phone: +1-555-0100
+    email: jane.doe@example.com
+    website: https://www.example.com
+    linkedin: https://linkedin.com/in/janedoe
+
+summary: |
+    \textbf{Data engineer} building reliable \textbf{ETL} and ingestion pipelines in \textbf{Python}, with strong \textbf{SQL} and \textbf{PostgreSQL} data modeling. Experienced operating data systems on \textbf{AWS} with automated testing and monitoring.
+
+experience:
+    - title: Software Engineer
+      company: Example Corp
+      location: San Francisco, CA
+      date: Jun 2024 to Present
+      achievements:
+          - Built and shipped \textbf{12} backend endpoints over \textbf{PostgreSQL}, cutting average response time by \textbf{35\%} through query optimization and caching.
+          - Designed \textbf{PostgreSQL} data models and tuned \textbf{SQL} queries powering an internal dashboard used by \textbf{500} users.
+          - Migrated a legacy module to a \textbf{Dockerized} service on \textbf{AWS} ECS, reducing deployment time from \textbf{40 minutes to under 8 minutes}.
+          - Raised backend test coverage from \textbf{55\% to 88\%} with \textbf{200+} tests, reducing production incidents by \textbf{30\%}.
+
+    - title: Software Engineering Intern
+      company: Sample Labs
+      location: Remote
+      date: Jun 2023 to Aug 2023
+      achievements:
+          - Developed a \textbf{Python} data ingestion pipeline that processed \textbf{2M} records per day at \textbf{99.9\%} reliability.
+          - Wrote automated tests that caught \textbf{15} regressions before release, improving sprint velocity by \textbf{10\%}.
+
+    - title: Teaching Assistant
+      company: Example University
+      location: San Francisco, CA
+      date: Sep 2022 to May 2023
+      achievements:
+          - Led weekly lab sections for \textbf{60} students in an introductory programming course, improving average exam scores by \textbf{12\%}.
+          - Held office hours and resolved \textbf{90\%} of student questions without escalation to the instructor.
+
+projects:
+    - name: Sample CLI Toolkit (Open Source)
+      description: A \textbf{Python} command line toolkit for batch file processing and \textbf{CSV} transformation, packaged for pip with \textbf{90\%} test coverage.
+      link: https://github.com/janedoe/sample-cli-toolkit
+
+    - name: Example Task Tracker (Open Source)
+      description: Full stack app with a \textbf{FastAPI} backend and \textbf{PostgreSQL} persistence, featuring JWT auth.
+      link: https://github.com/janedoe/example-task-tracker
+
+skills:
+    - name: Languages
+      items: Python, SQL, TypeScript, JavaScript, Java
+    - name: Data \& Pipelines
+      items: PostgreSQL, ETL, data ingestion, data modeling, REST APIs
+    - name: Cloud \& DevOps
+      items: AWS (S3, Lambda, EC2, ECS), Docker, GitHub Actions, CI/CD, Linux
+    - name: Backend
+      items: FastAPI, Node.js, Redis
+
+education:
+    - name: Example University
+      location: San Francisco, CA
+      degree: Bachelor of Science in Computer Science
+      GPA: 3.9/4.0
+      date: Aug 2020 to May 2024
+      courses: Databases, Distributed Systems, Data Structures and Algorithms, Operating Systems, Web Application Development
+
+leadership:
+    - name: Computer Science Club, President
+      description: Led a student club of \textbf{80} members, organizing \textbf{10} technical workshops and growing event attendance by \textbf{40\%} year over year.
+      date: Sep 2022 to May 2023
+
+awards:
+    - title: AWS Certified Cloud Practitioner
+      issuer: Amazon Web Services
+      date: 2024
+    - title: Hackathon Winner
+      issuer: Example University Hackathon
+      date: 2023

@@ -1,0 +1,76 @@
+personal:
+  name: Jane Doe
+  location: San Francisco, CA
+  phone: +1-555-0100
+  email: jane.doe@example.com
+  website: https://www.example.com
+  linkedin: https://linkedin.com/in/janedoe
+
+summary: |
+  Machine learning engineer who builds and trains models in \textbf{Python} and
+  \textbf{PyTorch}, designs \textbf{data pipelines}, and runs rigorous
+  \textbf{model training and evaluation}. Comfortable across the lifecycle from
+  \textbf{feature engineering} to deploying models to production on \textbf{AWS}.
+
+experience:
+  - title: Machine Learning Engineer
+    company: Example Corp
+    location: San Francisco, CA
+    date: Jun 2024 to Present
+    achievements:
+      - Built and trained \textbf{PyTorch} ranking models that improved offline
+        \textbf{model evaluation} metrics by 14 percent over the prior baseline.
+      - Designed batch and streaming \textbf{data pipelines} in \textbf{Spark}
+        and \textbf{Airflow} that fed daily training jobs over 200M records.
+      - Stood up a reproducible \textbf{model evaluation} harness with held out
+        splits and slice based metrics to catch regressions before release.
+      - Deployed models behind a \textbf{FastAPI} service on \textbf{AWS} and
+        added drift and latency monitoring to keep production inference healthy.
+  - title: Data Science Intern
+    company: Sample Labs
+    location: Remote
+    date: Jun 2023 to Aug 2023
+    achievements:
+      - Prototyped a \textbf{scikit-learn} classifier for support ticket
+        routing that reached 0.91 macro F1 on a held out test set.
+      - Cleaned and labeled a noisy dataset of 1.2M rows and documented the
+        \textbf{feature engineering} steps for the team to reuse.
+      - Wrote \textbf{SQL} and \textbf{pandas} notebooks that surfaced three
+        actionable insights adopted by the product team.
+
+projects:
+  - name: Recommender Sandbox
+    description: A \textbf{PyTorch} playground comparing matrix factorization and
+      two tower retrieval on a public ratings dataset.
+    link: https://github.com/janedoe/recommender-sandbox
+  - name: Open Model Eval Toolkit
+    description: A small \textbf{Python} library for slice based \textbf{model
+      evaluation} with confusion matrix and calibration reports.
+    link: https://github.com/janedoe/open-model-eval
+
+skills:
+  - name: Languages
+    items: Python, SQL, Java, TypeScript
+  - name: ML \& Data
+    items: PyTorch, scikit-learn, pandas, NumPy, Spark, Airflow
+  - name: Infra \& Tools
+    items: AWS, Docker, FastAPI, MLflow, Git
+
+education:
+  - name: Example University
+    location: San Francisco, CA
+    degree: BS Computer Science
+    GPA: 3.9/4.0
+    date: Aug 2020 to May 2024
+    courses: Machine Learning, Probability, Linear Algebra, Distributed Systems
+
+leadership:
+  - name: ML Reading Group Lead
+    description: Organized a weekly paper reading group of 20 students covering
+      recent \textbf{deep learning} research.
+    date: Sep 2023 to May 2024
+
+awards:
+  - title: Dean's List
+    issuer: Example University
+    date: 2021 to 2024

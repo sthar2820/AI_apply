@@ -1,0 +1,66 @@
+personal:
+    name: Jane Doe
+    location: San Francisco, CA
+    phone: +1-555-0100
+    email: jane.doe@example.com
+    website: https://www.example.com
+    linkedin: https://linkedin.com/in/janedoe
+
+summary: |
+    \textbf{Platform engineer} focused on \textbf{Docker}, \textbf{Kubernetes}, \textbf{Terraform}, and \textbf{CI/CD} on \textbf{AWS}. Builds reliable infrastructure and internal developer tooling, with a background shipping production services in \textbf{Python} and \textbf{TypeScript}.
+
+experience:
+    - title: Software Engineer
+      company: Example Corp
+      location: San Francisco, CA
+      date: Jan 2024 to Present
+      achievements:
+          - Migrated a legacy monolith module to a \textbf{Dockerized} service on \textbf{AWS ECS}, cutting deploy time from \textbf{40 minutes to under 8 minutes}.
+          - Automated builds and deploys with \textbf{CI/CD}, keeping a \textbf{React}/\textbf{FastAPI} platform serving \textbf{10,000+} users at \textbf{99.9\% uptime}.
+          - Partitioned a monolith into \textbf{distributed} services over \textbf{gRPC}, improving deploy independence across three teams.
+          - Raised test coverage and added CI checks that reduced production incidents on the owned service by \textbf{30\%}.
+
+    - title: Software Engineering Intern
+      company: Sample Labs
+      location: Remote
+      date: Jun 2023 to Aug 2023
+      achievements:
+          - Migrated a legacy service to \textbf{Docker} and \textbf{Kubernetes}, cutting deploy time from \textbf{20 minutes to 3 minutes}.
+          - Added \textbf{Docker} based local setup and integration tests in \textbf{CI/CD}, shortening onboarding for new contributors.
+
+projects:
+    - name: Example Project (Open Source)
+      description: Event driven app on \textbf{AWS} (Lambda, S3, DynamoDB) with \textbf{Next.js} and \textbf{PostgreSQL}.
+      link: https://github.com/janedoe/example-project
+
+    - name: Sample Tool (Personal)
+      description: Built a \textbf{FastAPI} tool with \textbf{Redis} queues and sandboxed \textbf{Docker} execution.
+      link: https://github.com/janedoe/sample-tool
+
+skills:
+    - name: DevOps \& Infra
+      items: Docker, Kubernetes, Terraform, GitHub Actions, CI/CD, AWS (Lambda, EC2, ECS), Nginx
+    - name: Cloud \& Data
+      items: AWS, S3, DynamoDB, PostgreSQL, MySQL, Redis
+    - name: Languages
+      items: Python, Bash, TypeScript, Java, SQL
+    - name: Backend
+      items: FastAPI, Node.js, REST, GraphQL, gRPC, microservices
+
+education:
+    - name: Example University
+      location: San Francisco, CA
+      degree: Bachelor of Science in Computer Science
+      GPA: 3.9 / 4.0
+      date: Aug 2020 to May 2024
+      courses: Distributed Systems, Operating Systems, Databases, Algorithms, Software Engineering
+
+leadership:
+    - name: Computer Science Club, President
+      description: Led a team of board members; organized hackathons and technical workshops.
+      date: Sep 2022 to May 2024
+
+awards:
+    - title: Hackathon Winner, Dean's List
+      issuer: Example University
+      date: 2023 to 2024

@@ -14,7 +14,7 @@ def latex_escape(text: str) -> str:
         "%": r"\%",
         "$": r"\$",
         "#": r"\#",
-        "_": r"\_",
+        "_": r"\textunderscore{}",
         "{": r"\{",
         "}": r"\}",
         "~": r"\textasciitilde{}",
@@ -47,9 +47,7 @@ class CoverLetterGenerator(DocumentGenerator):
             if key in data["letter"] and data["letter"][key]:
                 data["letter"][key] = data["letter"][key].replace("[Company Name]", company_name)
 
-        # Basic escaping for recipient/title
-        if "title" in data.get("recipient", {}):
-            data["recipient"]["title"] = data["recipient"]["title"].replace("&", "\\&")
+        # Note: recipient fields are escaped later via latex_escape() in generate_tex()
 
         self.data = data
         return data
@@ -57,13 +55,14 @@ class CoverLetterGenerator(DocumentGenerator):
     def generate_tex(self, company_name: str):
         self.replace_placeholders(company_name)
         personal = self.data["personal_information"]
+        sign_name = personal.get("name", "")
         recipient = self.data["recipient"]
         letter = self.data["letter"]
 
         # Sender block: address and contact only (no name), flush left
         addr_line = personal['address'].get('line', '')
         postal = personal['address'].get('postal_code', '')
-        # Format like: "Monroe, LA 71203" (no country)
+        # Format like: "City, ST 00000" (no country)
         address_first_line = f"{addr_line} {postal}".strip()
 
         email = personal.get('email', '')
@@ -125,12 +124,24 @@ class CoverLetterGenerator(DocumentGenerator):
 
         latex_content = f"""\\documentclass[12pt, letterpaper]{{article}}
 \\usepackage[utf8]{{inputenc}}
-            \\usepackage[margin=0.75in]{{geometry}}
+\\usepackage[T1]{{fontenc}}
+\\usepackage[margin=0.75in]{{geometry}}
 \\usepackage{{helvet}}
 \\usepackage{{calligra}}
 \\renewcommand{{\\familydefault}}{{\\sfdefault}}
 \\usepackage[hidelinks]{{hyperref}}
 \\usepackage{{setspace}}
+
+% ATS-friendly: ensure proper Unicode mapping for text extraction
+\\input{{glyphtounicode}}
+\\pdfgentounicode=1
+
+% PDF metadata for ATS systems
+\\hypersetup{{
+  pdfauthor={{{latex_escape(personal['name'])}}},
+  pdftitle={{Cover Letter - {latex_escape(personal['name'])} - {latex_escape(recipient.get('title', ''))}}},
+  pdfsubject={{Cover Letter for {latex_escape(recipient.get('company', ''))}}},
+}}
 
 % Black-and-white, full-block format
 \\pagenumbering{{gobble}}
@@ -169,11 +180,7 @@ Sincerely,
 
 % Digital signature line
 \\vspace{{6pt}}
-{{\\fontsize{{20}}{{24}}\\selectfont\\calligra Dinesh Chhantyal}}
-\\vspace{{4pt}}
-
-% Typed name
-{typed_name}
+{{\\fontsize{{20}}{{24}}\\selectfont\\calligra {sign_name}}}
 
 \\end{{document}}
 """
