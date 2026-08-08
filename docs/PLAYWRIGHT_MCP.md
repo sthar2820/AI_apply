@@ -78,7 +78,7 @@ You do not call the tools directly. You ask Claude in plain language and it pick
 
 > Open this job application URL in the browser and start filling the form from my profile.
 
-> Open the careers page for Example Corp, sign in, and list the open Software Engineer roles.
+> Open the careers page for Example Corp, sign in, and list the open Data Analyst roles.
 
 Claude will navigate, snapshot the page so it can see the fields, and fill them in for you.
 

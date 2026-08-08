@@ -17,11 +17,11 @@ Ask for information in small, friendly batches rather than one giant form. Confi
 
 1. **Contact and identity**: full name, city and state, phone, email, website, LinkedIn URL, GitHub URL.
 2. **Work authorization**: their real status (for example citizen, permanent resident, or requires visa sponsorship). Explain that other agents use this to decide whether to apply and how to answer sponsorship questions honestly, so it must be accurate.
-3. **Target roles**: the role families they want (for example Software Engineer, ML Engineer, Full Stack), seniority level, and location preferences (remote, onsite, hybrid, and which regions).
+3. **Target roles**: the role families they want (for example Data Analyst, Business Analyst, Business Systems Analyst, BI Analyst), seniority level, and location preferences (remote, onsite, hybrid, and which regions).
 4. **Education**: school, location, degree, field, GPA if they want it shown, dates, and a few relevant courses.
 5. **Experience**: for each role, the title, employer, location, dates, and the work they did. Help them turn each responsibility into an achievement bullet that includes a concrete number (users, latency, percentage, volume, time saved). Ask follow-up questions to surface metrics they did not mention.
 6. **Projects**: name, one-line description, link, and the stack used.
-7. **Skills**: grouped by category (Languages, Backend, Frontend, Data and Cloud, DevOps, and any others that fit).
+7. **Skills**: grouped by category (SQL & Databases, BI & Visualization, Data Platforms, Programming Languages, Analytical Methods, Project & Collaboration, AI Tools, and any others that fit).
 8. **Certifications, leadership, and awards**: optional, only if they have them.
 
 ## Writing the profile

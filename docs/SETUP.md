@@ -140,13 +140,13 @@ Fill in the `work_authorization` fields honestly. The agent uses these to decide
 Run the generator to confirm Python and `pdflatex` work together end to end:
 
 ```bash
-python main.py --company "Example Corp" --role "Software Engineer" --type resume
+python main.py --company "Example Corp" --role "Data Analyst" --type resume
 ```
 
 The command takes three options:
 
 1. `--company` the company name (for example `Example Corp`)
-2. `--role` the role title (for example `Software Engineer`)
+2. `--role` the role title (for example `Data Analyst`)
 3. `--type` the output: `resume`, `coverletter`, or `both` (defaults to `both`)
 
 Use `--type resume` to generate just the resume for this first test.
@@ -187,7 +187,7 @@ You are now ready to use the agent. The full workflow, including how the scout, 
 To get started, give Claude a first prompt like:
 
 ```
-Find me 5 entry-level software engineer roles posted this week, then tailor my resume for the best fit.
+Find me 5 mid-to-senior data analyst or business analyst roles posted this week, then tailor my resume for the best fit.
 ```
 
 Claude will use the scout to find roles, pull details from your profile, and generate a tailored resume under `applications/`. From there you can ask it to draft a cover letter or fill an application form with the Playwright MCP.

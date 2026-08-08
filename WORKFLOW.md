@@ -16,15 +16,15 @@ All examples use the canonical demo persona. Replace it with your own profile in
 
 | Field | Value |
 | --- | --- |
-| Name | Jane Doe |
-| Email | jane.doe@example.com |
-| Phone | +1-555-0100 |
-| Location | San Francisco, CA |
-| Website | https://www.example.com |
-| LinkedIn | https://linkedin.com/in/janedoe |
-| GitHub | https://github.com/janedoe |
-| Education | Example University, BS Computer Science, GPA 3.9/4.0, May 2024 |
-| Target roles | Entry-level / new-grad Software Engineer, ML Engineer, Full-Stack Engineer |
+| Name | Rohan Shrestha |
+| Email | rohan.shrestha1521@gmail.com |
+| Phone | (469) 283-8964 |
+| Location | Irving, TX (open to relocation and remote) |
+| Website | https://rohan-shrestha.online |
+| LinkedIn | https://linkedin.com/in/shrestharo2002 |
+| GitHub | https://github.com/sthar2820 |
+| Education | University of Louisiana at Monroe, BS Computer Science |
+| Target roles | Senior Data Analyst, Business Analyst, Business Systems Analyst, Business Data Analyst, BI Analyst (mid-to-senior level) |
 
 The phases run in order, but you can re-enter any phase on its own (for example
 re-render after editing YAML, or re-verify after a fix).
@@ -45,8 +45,8 @@ Pull from a broad set of channels so you are not dependent on any one board.
 - **ATS boards directly**: Lever (`jobs.lever.co/{company}`), Greenhouse
   (`boards.greenhouse.io/{company}`), Ashby (`jobs.ashbyhq.com/{company}`).
   These expose clean JSON endpoints and are easy to scan in bulk.
-- **New-grad GitHub trackers** (community-maintained lists of new-grad and
-  internship postings).
+- **Data analytics job boards and communities** (e.g., analytics-focused LinkedIn
+  groups, data community boards).
 - **Aggregators** such as Jobright and similar feeds. Treat aggregator metadata
   as a lead, not as truth: re-verify posted date, seniority, and sponsorship
   language at the source ATS before investing time.
@@ -56,10 +56,10 @@ Pull from a broad set of channels so you are not dependent on any one board.
 Apply these gates in order and drop anything that fails:
 
 1. **Role family.** Keep only roles that map to your configured target families
-   (for the demo persona: Software Engineer, ML Engineer, Full-Stack Engineer).
-2. **Seniority window.** Keep entry-level, junior, and new-grad roles. Enforce a
-   configurable years-of-experience cap (default: 0 to 3 years). Skip Senior,
-   Staff, Principal, and Lead titles regardless of the stated YoE floor. The YoE
+   (for the demo persona: Data Analyst, Business Analyst, Business Systems Analyst, BI Analyst).
+2. **Seniority window.** Keep mid-level and senior roles. Enforce a
+   configurable years-of-experience cap (default: 3 to 8+ years). Skip Staff,
+   Principal, VP, and Director titles regardless of the stated YoE floor. The YoE
    floor often lives in the JD body, not the title, so read the body before you
    keep or drop a role.
 3. **Freshness.** Default to roles posted within the last 7 days. Widen to 14
@@ -99,9 +99,10 @@ content.
   wording where it is honest to do so.
 - **Summary is at most 2 lines** when rendered. Lead with role fit and the two
   or three strongest signals.
-- **Every bullet has a metric.** Scope, scale, latency, throughput, user count,
-  percentage, or count. If a true metric is not available, rewrite the bullet
-  around one that is.
+- **Every bullet has a metric.** Cost savings, report delivery time reduction,
+  dashboard adoption rate, data processing volume, query optimization, accuracy
+  improvement, manual effort reduction, percentage, or count. If a true metric
+  is not available, rewrite the bullet around one that is.
 - **Never fabricate.** Every technology in the summary, skills, and bullets must
   trace back to `profile/about_candidate.yml`. No invented projects, employers,
   metrics, or product context.
@@ -184,7 +185,7 @@ For each document the generator runs: **YAML to LaTeX to pdflatex to PDF**.
 Before any document leaves the repo, read the rendered PDF and confirm:
 
 1. **Exactly one page.** Check the actual rendered page count, not the YAML
-   length. Two pages is an automatic fail for entry-level resumes.
+   length. Two pages is acceptable for senior candidates but one page is preferred when possible.
 2. **Summary is 2 lines.** Check the rendered text, not the source; wrapping can
    push a 2-line summary to 3.
 3. **No whitespace gap at the bottom.** Content should fill the page cleanly. A
@@ -239,22 +240,51 @@ the agent handles auth itself rather than stopping:
 password, date. An account whose password exists only in the transcript is an
 account the user is locked out of. This is not optional.
 
-### Still stop for these
+### Fill every field you can
 
-Autonomy does not extend to things that are irreversible in the wrong direction
-or that are not the user's own account to grant:
+A blank field stalls an application, so exhaust the honest options before leaving
+one empty. Default to answering, not to pausing:
 
-- **CAPTCHA / "verify you are human".** Solving these is out of scope; hand off.
-  Do not route them to a solving service.
-- **Fabricating application content.** The no-invention rule in Phase 2 is about
-  honesty toward the employer, not user convenience, and autonomous mode does not
-  relax it. If a required field has no true answer in
-  `profile/about_candidate.yml` (a certification, a clearance, years with a tool,
-  a degree), leave it blank and flag the row rather than inventing a value.
-- **Sensitive fields not in the profile**: SSN, date of birth, government ID,
-  bank or payment details. Fill from the profile when present; never guess.
-- **Anything asking the user to pay.** Legitimate applications are free; a
-  payment request means stop and report.
+- **Compute it from the profile.** "Years with Python", "months of React",
+  "have you shipped production ML" are all derivable from the dates and bullets
+  already in `profile/about_candidate.yml`. Do the arithmetic and enter the real
+  number. This is not invention, it is reading facts already on file.
+- **Map near-equivalents** within a category per Phase 2 (one cloud provider for
+  another, one frontend framework for another) where the candidate genuinely has
+  the skill.
+- **Answer screening questions from the profile**: work authorization,
+  sponsorship, relocation, notice period, desired salary, start date, veteran and
+  disability self-identification. Any of these missing from the profile should be
+  added there once, and then it is answered automatically forever after. Prefer
+  fixing the profile over pausing the run.
+- **Pick the closest honest option** on a dropdown rather than leaving it unset.
+- **Sensitive fields** (SSN, date of birth, government ID, bank details): enter
+  them when the profile has them, skip when it does not.
+
+### The one line that does not move
+
+If after all of the above a field still has no true answer — a certification not
+held, a degree not earned, a clearance not granted, more years than the candidate
+has — leave it blank or answer honestly and note it in the log. Do not enter a
+false value.
+
+This is not a limit on autonomy, it is the point of the exercise. These answers
+are a signed representation to an employer, they are exactly what background
+checks and reference calls verify against, and a discovered misstatement costs
+the offer and sometimes the role after starting. One skipped application is
+cheaper. Escalating autonomy never relaxes this rule.
+
+### CAPTCHA: prevent, do not defeat
+
+The persistent real-Chrome profile, human-normal pacing, and not hammering one
+domain keep most challenges from firing at all. When one fires anyway, hand off
+and move to the next role. Do not wire in a third-party solving service: that is
+the strongest bot signal there is, and it gets the profile and the account
+flagged permanently, costing far more applications than the one it unblocks.
+
+### Anything asking for payment
+
+Legitimate applications are free. A payment request means stop and report it.
 
 ### Report after, not during
 
@@ -308,9 +338,10 @@ specific, and free of pressure. Send at most one; do not chase.
 Template (demo persona):
 
 > Hi [Name], I just applied for the [Role] role at [Company] and wanted to flag
-> my interest directly. I am a recent CS grad who builds full-stack and ML
-> projects, and the team's work on [specific thing] stood out. Happy to share
-> more if useful. Thanks, Jane Doe
+> my interest directly. I am a Senior Data Analyst with 5+ years of experience
+> in SQL, Python, Power BI, and Tableau across healthcare, finance, and
+> operations, and the team's work on [specific thing] stood out. Happy to share
+> more if useful. Thanks, Rohan Shrestha
 
 Personalize the `[specific thing]` from the JD or the company's product. Do not
 spray a templated message; if you cannot make it specific, skip it.

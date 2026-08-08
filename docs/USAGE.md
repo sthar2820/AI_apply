@@ -2,7 +2,7 @@
 
 This guide shows the everyday loop for using the job application agent. The examples use a sample profile so you can see the shape of each request. Replace the persona details with your own in `profile/about_candidate.yml`.
 
-> Sample persona used throughout: Jane Doe, jane.doe@example.com, +1-555-0100, San Francisco, CA. Example University, BS Computer Science, GPA 3.9/4.0, May 2024. Target roles: entry-level / new-grad Software Engineer, ML Engineer, Full-Stack.
+> Sample persona used throughout: Jane Doe, jane.doe@example.com, +1-555-0100, San Francisco, CA. Example University, BS Computer Science, GPA 3.9/4.0, May 2024. Target roles: mid-to-senior Data Analyst, Business Analyst, Business Systems Analyst, BI Analyst.
 
 ## The basic loop
 
@@ -21,11 +21,11 @@ You drive each step by asking Claude in natural language.
 
 ### 1. Scout jobs
 
-> Find 5 entry-level full-stack roles posted in the last 7 days that match my profile.
+> Find 5 data analyst or business analyst roles posted in the last 7 days that match my profile.
 
 You can narrow it however you like, for example by location, stack, or company stage:
 
-> Find new-grad Software Engineer roles in San Francisco or remote, Python or TypeScript, posted this week.
+> Find senior Data Analyst roles in Irving TX or remote, SQL, Python, Power BI, or Tableau, posted this week.
 
 ### 2. Tailor the resume
 
@@ -35,7 +35,7 @@ Claude reads the job description, maps it against your profile, and rewrites the
 
 ### 3. Generate the PDFs
 
-> Generate the resume and cover letter PDFs for Example Corp, Software Engineer.
+> Generate the resume and cover letter PDFs for Example Corp, Data Analyst.
 
 Under the hood this runs the local pipeline (`python main.py`). No browser is involved in this step.
 
@@ -68,7 +68,7 @@ The repo ships four specialized subagents:
 
 You do not have to invoke these by hand. When you ask Claude to "find roles" or "fill this application," it delegates to the right subagent automatically. If you want to be explicit, you can name one directly, for example:
 
-> Use the job-scout agent to find 5 ML Engineer roles posted in the last 3 days.
+> Use the job-scout agent to find 5 Data Analyst roles posted in the last 3 days.
 
 > Have the application-submitter open this Lever form and fill it from my profile.
 

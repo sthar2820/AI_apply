@@ -9,7 +9,7 @@ This repo is a Claude Code "job application agent": a set of subagents, prompts,
 | Candidate profile | `profile/about_candidate.yml` | Single source of truth. Every fact in a resume (employers, projects, skills, education) must trace back here. |
 | Resume generator | `resume/generator.py`, `main.py` | Renders a resume YAML into LaTeX and then a PDF. |
 | Cover letter generator | `coverletter/generator.py` | Renders a cover letter YAML into a matching PDF. |
-| Resume variants | `resume/resume.yml`, `resume/resume_ml.yml`, `resume/resume_sw.yml` | The working resume plus role slanted starting templates. |
+| Resume variants | `resume/resume.yml`, `resume/resume_da.yml`, `resume/resume_leadership.yml` | The working resume plus role slanted starting templates. |
 | profile-setup subagent | `.claude/agents/profile-setup.md` | Interviews the user on first run and writes `profile/about_candidate.yml`. |
 | job-scout subagent | `.claude/agents/job-scout.md` | Searches job boards and company career pages for fresh, matching roles. |
 | resume-builder subagent | `.claude/agents/resume-builder.md` | Copies a variant, tailors it to a job description, edits `resume/resume.yml`. |
@@ -29,7 +29,7 @@ This repo is a Claude Code "job application agent": a set of subagents, prompts,
               |
               v
      resume-builder subagent
-       copies resume_ml.yml or resume_sw.yml
+       copies resume_da.yml or resume_leadership.yml
        tailors content to the JD
               |
               v
@@ -84,7 +84,7 @@ Top level keys consumed by the generator:
 ## Where you customize things
 
 - **Your facts:** edit `profile/about_candidate.yml`. This is the only place real history should live; the resume variants and tailored resumes derive from it.
-- **Resume look and content:** start from `resume/resume_ml.yml` or `resume/resume_sw.yml`, or adjust `resume/generator.py` for layout, margins, and fonts.
+- **Resume look and content:** start from `resume/resume_da.yml` or `resume/resume_leadership.yml`, or adjust `resume/generator.py` for layout, margins, and fonts.
 - **Agent behavior:** edit the files in `.claude/agents/` to change how scouting, tailoring, or submitting works.
 - **Global rules:** edit `CLAUDE.md` (always on rules) and `WORKFLOW.md` (the playbook).
 - **Tracking:** the agents append to `applications-log.md`; you read it to see status at a glance.

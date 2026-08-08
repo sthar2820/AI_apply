@@ -1,8 +1,8 @@
 # Demo: an end-to-end run
 
 This is an illustrative walkthrough of a single session, from a blank checkout to a
-reviewed application, using the demo candidate **Jane Doe**
-(`jane.doe@example.com`, San Francisco, CA). Every value here is dummy data.
+reviewed application, using the demo candidate **Rohan Shrestha**
+(`rohan@example.com`, Irving, TX). Every value here is dummy data.
 
 The format below is an annotated transcript. Lines prefixed `You:` are what you
 type, and lines prefixed `Agent:` are a realistic, shortened version of what Claude
@@ -25,7 +25,7 @@ You: Set me up
 
 On the first turn, `CLAUDE.md` tells the agent to check
 `profile/about_candidate.yml`. It still holds the placeholder persona
-(`Jane Doe` / `jane.doe@example.com` / employer `Example Corp`), so the agent does
+(`Rohan Shrestha` / `rohan@example.com` / employer `Example Corp`), so the agent does
 not generate anything yet. It launches the **profile-setup** subagent, which
 interviews you and writes your real facts back into `profile/about_candidate.yml`.
 
@@ -47,23 +47,25 @@ You answer the questions in plain language. The profile-setup agent turns your
 answers into structured YAML and confirms the result.
 
 ```
-You: Jane Doe, jane.doe@example.com, +1-555-0100, San Francisco. Software
-Engineer at Example Corp since Jan 2024 building FastAPI services on Postgres
-and AWS. SWE intern at Sample Labs summer 2023, did Docker and Kubernetes
-migration work. Strong with Python, TypeScript, React, FastAPI, PostgreSQL.
-BS in Computer Science from Example University. Authorized to work in the US,
-no sponsorship needed.
+You: Rohan Shrestha, rohan@example.com, +1-555-0100, Irving, TX. Data Analyst
+at Example Corp since Jan 2023 building dashboards in Power BI and Tableau,
+writing SQL queries on Snowflake, and delivering stakeholder analytics in
+healthcare and finance domains. Analyst intern at Sample Labs summer 2022,
+did ETL pipeline development and reporting automation. Strong with SQL,
+Python, Power BI, Tableau, Snowflake, Excel. BS in Information Systems from
+Example University. Authorized to work in the US, no sponsorship needed.
 ```
 
 ```
 Agent: Saved. I wrote your details to profile/about_candidate.yml. Here is the
 summary I will treat as your source of truth:
 
-- Name: Jane Doe, San Francisco, CA
-- Now: Software Engineer at Example Corp (Jan 2024 to present)
-- Before: SWE Intern at Sample Labs (Summer 2023)
-- Core skills: Python, TypeScript, React, FastAPI, PostgreSQL, AWS, Docker
-- Education: BS Computer Science, Example University
+- Name: Rohan Shrestha, Irving, TX
+- Now: Data Analyst at Example Corp (Jan 2023 to present)
+- Before: Analyst Intern at Sample Labs (Summer 2022)
+- Core skills: SQL, Python, Power BI, Tableau, Snowflake, Excel
+- Domains: healthcare, finance, stakeholder analytics
+- Education: BS Information Systems, Example University
 - Work authorization: authorized in the US, no sponsorship required
 
 From now on I will never claim anything that is not in this file. Want me to
@@ -87,15 +89,15 @@ open a browser for this; the document pipeline is fully local. It then reads the
 generated PDF back to confirm it is a single page.
 
 ```bash
-python main.py --company "Example Corp" --role "Software Engineer" --type resume
+python main.py --company "Example Corp" --role "Data Analyst" --type resume
 ```
 
 ```
 Agent: Pipeline works. I ran:
 
-  python main.py --company "Example Corp" --role "Software Engineer" --type resume
+  python main.py --company "Example Corp" --role "Data Analyst" --type resume
 
-Output: applications/Example Corp/Jane_Doe_Resume.pdf
+Output: applications/Example Corp/Rohan_Shrestha_Resume.pdf
 I read the PDF back and it is exactly one page, so the LaTeX toolchain is set up
 correctly. Next, if you want me to fill application forms, we need the Playwright
 browser tools installed. Want the steps?
@@ -138,28 +140,28 @@ shows up and I will scout some roles.
 With the profile filled and the browser ready, you ask for fresh roles.
 
 ```
-You: Find me 5 backend roles posted this week.
+You: Find me 5 data analyst roles posted this week.
 ```
 
 The agent launches the **job-scout** subagent. It reads `profile/about_candidate.yml`
-to understand fit (Python, FastAPI, PostgreSQL, AWS, new-grad to early-career), and
+to understand fit (SQL, Python, Power BI, Tableau, Snowflake, mid-to-senior level), and
 searches across boards. It returns a short ranked table rather than dumping raw
 listings, and it does not apply to anything on its own.
 
 ```
-Agent: Here are 5 backend roles posted in the last 7 days, ranked by fit to your
+Agent: Here are 5 data analyst roles posted in the last 7 days, ranked by fit to your
 profile.
 
-| # | Company           | Role                    | Location           | Posted | Fit  |
-| - | ----------------- | ----------------------- | ------------------ | ------ | ---- |
-| 1 | Northwind Systems | Backend Engineer        | San Francisco (Hybrid) | 2d | High |
-| 2 | Globex            | Backend Engineer, Data  | Austin, TX (Remote)| 3d     | High |
-| 3 | Initech           | Platform Engineer       | Seattle, WA        | 4d     | Med  |
-| 4 | Hooli             | Software Engineer, API  | Remote (US)        | 5d     | Med  |
-| 5 | Stark Cloud       | Backend Engineer, Infra | San Francisco, CA  | 6d     | Med  |
+| # | Company           | Role                         | Location              | Posted | Fit  |
+| - | ----------------- | ---------------------------- | --------------------- | ------ | ---- |
+| 1 | Northwind Systems | Data Analyst                 | Irving, TX (Hybrid)   | 2d     | High |
+| 2 | Globex            | Business Analyst             | Dallas, TX (Remote)   | 3d     | High |
+| 3 | Initech           | BI Analyst                   | Austin, TX            | 4d     | Med  |
+| 4 | Hooli             | Business Systems Analyst     | Remote (US)           | 5d     | Med  |
+| 5 | Stark Cloud       | Operations Analyst           | Irving, TX            | 6d     | Med  |
 
-Northwind is the closest match: Python, FastAPI, PostgreSQL, REST and GraphQL,
-microservices on AWS, and it is entry to early career. Want me to tailor your
+Northwind is the closest match: SQL, data visualization, stakeholder reporting,
+Snowflake, Power BI, and it is mid-to-senior level. Want me to tailor your
 resume to one of these?
 ```
 
@@ -170,7 +172,7 @@ resume to one of these?
 You pick the top match.
 
 ```
-You: Tailor my resume for the Northwind Systems Backend Engineer role.
+You: Tailor my resume for the Northwind Systems Data Analyst role.
 ```
 
 The agent launches the **resume-builder** subagent. It reads the job description and
@@ -181,20 +183,20 @@ output is the same shape as the worked sample in `examples/northwind-backend/`
 (its `job_description.md`, `resume.yml`, and `coverletter.yml`).
 
 ```bash
-python main.py --company "Northwind Systems" --role "Backend Engineer" --type both
+python main.py --company "Northwind Systems" --role "Data Analyst" --type both
 ```
 
 ```
 Agent: Tailored and rendered. I edited resume/resume.yml against the Northwind JD
 and generated:
 
-  applications/Northwind Systems/Jane_Doe_Resume.pdf  (one page, verified)
-  applications/Northwind Systems/Jane_Doe_CoverLetter.pdf
+  applications/Northwind Systems/Rohan_Shrestha_Resume.pdf  (one page, verified)
+  applications/Northwind Systems/Rohan_Shrestha_CoverLetter.pdf
 
 Keywords I mirrored from the posting, each backed by a real fact in your profile:
-FastAPI, PostgreSQL, REST and GraphQL API design, microservices, query
-optimization, AWS, and CI/CD. The summary leads with backend services and APIs in
-Python and FastAPI on PostgreSQL.
+SQL, data visualization, stakeholder reporting, ETL, dashboard development,
+requirements documentation, Snowflake, and Power BI. The summary leads with data
+analysis and dashboard development in SQL and Power BI on Snowflake.
 
 This matches the layout you can see in examples/northwind-backend/. Want me to fill
 out the application form?
@@ -221,12 +223,12 @@ press submit. It shows you the filled form and waits for your explicit confirmat
 Agent: I opened the Northwind Systems application (Greenhouse) and filled it from
 your profile. Please review before I submit anything:
 
-- Name: Jane Doe
-- Email: jane.doe@example.com
+- Name: Rohan Shrestha
+- Email: rohan@example.com
 - Phone: +1-555-0100
-- Location: San Francisco, CA
+- Location: Irving, TX
 - LinkedIn / GitHub: attached from profile
-- Resume: Jane_Doe_Resume.pdf (the Northwind-tailored one)
+- Resume: Rohan_Shrestha_Resume.pdf (the Northwind-tailored one)
 - Authorized to work in the US: Yes
 - Requires sponsorship: No
 
@@ -259,7 +261,7 @@ Agent: Logged it to applications-log.md:
 
 | Date       | Company           | Role             | ATS        | Location               | Status    |
 | ---------- | ----------------- | ---------------- | ---------- | ---------------------- | --------- |
-| 2025-01-08 | Northwind Systems | Backend Engineer | Greenhouse | San Francisco (Hybrid) | submitted |
+| 2025-01-08 | Northwind Systems | Data Analyst     | Greenhouse | Irving, TX (Hybrid)    | submitted |
 
 That is the full loop: onboarded, scouted, tailored, reviewed, submitted, and
 tracked. Want me to tailor and queue the next role from the scout list?
@@ -271,7 +273,7 @@ tracked. Want me to tailor and queue the next role from the scout list?
 
 - Start with the project overview and first-run flow in `README.md`.
 - Walk through installation and configuration in `docs/SETUP.md`.
-- See more worked, tailored applications for Jane Doe in `examples/README.md` and the
+- See more worked, tailored applications for Rohan Shrestha in `examples/README.md` and the
   per-role folders under `examples/` (for instance `examples/northwind-backend/`).
 
 The agent does the heavy lifting, but you review the resume, the form, and every
