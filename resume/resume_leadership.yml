@@ -1,108 +1,89 @@
 # AI Processing Instructions:
 # - For LaTeX output, use '%' directly; it does not need to be escaped (e.g., as \%).
-# - In Skill name, & needs escapled (e.g., as \&)
+# - In Skill name, & needs escaped (e.g., as \&)
 # - The 'summary' should be concise, with a maximum of two lines.
-# - Use tool calling to gather specific information when necessary.
-# - DONT change factual information e.g role, company, location
-# - Do not invent or assume new technologies; prioritize leveraging existing tools and libraries from the document.
-# - DONT create a new file
+# - DONT change factual information e.g role, company, location, metrics
+# - Do not invent or assume new technologies not already in this document.
 
 personal:
-    name: Dinesh Chhantyal
-    location: Monroe, LA (Open to relocation)
-    phone: +1-318-750-6383
-    email: myagdichhantyal@gmail.com
-    website: https://www.dineshchhantyal.com
-    linkedin: https://linkedin.com/in/dineshchhantyal
+  name: Rohan Shrestha
+  location: Irving, TX
+  phone: (469) 283-8964
+  email: rohan.shrestha1521@gmail.com
+  linkedin: https://linkedin.com/in/shrestharo2002
+  website: https://rohan-shrestha.online
+  github: https://github.com/sthar2820
+  relocation: Open to relocation
+  work_authorization: "OPT/EAD valid until June 2029; 100k Fee Exempt"
 
-summary: |
-    \textbf{ICPC State Champion} and \textbf{creative award-winning engineer} architecting the next generation of \textbf{AI-driven applications}. Deep expertise in building \textbf{robust, high-performance distributed systems} and leading \textbf{collaborative developer communities}.
+summary: >
+  Senior Business Analyst with experience leading cross-functional teams, driving strategic initiatives, and delivering enterprise-scale analytics solutions using \textbf{SQL}, \textbf{Python}, and \textbf{Power BI}.
+  Proven track record of stakeholder management, portfolio analysis, and translating complex business needs into actionable, data-driven outcomes.
 
 education:
-    - name: University of Louisiana at Monroe
-      location: Monroe, LA
-      degree: Bachelor of Science in Computer Science, Minor in Mathematics
-      GPA: 4.0 / 4.0
-      date: Aug 2022 -- May 2026 (Senior)
-      courses: Data Structures, Algorithms, Object-Oriented Programming, Database Management, Operating Systems, Computer Networks
+  - name: University of Louisiana at Monroe
+    location: Monroe, LA
+    degree: Bachelor of Science in Computer Science
+    GPA: 3.68 / 4.0
+    date: Aug 2022 – May 2026
+    courses: "Dean's Scholar; NSA Vice-President; Elevator Pitch Contest – 3rd Place"
 
 experience:
-    - title: Software Engineering Intern (ML)
-      company: Simons Foundation (SCC, Flatiron Institute)
-      location: New York, NY
-      date: July 2025 -- Aug 2025
-      achievements:
-          - Built \textbf{PyQt-based} 3D exploration pipeline for \textbf{1.2TB} of cryo-EM imagery in close collaboration with biologists, data scientists, and ground truth labelers, using \textbf{sliding window techniques} and \textbf{Ceph/S3} storage to efficiently generate high-quality training datasets for \textbf{computer vision models}.
-          - Accelerated cell nucleus motion tracking pipeline by \textbf{22x} (45 min → 2 min) for embryonic development movies using a \textbf{SLURM-managed 10-GPU cluster} (8xV100, 2xA100) through optimized batching, mixed-precision inference, and parallel frame processing.
-          - Improved cellular classification to \textbf{0.91 F1-score} by designing a custom \textbf{spatio-temporal 3D-CNN} in \textbf{PyTorch} with domain-specific augmentation strategies and iterative label refinement for accurate tracking across \textbf{600+ timepoints} and \textbf{25K+ cells}.
-          - Created \textbf{Chart-Gizmos}, an open-source visualization library integrating \textbf{Python}, \textbf{Chart.js}, and \textbf{H5Gizmos} for interactive data exploration.
+  - title: Senior Business Analyst
+    company: Summit Financial Group
+    location: Remote
+    date: Nov 2024 – Present
+    achievements:
+      - Led end-to-end requirements gathering and delivery for enterprise reporting initiatives, coordinating across finance, operations, and IT teams to align analytics outputs with strategic business goals.
+      - Identified \textbf{\$1.2M} in cost savings by developing cost-analytics frameworks in \textbf{SQL} and \textbf{Python}, performing root-cause analysis on operational spend and presenting recommendations to C-suite stakeholders.
+      - Built executive-level \textbf{Power BI} dashboards tracking portfolio performance and risk metrics, establishing standardized reporting cadences adopted across \textbf{3 business divisions}.
+      - Mentored junior analysts on \textbf{SQL} optimization, data modeling best practices, and stakeholder communication, improving team delivery velocity and analytical quality.
 
-    - title: Lead & President
-      company: Google Developer Group – University of Louisiana Monroe
-      location: Monroe, LA
-      date: Aug 2024 – Aug 2025
-      achievements:
-          - Revitalized the campus developer community, organizing \textbf{16+ events} (including \textbf{4 major exhibitions and hackathons}) to drive a \textbf{167% growth} in active membership (from 68 to 182 members) in one year.
-          - Founded and directed the university's inaugural \textbf{TechXpo}, connecting \textbf{200+ students} with \textbf{15+ local businesses}; promotional efforts earned the university's \textbf{Best Marketing Award} and secured \textbf{\$11,000+} in funding to showcase \textbf{25+ student projects}.
-          - 'Innovated chapter engagement by launching two flagship programs: the \textbf{`` Weekly CodeClash ''''} to drive consistent participation, and the \textbf{`` IT Code Challenge ''''}, a partnership with university IT that tasked students with solving real-world campus technical problems.'
+  - title: Business Systems Analyst
+    company: Baker McKenzie
+    location: Dallas, TX
+    date: Sep 2023 – Present
+    achievements:
+      - Scored and evaluated \textbf{40+ products} in an enterprise portfolio rationalization framework, analyzing cost, usage, and strategic fit to inform technology investment decisions for senior leadership.
+      - Facilitated cross-functional workshops with legal, IT, and operations stakeholders to define business requirements, translate them into functional specifications, and manage delivery through \textbf{Jira} and \textbf{Confluence}.
+      - Designed \textbf{Power BI} dashboards with \textbf{DAX} and \textbf{Power Query} to track portfolio health, vendor performance, and operational KPIs, enabling data-driven governance across global technology operations.
+      - Led UAT coordination and change management processes for system implementations, documenting test plans, training materials, and rollout timelines for \textbf{500+ end users}.
 
-    - title: Software Engineer
-      company: University of Louisiana - Monroe
-      location: Monroe, LA
-      date: Jan 2023 -- Present
-      achievements:
-          - Integrated \textbf{Microsoft Teams API} with \textbf{Drupal CMS} via \textbf{OAuth 2.0} for real-time messaging and calendar synchronization, streamlining workflows and reducing administrative overhead from \textbf{4 hours to 30 minutes weekly}.
-          - Engineered a \textbf{Node.js/TypeScript/MySQL/ETL pipeline} to migrate \textbf{10,000+ legacy records} into \textbf{Drupal 10}, optimizing database schemas to accelerate query performance by \textbf{15%} and reduce storage costs by \textbf{10%} for improved system efficiency.
-          - Collaboratively automated end-to-end testing for \textbf{50+ webpages} using \textbf{Selenium} and \textbf{Cypress}, integrating into a \textbf{CI/CD pipeline} with \textbf{GitLab} to enhance deployment reliability and boost pre-deployment issue detection by \textbf{75%}.
-
-    - title: Software Developer
-      company: Clamphook - EdTech
-      location: Lalitpur, NP
-      date: Oct 2022 -- May 2023
-      achievements:
-          - Spearheaded a \textbf{Flask} and \textbf{React}-based Computer-Based Testing (CBT) platform with \textbf{Redux Trunk} state management, \textbf{Redis} caching, and \textbf{NGINX} load balancing, implementing optimized API endpoints to support \textbf{5,000+ concurrent users} and \textbf{5x enrollment growth}.
-          - Architected a \textbf{Docker/Kubernetes}-based microservices infrastructure with \textbf{Helm} charts and automated \textbf{CI/CD} pipelines using \textbf{GitLab}, achieving \textbf{99.9% uptime} for production applications with \textbf{5,000+ downloads} on App Store.
-          - Developed real-time analytics dashboard with \textbf{TypeScript}, \textbf{MongoDB}, and \textbf{Chart.js}, featuring a gamified Duolingo-style progress tracking interface that drove an \textbf{8% increase} in user engagement and improved student retention.
-          - Conducted \textbf{code reviews}, documented \textbf{API specifications}, and troubleshot production issues while collaborating with cross-functional teams (design, product, QA) in a startup environment.
-
-    # - title: Software Developer Intern
-    #   company: Padhao Academy
-    #   location: Remote
-    #   date: Oct 2021 -- Dec 2021
-    #   achievements:
-    #       - Implemented a secure authentication system with \textbf{JWT tokens} and \textbf{RBAC architecture} for a \textbf{Next.js} educational platform, ensuring \textbf{GDPR compliance} for 5,000+ student accounts and supporting multiple permission levels for students, instructors, and administrators.
-    #       - Optimized frontend performance using \textbf{Next.js}, \textbf{TypeScript}, and \textbf{Tailwind CSS} with strategic component lazy loading and state management, resulting in a \textbf{35% reduction} in page load times and improved user experience metrics.
-    #       - Enhanced platform discoverability through implementation of \textbf{Next.js SSR}, dynamic routing, \textbf{structured data markup} (Open Graph + JSON-LD), and intelligent resource prefetching, leading to measurable improvements in organic search rankings and user acquisition.
+  - title: Business Systems Analyst
+    company: Deloitte
+    location: Dallas, TX
+    date: Jul 2021 – Sep 2023
+    achievements:
+      - Led requirements elicitation and process mapping for enterprise transformation engagements, collaborating with client stakeholders to define as-is/to-be workflows and identify automation opportunities.
+      - Reduced manual reporting effort by \textbf{30\%} by designing automated \textbf{Power BI} and \textbf{Tableau} reporting solutions, integrating data from \textbf{Salesforce}, \textbf{SQL Server}, and \textbf{Snowflake} environments.
+      - Managed project deliverables across multiple workstreams, maintaining status dashboards in \textbf{Jira}, facilitating sprint ceremonies, and ensuring on-time delivery of analytics and systems integration milestones.
+      - Authored business requirements documents (BRDs), functional specifications, and data dictionaries, serving as the primary liaison between business stakeholders and technical implementation teams.
 
 projects:
-    - name: NoteMeet
-      description: |
-          Highly distributed AI meeting assistant leveraging a \textbf{Next.js},and a \textbf{Terraform-managed AWS stack} (\textbf{Lambda, S3, DynamoDB, Transcribe}) to enable automatic recording, transcription, and \textbf{RAG-powered summaries}. The system's distributed architecture reduced manual note-taking effort by \textbf{80%} and ensured scalability and reliability. (\textbf{Tech Expo Winner})
-      link: https://notemeet.dineshchhantyal.com
+  - name: Healthcare Readmissions Reporting Platform
+    description: Built an end-to-end reporting platform analyzing readmission risk across \textbf{4,000+ hospitals} using CMS and CDC datasets. Applied statistical analysis and data modeling to develop segmented risk profiles — delivered \textbf{Power BI} dashboards enabling self-serve insights for \textbf{600+ at-risk facilities}.
+    link: https://github.com/sthar2820/readmissions-risk-pipeline
+    date: Dec 2025
+    tech: SQL, Power BI, Python
 
-    - name: RhymeAI
-      description: AI-powered event management platform featuring an intelligent virtual emcee that uses \textbf{multi-agent orchestration} (\textbf{Gemini}, \textbf{LangChain}, ElevenLabs) to plan and adapt to real-time situations. (Selected for \textbf{Nexus Technology Cup})
-      link: https://rhyme-ai.vercel.app/
-
-    - name: OfferMart
-      description: Full stack sustainable reselling marketplace (\textbf{Next.js}, \textbf{Node.js}, \textbf{MongoDB}) with \textbf{RBAC auth}, real-time verification, \textbf{dynamic pricing} logic, and \textbf{Stripe} integration; scales to \textbf{1,000+ concurrent transactions} with strong data integrity guarantees.
-      link: https://offermart.vercel.app/
-
-    - name: CodeStroke Pro
-      description: |
-          Collaborated with pharmacists to build a \textbf{FastAPI}-based clinical decision support system for CodeStroke, featuring form-driven workflows, a responsive \textbf{React} UI, and audit trails that reduced decision latency by \textbf{40%} and improved patient outcomes.
-      link: https://codestrokepro.org
+  - name: Autonomous Data Analysis Pipeline
+    description: Engineered a scalable \textbf{ETL pipeline} using \textbf{LLM agents} to ingest, clean, validate, and visualize datasets with automated data quality checks.
+    link: https://github.com/sthar2820/Agentic_data_pipeline
+    date: Nov 2025
+    tech: Python, Gemini API, DuckDB, Streamlit
 
 skills:
-    - name: Programming \& Development
-      items: Python, TypeScript, Java, C++, SQL, JavaScript, React.js, Next.js, FastAPI, Node.js, REST APIs, GraphQL
-    - name: Data \& Distributed Systems
-      items: ETL Pipelines, Data Modeling, PostgreSQL, MySQL, MongoDB, Redis, DynamoDB, Kafka
-    - name: Machine Learning \& AI
-      items: PyTorch, PySpark, TensorFlow, Scikit-learn, RAG, MCP, LLMs, OpenAI API, Computer Vision, NLP
-    - name: Cloud \& DevOps
-      items: AWS (Lambda, S3, DynamoDB), GCP, Docker, Kubernetes, Terraform, CI/CD, Helm, Serverless Architecture
-    - name: Testing \& Quality Assurance
-      items: Selenium, Cypress, Unit/Integration Testing, Regression Suites, Test Automation
-    - name: Tools \& Collaboration
-      items: Git, GitLab, JIRA, Confluence, Agile/Scrum, Code Review, Documentation, Open Source Contributions
+  - name: Business Analysis \& Strategy
+    items: Requirements Elicitation, Process Mapping, Stakeholder Management, Portfolio Rationalization, Change Management, UAT
+
+  - name: Languages \& Querying
+    items: SQL (complex joins, subqueries, window functions), T-SQL, Python (pandas, scikit-learn), SAS
+
+  - name: Visualization \& BI
+    items: Power BI (DAX, Power Query), Tableau, Excel, Streamlit
+
+  - name: Data Engineering
+    items: Data Modeling, dbt, Snowflake, SQL Server, Databricks, Airflow
+
+  - name: Cloud \& Tools
+    items: Azure, Microsoft Fabric, Jira/JSM, Confluence, Salesforce, GA4, Claude, Copilot

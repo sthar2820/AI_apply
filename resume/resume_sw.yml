@@ -1,115 +1,86 @@
 # AI Processing Instructions:
 # - For LaTeX output, use '%' directly; it does not need to be escaped (e.g., as \%).
-# - In Skill name, & needs escapled (e.g., as \&)
+# - In Skill name, & needs escaped (e.g., as \&)
 # - The 'summary' should be concise, with a maximum of two lines.
-# - Use tool calling to gather specific information when necessary.
-# - DONT change factual information e.g role, company, location
-# - Do not invent or assume new technologies; prioritize leveraging existing tools and libraries from the document.
-# - DONT create a new file
+# - DONT change factual information e.g role, company, location, metrics
+# - Do not invent or assume new technologies not already in this document.
 
 personal:
-  name: Dinesh Chhantyal
-  location: Monroe, LA
-  phone: +1-318-750-6383
-  email: myagdichhantyal@gmail.com
-  linkedin: https://linkedin.com/in/dineshchhantyal
-  website: https://dineshchhantyal.com
+  name: Rohan Shrestha
+  location: Irving, TX
+  phone: (469) 283-8964
+  email: rohan.shrestha1521@gmail.com
+  linkedin: https://linkedin.com/in/shrestharo2002
+  website: https://rohan-shrestha.online
+  github: https://github.com/sthar2820
+  relocation: Open to relocation
+  work_authorization: "OPT/EAD valid until June 2029; 100k Fee Exempt"
 
 summary: >
-  Full-stack developer designing and implementing integration solutions with \textbf{TypeScript}/\textbf{Node.js}, \textbf{REST APIs}, and data transformation middleware.
-  Translates business requirements into technical solutions; builds reliable, scalable integrations that connect enterprise systems and streamline client workflows.
+  Data Engineer and Business Analyst with experience building scalable data pipelines, analytics platforms, and reporting solutions using \textbf{SQL}, \textbf{Python (PySpark, pandas)}, and \textbf{Azure/Databricks}.
+  Proven track record of delivering \textbf{\$4M+} in identified savings through data-driven insights across healthcare and enterprise environments.
+
 education:
   - name: University of Louisiana at Monroe
     location: Monroe, LA
-    degree: Bachelor of Science in Computer Science, Minor in Mathematics
-    GPA: 3.97 / 4.0
-    date: Aug 2022 – May 2026 (Senior)
-    courses: Data Structures, Algorithms, Object Oriented Programming, Database Management, Operating Systems, Computer Networks
+    degree: Bachelor of Science in Computer Science
+    GPA: 3.68 / 4.0
+    date: Aug 2022 – May 2026
+    courses: "Dean's Scholar; NSA Vice-President; Elevator Pitch Contest – 3rd Place"
 
 experience:
-  - title: Software Developer / Product Analyst
-    company: Alfred (ScribeHQ)
+  - title: Business Analyst
+    company: DXC Technology
+    location: Irving, TX
+    date: Mar 2024 – Present
+    achievements:
+      - Identified \textbf{\$2.1M} in annual savings by engineering cost-analytics pipelines in \textbf{Python} and \textbf{SQL}, automating data extraction from \textbf{Snowflake} and \textbf{SQL Server} to surface operational inefficiencies.
+      - Built and maintained \textbf{20+ Power BI} dashboards using \textbf{DAX} and \textbf{Power Query}, integrating data from multiple source systems to deliver real-time KPI reporting across business units.
+      - Developed a \textbf{92\% accuracy} demand forecasting model using \textbf{Python (scikit-learn)} and time-series analysis, enabling proactive staffing and resource allocation.
+      - Designed and documented \textbf{dbt} transformation models and \textbf{Airflow} DAGs to automate reporting workflows, reducing manual data preparation by \textbf{30\%}.
+
+  - title: Business Analyst II
+    company: Centene Corporation
     location: Remote
-    date: July 2025 – Present
+    date: Aug 2022 – Mar 2024
     achievements:
-      - Build Alfreds \textbf{agentic LLM backend} with \textbf{LangChain/LangGraph} and a mixture of experts style agentic flow to route chat messages to tools like web search, FAQ lookup, and todo updates, validated on more than \textbf{500} internal conversations.
-      - Implement a Supabase Edge Function chat pipeline that streams LLM replies with server sent events, reducing first token latency from about \textbf{2 seconds} to under \textbf{1 second} in local tests and improving perceived responsiveness.
-      - Analyzed \textbf{500+} internal conversations to evaluate prompt relevance and tool routing, improving outcomes through human-in-the-loop review and iterative refinement.
-      - Design modular integrations for \textbf{Canvas} and \textbf{Moodle} using \textbf{REST APIs} and reusable components, improving platform scalability and accelerating integration development efficiency.
+      - Engineered a disenrollment risk model in \textbf{Python (PySpark, pandas)} and \textbf{SQL} that improved member retention by \textbf{4.5\%}, processing claims and eligibility data across \textbf{Databricks} and \textbf{Azure} environments.
+      - Reduced avoidable ER visits by \textbf{7\%} by building predictive analytics pipelines that identified high-risk members, integrating clinical and behavioral data from \textbf{Redshift} and \textbf{SQL Server}.
+      - Automated data quality validation workflows using \textbf{Python} and \textbf{dbt}, implementing schema tests and anomaly detection across \textbf{50+} healthcare data tables.
+      - Collaborated with clinical and product teams to translate business requirements into technical specifications, managing deliverables through \textbf{Jira} and documenting data lineage in \textbf{Confluence}.
 
-  - title: Full Stack Developer
-    company: University of Louisiana - Monroe
-    location: Monroe, LA
-    date: Jan 2023 – Present
+  - title: Data Analyst
+    company: Blue Cross Blue Shield of Texas
+    location: Richardson, TX
+    date: Jun 2021 – Aug 2022
     achievements:
-      - Integrated \textbf{Microsoft Teams} with \textbf{Drupal} via \textbf{OAuth 2.0} and scheduled jobs, shrinking manual content updates from \textbf{4 hours to 30 minutes} while surfacing operational metrics to stakeholders.
-      - Engineered a \textbf{Python}/\textbf{MySQL} ETL to migrate \textbf{10,000+} legacy records into \textbf{Drupal 10}; improved query performance by \textbf{15\%} and reduced storage costs by \textbf{10\%}.
-      # - Maintained and updated campus CMS sites (\textbf{Drupal}, \textbf{WordPress}), managed WCAG accessibility remediation and technical SEO fixes, and configured \textbf{Google Analytics} for site performance monitoring.
-      - Automated \textbf{ADA/WCAG 2.1} scans for \textbf{30,000+} assets using axe core, Lighthouse, and PAC in \textbf{GitHub Actions CI/CD}, generating remediation reports that guided accessibility fixes across campus sites.
-
-  - title: Software Engineering Intern (ML)
-    company: Simons Foundation (SCC, Flatiron Institute)
-    location: New York, NY
-    date: July 2025 – Aug 2025
-    achievements:
-      - Built an interactive \textbf{3D PyQt+Napari} pipeline for \textbf{1.2TB} of embryo imaging data, combining sliding window processing with distributed GPU workflows to analyze \textbf{600+} timepoints.
-      # - Orchestrated \textbf{SLURM} GPU jobs with \textbf{Ceph/S3} streaming and memory aware loaders, cutting inference time from \textbf{45 minutes to 2 minutes} (\textbf{22x}) and documenting operational playbooks for reproducible runs.
-      - Improved nucleus state classification \textbf{macro F1 from 0.84 to 0.91} by refining a custom \textbf{PyTorch 3D CNN} through targeted error analysis, augmentation, and iterative researcher feedback.
-
-  - title: Software Developer
-    company: Clamphook - EdTech
-    location: Lalitpur, NP
-    date: Oct 2022 – May 2023
-    achievements:
-      - Engineered a \textbf{Flask+React} CBT platform with Redis caching, Nginx load balancing, and monitoring capable of serving \textbf{5,000+} concurrent examinees and unlocking \textbf{5x} enrollment growth.
-      - Delivered a real time analytics dashboard with Flask SocketIO and Chart.js that visualized exam performance and helped increase daily active learners by about \textbf{8\%}.
+      - Identified \textbf{\$4M+} in savings in specialty pharmacy spend by building cost-analytics dashboards in \textbf{Power BI} and performing root-cause analysis using \textbf{SQL} and \textbf{Python (pandas)}.
+      - Developed automated \textbf{ETL pipelines} using \textbf{Python} and \textbf{SQL Server Integration Services (SSIS)} to consolidate claims data from multiple source systems into a centralized analytics warehouse.
+      - Built \textbf{Tableau} dashboards tracking pharmacy utilization and cost trends, enabling formulary management teams to make data-driven coverage decisions.
+      - Partnered with actuarial and clinical teams to validate data models and ensure reporting accuracy across \textbf{10M+} member records.
 
 projects:
-  - name: NoteMeet
-    description: AI meeting assistant integrating \textbf{Google Meet API} and third-party services using \textbf{REST APIs} and \textbf{AWS} microservices (\textbf{Lambda}, \textbf{S3}, \textbf{DynamoDB}, \textbf{EventBridge}) with event-driven architecture achieving ~95\% reliability.
-    link: https://notemeet.dineshchhantyal.com
+  - name: Healthcare Readmissions Reporting Platform
+    description: Built an end-to-end reporting platform analyzing readmission risk across \textbf{4,000+ hospitals} using CMS and CDC datasets. Applied statistical analysis and data modeling to develop segmented risk profiles — delivered \textbf{Power BI} dashboards enabling self-serve insights for \textbf{600+ at-risk facilities}.
+    link: https://github.com/sthar2820/readmissions-risk-pipeline
+    date: Dec 2025
+    tech: SQL, Power BI, Python
 
-  - name: Offermart
-    description: AI powered multi agent LLM application using orchestration (\textbf{Gemini}, \textbf{LangChain}) and prompt engineering to run live event scripts with real time adaptation, and containerized with \textbf{Docker} for reproducible deployment and isolated scaling. (Nexus Technology)
-    link: https://rhyme-ai.vercel.app/
-
-  - name: Personal MCP
-    description: Developed a \textbf{Model Context Protocol (MCP) server} exposing \textbf{REST APIs} that allow external clients to integrate with local tools and data sources. Demonstrates API contract design, middleware concepts, and system-to-system communication patterns.
-    link: https://dineshchhantyal.com
+  - name: Autonomous Data Analysis Pipeline
+    description: Engineered a scalable \textbf{ETL pipeline} using \textbf{LLM agents} to ingest, clean, validate, and visualize datasets with automated data quality checks.
+    link: https://github.com/sthar2820/Agentic_data_pipeline
+    date: Nov 2025
+    tech: Python, Gemini API, DuckDB, Streamlit
 
 skills:
-  - name: Integration \& APIs
-    items: TypeScript, JavaScript, Node.js, React, REST APIs, OAuth 2.0, API Gateway, Data Transformation, Integration
+  - name: Languages \& Querying
+    items: SQL (complex joins, subqueries, window functions), T-SQL, Python (pandas, PySpark, scikit-learn), SAS
 
-  - name: Databases \& Backend
-    items: MySQL, PostgreSQL, SQL, Data Modeling, Database Design, Microservices, Event-Driven Architecture
+  - name: Data Engineering
+    items: ETL Pipelines, Data Modeling, dbt, Airflow, Snowflake, Redshift, SQL Server, DuckDB, Databricks
 
-  - name: Cloud \& DevOps
-    items: AWS (Lambda, S3, DynamoDB, EventBridge, EC2), Docker, Git/GitHub, GitHub Actions CI/CD, DevOps, Cloud-Native
+  - name: Visualization \& BI
+    items: Power BI (DAX, Power Query), Tableau, Excel, Streamlit, Matplotlib
 
-  - name: Development Practices
-    items: REST API Design, API Integration, Problem-Solving, Debugging \& Troubleshooting, Code Reviews, Agile/SCRUM
-
-  - name: Certifications
-    items: AWS Certified Solutions Architect – Associate (Nov 2025), AWS AI Practitioner (Oct 2025), Databricks Gen AI Engineer (2025)
-
-leadership:
-  - name: Google Developer Student Club, President
-    date: Sep 2024 – Present
-    description: Lead a community of 200+ developers at ULM, organizing AI and cloud workshops, hackathons, and coding challenges with Google, sponsors, and campus partners.
-  - name: IEEE Shreveport Section, Webmaster
-    date: Jan 2025 – Present
-    description: Plan and promote IEEE Shreveport Section events while managing the sections website and registration systems.
-
-awards:
-  - title: State Champion – ICPC Louisiana Regional
-    issuer: ICPC
-    date: Nov 2023
-  - title: 1st Place – AWS Project Presentation
-    issuer: AWS
-    date: Mar 2025
-  - title: 2nd Place – BEE Integration Competition
-    issuer: MAA (Louisiana-Mississippi Section)
-    date: Feb 2025
-
-more about me: https://dineshchhantyal.com/about_dinesh_chhantyal.json
+  - name: Cloud \& Tools
+    items: Azure, Databricks, Microsoft Fabric, Jira/JSM, Confluence, Salesforce, GA4, Claude, Copilot

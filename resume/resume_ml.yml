@@ -1,102 +1,89 @@
 # AI Processing Instructions:
 # - For LaTeX output, use '%' directly; it does not need to be escaped (e.g., as \%).
-# - In Skill name, & needs escapled (e.g., as \&)
+# - In Skill name, & needs escaped (e.g., as \&)
 # - The 'summary' should be concise, with a maximum of two lines.
-# - Use tool calling to gather specific information when necessary.
-# - DONT change factual information e.g role, company, location
-# - Do not invent or assume new technologies; prioritize leveraging existing tools and libraries from the document.
-# - DONT create a new file
+# - DONT change factual information e.g role, company, location, metrics
+# - Do not invent or assume new technologies not already in this document.
 
 personal:
-    name: Dinesh Chhantyal
-    location: New York, NY
-    phone: +1-318-750-6383
-    email: myagdichhantyal@gmail.com
-    website: https://www.dineshchhantyal.com
-    linkedin: https://linkedin.com/in/dineshchhantyal
+  name: Rohan Shrestha
+  location: Irving, TX
+  phone: (469) 283-8964
+  email: rohan.shrestha1521@gmail.com
+  linkedin: https://linkedin.com/in/shrestharo2002
+  website: https://rohan-shrestha.online
+  github: https://github.com/sthar2820
+  relocation: Open to relocation
+  work_authorization: "OPT/EAD valid until June 2029; 100k Fee Exempt"
 
-summary: |
-    ML Platform Engineer building resilient distributed systems and ML infrastructure at scale. Proven experience with \textbf{Python}, \textbf{Kubernetes}, and \textbf{terabyte-scale} data pipelines (\textbf{22x} performance optimization, \textbf{99.9%} uptime). Strong foundation in reliability engineering, multi-tenant platforms, and cross-functional collaboration.
+summary: >
+  Data Scientist and Analyst with experience building predictive models, statistical analyses, and machine learning pipelines using \textbf{Python (scikit-learn, PySpark)}, \textbf{SQL}, and \textbf{Power BI}.
+  Proven ability to deliver measurable impact through forecasting, risk modeling, and data-quality improvements across healthcare operations.
 
 education:
-    - name: University of Louisiana at Monroe
-      location: Monroe, LA
-      degree: Bachelor of Science in Computer Science, Minor in Mathematics
-      GPA: 4.0 / 4.0
-      date: Aug 2022 -- May 2026 (Senior)
-      courses: Data Structures, Algorithms, Object-Oriented Programming, Database Management, Operating Systems, Computer Networks
+  - name: University of Louisiana at Monroe
+    location: Monroe, LA
+    degree: Bachelor of Science in Computer Science
+    GPA: 3.68 / 4.0
+    date: Aug 2022 – May 2026
+    courses: "Dean's Scholar; NSA Vice-President; Elevator Pitch Contest – 3rd Place"
 
 experience:
-    - title: Software Engineering Intern (ML)
-      company: Simons Foundation (SCC, Flatiron Institute)
-      location: New York, NY
-      date: Jul 2025 -- Aug 2025
-      achievements:
-          - Built resilient \textbf{ML platform} handling \textbf{1.2TB} datasets with \textbf{Python}, \textbf{Ceph/S3} distributed storage, and fault-tolerant streaming pipelines—established scalable data access patterns for multi-tenant research environment.
-          - Engineered high-throughput \textbf{distributed GPU} inference system with batch scheduling and memory optimization, achieving \textbf{22x} performance improvement (45m → 2m) across \textbf{10-node cluster}—enabling real-time ML model serving.
-          - Collaborated with \textbf{cross-functional teams} (computational biologists, data scientists) to optimize ML model training pipeline, improving classification accuracy to \textbf{0.91 F1-score} through systematic performance tuning and validation.
-          - Developed \textbf{open-source platform components} (\textbf{Chart-Gizmos}) with comprehensive APIs and documentation—promoted reusability and maintainability across research teams.
+  - title: Senior Data Analyst
+    company: Humana
+    location: Remote
+    date: May 2023 – Present
+    achievements:
+      - Improved staffing forecast accuracy by \textbf{18\%} by developing time-series and regression models in \textbf{Python (scikit-learn, pandas)} and \textbf{SQL}, enabling workforce planning teams to optimize resource allocation.
+      - Reduced data-quality escalations by \textbf{27\%} by building automated validation pipelines in \textbf{Python} and \textbf{dbt}, implementing anomaly detection and schema enforcement across clinical and claims datasets.
+      - Identified a \textbf{12\% drop} in caregiver-application volume through exploratory data analysis and statistical testing, delivering actionable recommendations to recruitment leadership that informed outreach strategy.
+      - Built \textbf{Power BI} dashboards with \textbf{DAX} and \textbf{Power Query} to track operational KPIs and model performance metrics, serving as the primary analytics interface for clinical operations teams.
 
-    - title: Software Developer
-      company: University of Louisiana - Monroe
-      location: Monroe, LA
-      date: Jan 2023 -- Present
-      achievements:
-          - Led integration of \textbf{Microsoft Teams API} with \textbf{Drupal CMS} (\textbf{OAuth 2.0}) enabling real-time messaging & calendar sync; automated workflows cut manual coordination \textbf{85%} (4h → 30m weekly).
-          - Engineered \textbf{Python/MySQL ETL} + schema optimization migrating \textbf{10K+} legacy records into Drupal 10; improved query latency \textbf{15%} and storage cost \textbf{10%} via index & column strategy.
-          - Instituted \textbf{Selenium} + \textbf{Cypress} test harness across 50+ pages in CI/CD raising pre-deployment defect detection \textbf{75%}; established review & QA checklist adopted by team.
-          - Partnered with stakeholders (IT, content, compliance) to prioritize backlog, clarify acceptance criteria, and deliver incremental releases with traceable change logs.
+  - title: Business Analyst II
+    company: Centene Corporation
+    location: Remote
+    date: Aug 2022 – Mar 2024
+    achievements:
+      - Developed a disenrollment risk model using \textbf{Python (PySpark, scikit-learn)} and \textbf{SQL} that improved member retention by \textbf{4.5\%}, leveraging logistic regression and feature engineering on claims and eligibility data.
+      - Reduced avoidable ER visits by \textbf{7\%} by building predictive analytics pipelines integrating clinical, behavioral, and social determinants of health data from \textbf{Databricks} and \textbf{Redshift}.
+      - Performed cohort analysis and A/B testing to evaluate care management program effectiveness, presenting statistical findings to clinical leadership and informing program design changes.
+      - Automated recurring analytical workflows using \textbf{Python} and \textbf{Airflow}, reducing manual effort by \textbf{20+ hours/month} and improving reproducibility of analytical outputs.
 
-    - title: Software Developer
-      company: Clamphook
-      location: Lalitpur, NP
-      date: Oct 2022 -- May 2023
-      achievements:
-          - Spearheaded architecture for \textbf{Node.js} + \textbf{React} CBT platform with \textbf{Redis} caching, \textbf{NGINX} load balancing, and modular service boundaries—scaled to \textbf{5,000+} concurrent users supporting 5x enrollment growth.
-          - Implemented \textbf{Docker/Kubernetes} microservices with \textbf{Helm} + GitLab CI/CD pipelines (lint, test, rollout gates) reaching \textbf{99.9%} production uptime; created deployment playbooks & rollback runbooks.
-          - Built real-time analytics dashboard (\textbf{TypeScript}, \textbf{MongoDB}, \textbf{Chart.js}) surfacing performance & engagement metrics—drove \textbf{8%} user engagement lift and informed product iteration cadence.
+  - title: Business Analyst
+    company: Toyota Financial Services
+    location: Plano, TX
+    date: Jan 2021 – Oct 2023
+    achievements:
+      - Reduced report preparation time by \textbf{40\%} by replacing manual Excel workflows with automated \textbf{Power BI} solutions and \textbf{Python}-based data transformation scripts.
+      - Built portfolio risk scoring models using \textbf{Python (pandas, scikit-learn)} and \textbf{SQL}, applying statistical methods to assess credit performance and delinquency trends across lending segments.
+      - Developed financial performance dashboards in \textbf{Power BI} and \textbf{Tableau} tracking key risk indicators, supporting data-driven decision-making for portfolio management teams.
+      - Collaborated with data engineering and finance teams to validate data models, define KPIs, and ensure analytical outputs aligned with business objectives.
 
 projects:
-    - name: NoteMeet
-      description: Built \textbf{resilient serverless ML platform} with \textbf{Python}, AWS Lambda, and DynamoDB handling real-time audio processing—engineered fault-tolerant pipeline reducing manual processing \textbf{80%} through automated ML inference.
-      link: https://notemeet.dineshchhantyal.com
+  - name: Healthcare Readmissions Reporting Platform
+    description: Built an end-to-end reporting platform analyzing readmission risk across \textbf{4,000+ hospitals} using CMS and CDC datasets. Applied statistical analysis and data modeling to develop segmented risk profiles — delivered \textbf{Power BI} dashboards enabling self-serve insights for \textbf{600+ at-risk facilities}.
+    link: https://github.com/sthar2820/readmissions-risk-pipeline
+    date: Dec 2025
+    tech: SQL, Power BI, Python
 
-    - name: RhymeAI (Multi-Agent AI Orchestration)
-      description: Architected \textbf{scalable AI platform} with \textbf{Python} backend orchestrating multiple AI models (\textbf{Gemini}, ElevenLabs) with real-time processing capabilities—demonstrated multi-tenant system design and high-throughput ML serving.
-      link: https://rhyme-ai.vercel.app/
-
-    - name: ML Text Classification
-      description: Developed \textbf{production-ready ML pipeline} using \textbf{Python}, scikit-learn, and feature engineering achieving \textbf{89.5%} accuracy—implemented scalable training infrastructure with comprehensive model validation and monitoring.
-      link: https://github.com/dineshchhantyal/fake-or-real--the-imposter-hunt-in-texts
-
-    - name: Computer Vision ML Platform
-      description: 'Built \textbf{distributed CV platform} with \textbf{PyTorch}, transfer learning, and optimized inference pipelines achieving >90% accuracy—implemented modular training/serving architecture with reproducible model deployment.'
-      link: https://github.com/dineshchhantyal/dog-n-dog-breed-classification
-
-    - name: Real-Time ML Inference Platform
-      description: 'Engineered \textbf{lightweight PyTorch} inference system with optimized data preprocessing achieving ~90% accuracy—built modular platform components for rapid model iteration and deployment.'
-      link: https://github.com/dineshchhantyal/asl
+  - name: Autonomous Data Analysis Pipeline
+    description: Engineered a scalable \textbf{ETL pipeline} using \textbf{LLM agents} to ingest, clean, validate, and visualize datasets with automated data quality checks.
+    link: https://github.com/sthar2820/Agentic_data_pipeline
+    date: Nov 2025
+    tech: Python, Gemini API, DuckDB, Streamlit
 
 skills:
-    - name: Programming Languages
-      items: Python, Java, TypeScript, SQL, Bash, C
-    - name: Platform \& Distributed Systems
-      items: Kubernetes, Docker, Microservices, Distributed Systems, Multi-tenant Systems, Reliability Engineering, Observability
-    - name: Big Data \& ML Platforms
-      items: PyTorch, scikit-learn, MLOps, ETL, Data Pipelines, Feature Engineering, Model Training, GPU Computing
-    - name: Cloud \& Infrastructure
-      items: AWS (Lambda, S3, EventBridge, DynamoDB, EC2), Terraform, CI/CD (GitHub Actions), Nginx, Hybrid Cloud
-    - name: Data Technologies
-      items: PostgreSQL, MySQL, MongoDB, Redis, DynamoDB, Ceph/S3, Data Modeling, Data Validation
-    - name: Development \& Operations
-      items: FastAPI, Flask, REST APIs, GraphQL, Git, Agile/Scrum, Testing (PyTest, Selenium), Performance Optimization
-    - name: Monitoring \& Reliability
-      items: SLURM, Weights \& Biases, MLflow, GPU Profiling, System Monitoring, Production Operations
+  - name: Languages \& Querying
+    items: SQL (complex joins, subqueries, window functions), T-SQL, Python (pandas, scikit-learn, PySpark), SAS
 
-activities:
-    - name: Google Developer Group on Campus ULM, President
-      date: Aug 2024 -- Present
-    - name: IEEE Shreveport Section, Webmaster
-      date: Jan 2025 -- Present
-    - name: ICPC NA South Division 2024 State Champion, Division 1
-      date: Nov 2024
+  - name: Machine Learning \& Analytics
+    items: Regression, Classification, Time-Series Forecasting, A/B Testing, Feature Engineering, Statistical Analysis
+
+  - name: Data Engineering
+    items: ETL Pipelines, Data Modeling, dbt, Airflow, Databricks, Snowflake, Redshift, DuckDB
+
+  - name: Visualization \& BI
+    items: Power BI (DAX, Power Query), Tableau, Excel, Streamlit, Matplotlib
+
+  - name: Cloud \& Tools
+    items: Azure, Databricks, Microsoft Fabric, SQL Server, Jira/JSM, Confluence, Claude, Copilot

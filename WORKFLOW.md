@@ -219,14 +219,49 @@ come from the profile, so answers stay consistent across applications.
   resume-parse step you must audit, and several pages. Verify the parsed work
   history matches your resume before advancing.
 
-### Pause for the user
+### Autonomous mode
 
-Always pause and hand control to the user for:
+The user has authorized the agent to run applications end to end without
+check-ins. These are the user's own accounts and the user's own job search, so
+the agent handles auth itself rather than stopping:
 
-- **CAPTCHA** of any kind.
-- **OTP / magic-link / email verification** steps.
-- **The final submit button**, so the user reviews the complete application
-  before it is sent.
+- **OTP / email verification.** Open the verification mail in the same profile
+  (Gmail is signed in), read the code, enter it, and move on. Read only the
+  verification message; do not browse unrelated mail.
+- **OAuth / SSO.** Accept "Continue with Google" / "Sign in with LinkedIn"
+  consent screens for ATS vendors and employers.
+- **Account creation.** Create the per-employer account Workday and similar
+  ATSes require, generate a strong unique password, and accept the signup terms.
+- **Submit.** Send the application once Phase 5 verification passes.
+
+**Record every credential you create.** Write it to `applications/credentials.md`
+(gitignored) immediately, before continuing the application: site, URL, username,
+password, date. An account whose password exists only in the transcript is an
+account the user is locked out of. This is not optional.
+
+### Still stop for these
+
+Autonomy does not extend to things that are irreversible in the wrong direction
+or that are not the user's own account to grant:
+
+- **CAPTCHA / "verify you are human".** Solving these is out of scope; hand off.
+  Do not route them to a solving service.
+- **Fabricating application content.** The no-invention rule in Phase 2 is about
+  honesty toward the employer, not user convenience, and autonomous mode does not
+  relax it. If a required field has no true answer in
+  `profile/about_candidate.yml` (a certification, a clearance, years with a tool,
+  a degree), leave it blank and flag the row rather than inventing a value.
+- **Sensitive fields not in the profile**: SSN, date of birth, government ID,
+  bank or payment details. Fill from the profile when present; never guess.
+- **Anything asking the user to pay.** Legitimate applications are free; a
+  payment request means stop and report.
+
+### Report after, not during
+
+Since the agent no longer pauses mid-run, the log carries the burden. After each
+application, record what happened in `applications-log.md`, including any account
+created, any field left blank, and any check that failed. At the end of a batch,
+summarize: submitted, blocked, and every credential written.
 
 ### Work authorization and sponsorship
 

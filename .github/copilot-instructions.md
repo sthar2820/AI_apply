@@ -23,7 +23,7 @@ This document outlines the rules and guidelines for GitHub Copilot when assistin
 
 ## Using MCP Tools for Information
 
-When helping with career tasks, **always** use the tools in `/mcp/resume.py` to access accurate information about Dinesh:
+When helping with career tasks, **always** use the tools in `/mcp/resume.py` to access accurate information about Rohan:
 
 ### Basic Information Tools
 
@@ -73,7 +73,7 @@ When modifying `resume/resume.yml`, you must adhere to the following rules:
 -   **Resume Tailoring:**
 
     1.  Analyze the job description to identify key skills, technologies, and responsibilities.
-    2.  Use MCP tools to find matching factual experiences from Dinesh's background.
+    2.  Use MCP tools to find matching factual experiences from Rohan's background.
     3.  Propose targeted edits to the `summary`, `experience`, and `projects` sections to better reflect the job requirements using the user's real background.
 
 -   **Professional Communication:**

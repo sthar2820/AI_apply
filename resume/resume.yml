@@ -1,124 +1,86 @@
 # AI Processing Instructions:
 # - For LaTeX output, use '%' directly; it does not need to be escaped (e.g., as \%).
-# - In Skill name, & needs escapled (e.g., as \&)
+# - In Skill name, & needs escaped (e.g., as \&)
 # - The 'summary' should be concise, with a maximum of two lines.
-# - Use tool calling to gather specific information when necessary.
-# - DONT change factual information e.g role, company, location
-# - Do not invent or assume new technologies; prioritize leveraging existing tools and libraries from the document.
-# - DONT create a new file
+# - DONT change factual information e.g role, company, location, metrics
+# - Do not invent or assume new technologies not already in this document.
 
 personal:
-  name: Dinesh Chhantyal
-  location: Monroe, LA
-  phone: +1-318-750-6383
-  email: myagdichhantyal@gmail.com
-  linkedin: https://linkedin.com/in/dineshchhantyal
-  website: https://dineshchhantyal.com
+  name: Rohan Shrestha
+  location: Irving, TX
+  phone: (469) 283-8964
+  email: rohan.shrestha1521@gmail.com
+  linkedin: https://linkedin.com/in/shrestharo2002
+  website: https://rohan-shrestha.online
+  github: https://github.com/sthar2820
+  relocation: Open to relocation
+  work_authorization: "OPT/EAD valid until June 2029; 100k Fee Exempt"
 
 summary: >
-  Product-focused fullstack engineer (ICPC state champion) building \textbf{AI-first} interfaces with \textbf{React}, \textbf{TypeScript}, and \textbf{Node.js}.
-  Ships engaging chat UIs, complex \textbf{data visualizations}, and \textbf{agentic workflows} in fast-paced startup environments from zero to paying customers.
+  Business Analyst with experience driving data-informed decisions using \textbf{SQL}, \textbf{Python}, and \textbf{Power BI}.
+  Proven ability to translate business requirements into actionable insights, build scalable reporting solutions, and identify cost-saving opportunities across enterprise operations.
+
 education:
   - name: University of Louisiana at Monroe
     location: Monroe, LA
-    degree: Bachelor of Science in Computer Science, Minor in Mathematics
-    GPA: 3.97 / 4.0
-    date: Aug 2022 – May 2026 (Senior)
-    courses: Data Structures, Algorithms, Object Oriented Programming, Database Management, Operating Systems, Computer Networks
+    degree: Bachelor of Science in Computer Science
+    GPA: 3.68 / 4.0
+    date: Aug 2022 – May 2026
+    courses: "Dean's Scholar; NSA Vice-President; Elevator Pitch Contest – 3rd Place"
 
 experience:
-  - title: Co-Founder & Technical Lead / Software Developer
-    company: alfred_.ai
+  - title: Business Analyst
+    company: DXC Technology
+    location: Irving, TX
+    date: Mar 2024 – Present
+    achievements:
+      - Identified \textbf{\$2.1M} in annual cost savings by analyzing operational workflows and building optimization models in \textbf{Python} and \textbf{SQL}, presenting findings to senior leadership for strategic decision-making.
+      - Developed a \textbf{92\% accuracy} forecasting model using \textbf{Python (scikit-learn)} and historical data to predict resource demand, enabling proactive capacity planning across business units.
+      - Built and maintained \textbf{20+ Power BI} dashboards with \textbf{DAX} and \textbf{Power Query}, providing real-time visibility into KPIs for cross-functional stakeholders and executive leadership.
+      - Partnered with product and engineering teams to define requirements, document user stories in \textbf{Jira}, and validate data pipelines ensuring reporting accuracy across \textbf{Snowflake} and \textbf{SQL Server} environments.
+
+  - title: Business Data Analyst
+    company: BILL
     location: Remote
-    date: July 2025 – Present
+    date: Nov 2023 – Present
     achievements:
-      - Architected a modular \textbf{5-widget dashboard} with drag-and-drop layouts, \textbf{Redux Toolkit} state, and a cross-widget connection system that auto-generates tasks from emails and time blocks from todos in \textbf{React 19} and \textbf{TypeScript}.
-      - Built an \textbf{agentic LLM} chat backend with \textbf{LangGraph} to route messages to tools like web search, FAQ lookup, and todo updates, validated on \textbf{500+} internal conversations with streaming \textbf{server-sent events} reducing first-token time from \textbf{4s to under 800ms}.
-      - Delivered a PWA-enabled frontend on \textbf{Vite}, \textbf{Tailwind CSS}, and \textbf{Radix UI} with \textbf{PostHog} and \textbf{Mixpanel} analytics and custom journey tracking to drive data-informed product iterations.
+      - Reduced manual reporting prep by \textbf{30\%} and saved \textbf{15 hrs/week} by automating data extraction and transformation workflows using \textbf{Python (pandas)} and \textbf{SQL}.
+      - Designed and deployed \textbf{Tableau} dashboards tracking payment processing metrics, enabling product teams to identify trends and improve customer experience across \textbf{\$1B+} in transaction volume.
+      - Conducted ad-hoc analyses using \textbf{SQL} and \textbf{Python} to support business cases for feature prioritization, delivering data-driven recommendations to cross-functional stakeholders.
+      - Documented business processes and data lineage in \textbf{Confluence}, improving onboarding efficiency and ensuring alignment between analytics and engineering teams.
 
-  - title: Full Stack Developer
-    company: University of Louisiana - Monroe
-    location: Monroe, LA
-    date: Jan 2023 – Present
+  - title: Business Analyst
+    company: Toyota Financial Services
+    location: Plano, TX
+    date: Jan 2021 – Oct 2023
     achievements:
-      - Redesigned web presence for Museum of Natural History and Alumni departments, resulting in a \textbf{25\%} increase in average session duration through improved \textbf{UI/UX} and responsive layouts.
-      - Automated end-to-end testing for \textbf{50+} webpages using \textbf{Selenium} and \textbf{Cypress}, boosting pre-deployment issue detection by \textbf{75\%} within the \textbf{CI/CD} pipeline.
-      - Engineered a \textbf{Python}/\textbf{MySQL} ETL pipeline to migrate \textbf{10,000+} legacy records with data validation and integrity checks, improving query performance by \textbf{15\%}.
-
-  - title: Software Engineering Intern
-    company: Simons Foundation (SCC, Flatiron Institute)
-    location: New York, NY
-    date: July 2025 – Aug 2025
-    achievements:
-      - Engineered an interactive 3D \textbf{PyQt + Napari} visualization pipeline for \textbf{1.2TB} of volumetric imaging data, enabling nuclear feature exploration across \textbf{600+} timepoints and \textbf{25K+} nuclei.
-      - Released \textbf{Chart-Gizmos}, an open-source \textbf{Python} plugin integrating \textbf{Chart.js} into H5Gizmos to enable reproducible, browser-based exploratory \textbf{data visualization} of large imaging datasets.
-      - Designed distributed GPU workflows achieving a \textbf{22x} inference speedup (\textbf{45 min to 2 min}) and built a custom \textbf{PyTorch} 3D-CNN lifting macro-F1 from \textbf{0.84 to 0.91}.
-
-  - title: Software Developer
-    company: Clamphook - EdTech
-    location: Lalitpur, NP
-    date: Oct 2022 – May 2023
-    achievements:
-      - Engineered a \textbf{React}-based CBT platform with \textbf{Flask} backend, \textbf{Redis} caching, and \textbf{Nginx} load balancing, serving \textbf{5,000+} concurrent users with \textbf{99.9\%} uptime and supporting \textbf{5x} enrollment growth.
-      - Pioneered a real-time analytics dashboard with gamification features using \textbf{Flask-SocketIO}, \textbf{Chart.js}, and \textbf{WebSockets}, driving an \textbf{8\%} increase in daily active users.
+      - Reduced report preparation time by \textbf{40\%} by redesigning manual Excel-based workflows into automated \textbf{Power BI} reporting solutions with scheduled data refreshes.
+      - Translated business requirements into technical specifications for data warehouse enhancements, collaborating with engineering teams to optimize \textbf{SQL Server} queries and improve data accuracy.
+      - Facilitated stakeholder workshops to gather requirements and align analytics deliverables with business objectives, managing project timelines through \textbf{Jira} and \textbf{Confluence}.
+      - Built financial performance dashboards in \textbf{Power BI} tracking portfolio risk metrics, supporting executive decision-making across lending operations.
 
 projects:
-  - name: RhymeAI
-    description: Built a multi-agent AI platform using \textbf{Next.js} and \textbf{TypeScript} that automates live event hosting with narratives and multilingual voice-overs via \textbf{Gemini 2.5 Pro}, \textbf{LangChain}, and \textbf{ElevenLabs TTS}. (NexusLA Runner-up)
-    link: https://rhyme-ai.vercel.app
-  - name: NoteMeet
-    description: Built an AI meeting assistant with \textbf{React}, \textbf{TypeScript}, \textbf{Node.js/Express}, and \textbf{AWS} (\textbf{Lambda}, \textbf{S3}, \textbf{DynamoDB}) featuring a \textbf{RAG} system with \textbf{LangChain} and \textbf{OpenAI GPT} achieving \textbf{95\%} transcription accuracy. (Tech Expo Winner)
-    link: https://notemeet.dineshchhantyal.com
-  - name: Movie Flower Garden
-    description: Interactive \textbf{data visualization} representing movie data as flowers using \textbf{D3.js} and \textbf{SVG}, increasing user engagement time by over \textbf{200\%} compared to traditional table layouts.
+  - name: Healthcare Readmissions Reporting Platform
+    description: Built an end-to-end reporting platform analyzing readmission risk across \textbf{4,000+ hospitals} using CMS and CDC datasets. Applied statistical analysis and data modeling to develop segmented risk profiles — delivered \textbf{Power BI} dashboards enabling self-serve insights for \textbf{600+ at-risk facilities}.
+    link: https://github.com/sthar2820/readmissions-risk-pipeline
+    date: Dec 2025
+    tech: SQL, Power BI, Python
+
+  - name: Autonomous Data Analysis Pipeline
+    description: Engineered a scalable \textbf{ETL pipeline} using \textbf{LLM agents} to ingest, clean, validate, and visualize datasets with automated data quality checks.
+    link: https://github.com/sthar2820/Agentic_data_pipeline
+    date: Nov 2025
+    tech: Python, Gemini API, DuckDB, Streamlit
 
 skills:
-  - name: Languages
-    items: TypeScript, JavaScript (ES6+), Python, Java, SQL, HTML5/CSS3, Bash
+  - name: Languages \& Querying
+    items: SQL (complex joins, subqueries, window functions), T-SQL, Python (pandas, scikit-learn), SAS
 
-  - name: Frontend
-    items: React, Next.js, Redux, D3.js, Chart.js, Tailwind CSS, Radix UI, Vite, Webpack, SVG, Bootstrap
+  - name: Visualization \& BI
+    items: Power BI (DAX, Power Query), Tableau, Excel, Streamlit, Matplotlib
 
-  - name: Backend \& Cloud
-    items: Node.js/Express, Flask, REST APIs, GraphQL, WebSockets, AWS (Lambda, S3, DynamoDB), Docker, CI/CD
+  - name: Data Engineering
+    items: ETL Pipelines, Data Modeling, dbt, Snowflake, SQL Server, DuckDB, Airflow
 
-  - name: AI/ML \& Data
-    items: LangChain, LangGraph, RAG, PyTorch, TensorFlow, Pandas, NumPy, OpenCV, PostgreSQL, MongoDB, Redis
-
-  - name: Tools \& Methods
-    items: Git, Agile/SCRUM, Selenium, Cypress, Jest, Postman, JIRA, Terraform, SLURM, OAuth 2.0, Socket.IO
-
-  - name: Design \& Analytics
-    items: Figma, UI/UX Design, PostHog, Mixpanel, SEO, Responsive Design, Adobe Creative Suite, Canva
-
-certifications:
-  - title: AWS Certified Solutions Architect - Associate
-    issuer: AWS
-    date: Nov 2025
-  - title: Databricks Certified Generative AI Engineer Associate
-    issuer: Databricks
-    date: May 2025
-  - title: "Data Parallelism: Training on Multiple GPUs"
-    issuer: NVIDIA
-    date: Jul 2025
-  - title: Fundamentals of Deep Learning
-    issuer: NVIDIA
-    date: Jul 2025
-
-leadership:
-  - name: Google Developer Student Club, President
-    date: Sep 2024 – Present
-  - name: IEEE Shreveport Section, Webmaster
-    date: Jan 2025 – Present
-
-awards:
-  - title: State Champion – ICPC Louisiana Regional
-    issuer: ICPC
-    date: Nov 2024
-  - title: US Rank 1 – IEEE Xtreme Programming
-    issuer: IEEE
-    date: Oct 2024
-  - title: 1st Place – AWS Project Presentation
-    issuer: AWS
-    date: Mar 2025
-more about me: https://dineshchhantyal.com/about_dinesh_chhantyal.json
+  - name: Cloud \& Tools
+    items: Azure, Databricks, Microsoft Fabric, Jira/JSM, Confluence, Salesforce, GA4, Claude, Copilot

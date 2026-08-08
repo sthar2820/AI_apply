@@ -5,143 +5,269 @@
 # =============================================================================
 
 _meta:
-  subject: "Jane Doe"
+  subject: "Rohan Shrestha"
   description: >
     Canonical source-of-truth profile for the job application agent. All resume,
     cover letter, and application-form answers are generated from these facts.
-  last_updated: "2025-01-01"
+  last_updated: "2026-08-07"
   usage: >
     Edit every field below to match your own background before running the agent.
     Treat this file as the single source of truth; if a fact is not here, the
     agent should not assert it.
 
 personal:
-  name: "Jane Doe"
-  location: "San Francisco, CA"
-  phone: "+1-555-0100"
-  email: "jane.doe@example.com"
-  website: "https://www.example.com"
-  linkedin: "https://linkedin.com/in/janedoe"
-  github: "https://github.com/janedoe"
+  name: "Rohan Shrestha"
+  location: "Irving, TX"
+  alternate_locations:
+    - "Austin, TX"
+    - "Kansas City, MO"
+  open_to_relocation: true
+  phone: "(469) 283-8964"
+  email: "rohan.shrestha1521@gmail.com"
+  email_secondary: "sthar2820@gmail.com"
+  website: "https://rohan-shrestha.online"
+  linkedin: "https://linkedin.com/in/shrestharo2002"
+  github: "https://github.com/sthar2820"
 
 # These two fields drive how the agent answers work-authorization and
 # sponsorship questions on application forms. Edit to match your situation.
 work_authorization:
-  status: "Authorized to work in the US"
+  status: "Authorized to work in the US on OPT/EAD valid until June 2029"
   requires_sponsorship: false
+  details: "OPT/EAD valid until June 2029; 100k Fee Exempt"
 
 summary: >
-  New-grad full-stack software engineer with hands-on experience building and
-  shipping web applications using Python, TypeScript, React, and FastAPI.
-  Comfortable across the stack, from PostgreSQL data models to containerized
-  AWS deployments, with a focus on reliable, well-tested code.
+  Senior Business Analyst and Data Analyst with 5+ years of experience
+  delivering BI dashboards, predictive models, and data-driven insights across
+  healthcare, finance, logistics, and technology domains. Proficient in SQL,
+  Python, Power BI, Tableau, and Snowflake, with a track record of translating
+  complex data into actionable strategies that drive measurable cost savings,
+  operational efficiency, and revenue growth.
 
 education:
-  - institution: "Example University"
-    location: "San Francisco, CA"
+  - institution: "University of Louisiana at Monroe"
+    location: "Monroe, LA"
     degree: "BS Computer Science"
-    gpa: "3.9/4.0"
-    start: "Aug 2020"
-    end: "May 2024"
-    courses:
-      - "Data Structures and Algorithms"
-      - "Operating Systems"
-      - "Databases"
-      - "Web Application Development"
-      - "Distributed Systems"
+    start: "2018"
+    end: "2021"
 
 experience:
-  - title: "Software Engineer"
-    company: "Example Corp"
-    location: "San Francisco, CA"
-    start: "Jun 2024"
+  - title: "Senior Business Analyst"
+    company: "Summit Financial Group"
+    location: "Irving, TX"
+    start: "Nov 2024"
     end: "Present"
     bullets:
-      - "Built and shipped 12 REST API endpoints with FastAPI and PostgreSQL, cutting average response time by 35 percent through query optimization and caching."
-      - "Migrated a legacy monolith module to a Dockerized service deployed on AWS ECS, reducing deployment time from 40 minutes to under 8 minutes."
-      - "Implemented a React and TypeScript dashboard used by 500 internal users, increasing weekly active usage by 25 percent."
-      - "Raised backend test coverage from 55 percent to 88 percent by adding 200+ unit and integration tests, reducing production incidents by 30 percent."
-    technologies: "Python, FastAPI, PostgreSQL, TypeScript, React, Docker, AWS"
+      - "Designed and delivered a BI Dashboard Suite with AI-assisted reporting capabilities, enabling executive leadership to monitor portfolio performance in real time."
+      - "Built driver-based planning and scenario models incorporating NPV/IRR analysis to evaluate capital allocation strategies."
+      - "Led discovery conversations with business stakeholders to translate strategic objectives into actionable user stories and dashboard requirements."
+      - "Developed Power BI dashboards that consolidated financial KPIs, reducing manual reporting effort and accelerating decision-making."
+    technologies: "Power BI, DAX, SQL, Python, NPV/IRR, Excel"
 
-  - title: "Software Engineering Intern"
-    company: "Sample Labs"
+  - title: "Business Systems Analyst"
+    company: "Baker McKenzie"
     location: "Remote"
-    start: "Jun 2023"
-    end: "Aug 2023"
+    start: "Sep 2023"
+    end: "Present"
     bullets:
-      - "Developed a data ingestion pipeline in Python that processed 2 million records per day with 99.9 percent reliability."
-      - "Built 3 reusable React components adopted across 4 internal tools, reducing duplicated frontend code by 20 percent."
-      - "Wrote automated tests that caught 15 regressions before release, improving sprint velocity by 10 percent."
-    technologies: "Python, TypeScript, React, PostgreSQL, Docker"
+      - "Developed a technology portfolio scoring framework spanning 40+ products, enabling data-driven prioritization of IT investments."
+      - "Administered Jira/JSM workflows and configured project boards to streamline technology intake and change management processes."
+      - "Prepared quarterly product review data packets for senior leadership, synthesizing portfolio health metrics and roadmap tradeoff analyses."
+      - "Built Power BI dashboards for portfolio health monitoring, product scorecards, and roadmap tradeoff visualization."
+    technologies: "Jira, JSM, Confluence, Power BI, SQL, Excel"
 
-  - title: "Teaching Assistant"
-    company: "Example University"
-    location: "San Francisco, CA"
-    start: "Sep 2022"
-    end: "May 2023"
+  - title: "Senior Data Analyst / Senior Business Analyst"
+    company: "Humana"
+    location: "Remote"
+    start: "May 2023"
+    end: "Present"
     bullets:
-      - "Led weekly lab sections for 60 students in an introductory programming course, improving average exam scores by 12 percent."
-      - "Graded 400+ assignments and provided written feedback within 48 hours, maintaining a 95 percent on-time return rate."
-      - "Held 4 office hours per week and resolved 90 percent of student questions without escalation to the instructor."
-    technologies: "Python, Java, Git"
+      - "Drove care operations and growth analytics supporting strategic planning and resource allocation across multiple business units."
+      - "Improved staffing forecast accuracy by 18% through Python-based predictive modeling and Snowflake SQL data pipelines."
+      - "Designed and maintained Tableau dashboards for operational and clinical performance tracking across care delivery teams."
+      - "Developed compliance reporting packages for state Medicaid regulators, ensuring adherence to regulatory requirements and deadlines."
+    technologies: "Snowflake, SQL, Python, Tableau, Excel, Medicaid/HEDIS"
 
-projects:
-  - name: "Example Task Tracker"
-    description: >
-      Open-source full-stack task management app with a FastAPI backend and a
-      React frontend, featuring JWT auth and PostgreSQL persistence.
-    link: "https://github.com/janedoe/example-task-tracker"
+  - title: "Business Data Analyst, Operations"
+    company: "UPS"
+    location: "Remote"
+    start: "Nov 2023"
+    end: "Present"
+    bullets:
+      - "Performed telematics and routing analysis to identify delivery exceptions and optimize last-mile logistics performance."
+      - "Built Power BI operational dashboards that provided real-time visibility into delivery metrics and exception trends."
+      - "Automated recurring operational reports, reducing manual preparation time by 30% and saving 15 hours per week."
+    technologies: "Power BI, SQL, Python, Excel, Power Automate"
 
-  - name: "Sample CLI Toolkit"
-    description: >
-      A Python command-line toolkit for batch file processing and CSV
-      transformation, packaged for pip with 90 percent test coverage.
-    link: "https://github.com/janedoe/sample-cli-toolkit"
+  - title: "Business Data Analyst"
+    company: "BILL"
+    location: "Remote"
+    start: "Nov 2023"
+    end: "Present"
+    bullets:
+      - "Conducted product and growth analytics including onboarding funnel analysis and A/B test design to optimize user conversion."
+      - "Built event-level data models using Snowflake, dbt, and DuckDB to support self-serve analytics and reporting."
+      - "Partnered with product and marketing teams to define KPIs, instrument tracking, and measure feature adoption impact."
+    technologies: "Snowflake, dbt, DuckDB, SQL, Python, A/B Testing"
+
+  - title: "Business Analyst"
+    company: "DXC Technology"
+    location: "Remote"
+    start: "Mar 2024"
+    end: "Present"
+    bullets:
+      - "Designed and deployed 20+ Power BI dashboards across healthcare domain areas, serving a population of 1.2M+ members."
+      - "Built a forecasting model achieving 92% accuracy for home-health delivery demand, enabling proactive resource planning."
+      - "Identified process optimization opportunities yielding $2.1M in projected annual savings through data-driven recommendations."
+    technologies: "Power BI, DAX, SQL, Python, Excel, Healthcare Analytics"
+
+  - title: "Business Analyst"
+    company: "Meridian Capital Advisors"
+    location: "Dallas, TX"
+    start: "Jan 2023"
+    end: "Oct 2024"
+    bullets:
+      - "Delivered cost and spend analytics that identified $1.2M in savings opportunities through vendor consolidation and process improvement."
+      - "Developed driver-based planning models to support executive decision-making and budget allocation."
+      - "Served as a consultative analytics partner, embedding with business teams to translate financial data into strategic recommendations."
+    technologies: "Power BI, SQL, Excel, Python, Financial Modeling"
+
+  - title: "Business Analyst II"
+    company: "Centene Corporation"
+    location: "St. Louis, MO (Hybrid)"
+    start: "Aug 2022"
+    end: "Mar 2024"
+    bullets:
+      - "Analyzed claims, authorization, and member engagement data across 5 state Medicaid plans, supporting population health initiatives."
+      - "Delivered dashboards and analytics that contributed to a 7% reduction in avoidable ER visits through targeted member outreach."
+      - "Built HEDIS/Star Ratings dashboards that enabled quality teams to monitor performance against CMS benchmarks in real time."
+      - "Developed a logistic regression model for disenrollment risk scoring, contributing to a 4.5% improvement in member retention."
+      - "Engineered data pipelines processing 80M rows per month using SAS and Redshift to support enterprise reporting needs."
+    technologies: "SAS, SQL, Redshift, Power BI, Python, HEDIS, Medicaid"
+
+  - title: "Business Analyst"
+    company: "Toyota Financial Services"
+    location: "Plano, TX (Hybrid)"
+    start: "Jan 2021"
+    end: "Oct 2023"
+    bullets:
+      - "Conducted portfolio performance analysis including cohort analysis, roll-rate analysis, and early-warning classification modeling."
+      - "Designed Power BI dashboards with advanced DAX measures to track loan delinquency, loss severity, and recovery metrics."
+      - "Coordinated UAT for reporting system enhancements, reducing data preparation time by 40% through automation."
+    technologies: "Power BI, DAX, SQL, Python, Excel, UAT"
+
+  - title: "Business Systems Analyst"
+    company: "Deloitte"
+    location: "Dallas, TX (Hybrid)"
+    start: "Jul 2021"
+    end: "Sep 2023"
+    bullets:
+      - "Supported the CIO office by preparing quarterly technology portfolio review data packets for executive decision-making."
+      - "Wrote complex SQL queries across SQL Server and Snowflake to extract, transform, and analyze enterprise technology data."
+      - "Administered Jira workflows and project boards to support technology intake and portfolio governance processes."
+      - "Built Power BI dashboards for portfolio spend tracking, resource utilization analysis, and capacity planning."
+    technologies: "SQL Server, Snowflake, Jira, Power BI, Excel, Confluence"
+
+  - title: "Data Analyst"
+    company: "Addus HomeCare"
+    location: "Frisco, TX (Hybrid)"
+    start: "Apr 2021"
+    end: "Apr 2023"
+    bullets:
+      - "Analyzed home-care operations data to identify patterns in caregiver recruiting, retention, and service delivery efficiency."
+      - "Performed clustering analysis to segment caregiver populations and target recruitment strategies by region and skill set."
+      - "Built Tableau dashboards integrating Salesforce and Google Analytics data to track recruiting funnel performance and operational KPIs."
+    technologies: "Tableau, SQL, Python, Salesforce, Google Analytics, Excel"
+
+  - title: "Data Analyst"
+    company: "Blue Cross Blue Shield of Texas"
+    location: "Richardson, TX (Contract)"
+    start: "Jun 2021"
+    end: "Aug 2022"
+    bullets:
+      - "Processed and analyzed 50M+ monthly claims records to identify trends in utilization, cost, and provider network performance."
+      - "Designed Redshift schema and ETL pipelines to support enterprise claims analytics and reporting infrastructure."
+      - "Identified $4M+ in savings opportunities in specialty pharmacy spend through cost-variance analysis and formulary optimization."
+      - "Built provider network dashboards to monitor adequacy, access, and reimbursement patterns across plan lines."
+    technologies: "Redshift, SQL, Python, Tableau, SAS, Healthcare Analytics"
+
+  - title: "Junior Business Analyst"
+    company: "Pinnacle Bank & Trust"
+    location: "Monroe, LA"
+    start: "Jun 2021"
+    end: "Dec 2022"
+    bullets:
+      - "Gathered and documented business requirements for internal process improvements and system enhancements."
+      - "Wrote SQL queries to extract and analyze data for operational reporting and ad-hoc business requests."
+      - "Supported senior analysts in preparing reports and presentations for management review."
+    technologies: "SQL, Excel, Requirements Gathering"
 
 skills:
-  languages:
-    - "Python"
-    - "TypeScript"
-    - "JavaScript"
-    - "Java"
+  languages_and_scripting:
     - "SQL"
-  backend:
-    - "FastAPI"
-    - "Node.js"
-    - "REST APIs"
-    - "PostgreSQL"
-  frontend:
-    - "React"
-    - "HTML"
-    - "CSS"
-    - "Tailwind CSS"
-  data_and_cloud:
-    - "PostgreSQL"
-    - "Redis"
-    - "AWS (EC2, S3, ECS)"
-  devops:
-    - "Docker"
-    - "GitHub Actions"
-    - "CI/CD"
-    - "Linux"
+    - "T-SQL"
+    - "Python (pandas, scikit-learn, PySpark)"
+    - "SAS"
+    - "VBA"
+    - "Bash"
+  bi_and_visualization:
+    - "Power BI (DAX, Power Query, Report Builder)"
+    - "Tableau"
+    - "Tableau Prep"
+    - "DOMO"
+    - "Looker"
+    - "QlikView"
+  spreadsheet_and_productivity:
+    - "Excel (Power Query, pivot tables, macros, XLOOKUP, INDEX/MATCH)"
+    - "Power Automate"
+    - "Power Apps"
+    - "SharePoint"
+  databases_and_data_platforms:
+    - "Snowflake"
+    - "Azure"
+    - "Databricks"
+    - "Redshift"
+    - "SQL Server"
+    - "Microsoft Fabric"
+    - "DuckDB"
+  data_engineering:
+    - "dbt"
+    - "Airflow"
+  project_and_collaboration:
+    - "Jira/JSM"
+    - "Confluence"
+    - "Salesforce"
+    - "Google Analytics 4"
+    - "Google Ads"
+    - "ServiceNow"
+  ai_tools:
+    - "Copilot"
+    - "ChatGPT"
+    - "Claude"
+  analytical_methods:
+    - "NPV/IRR"
+    - "DCF"
+    - "A/B Testing"
+    - "Logistic Regression"
+    - "Predictive Modeling"
+    - "Forecasting"
+    - "Cohort/Retention Analysis"
+    - "Statistical Analysis"
+    - "Clustering"
+    - "Regression"
+    - "Data Quality Testing"
 
-certifications:
-  - name: "AWS Certified Cloud Practitioner"
-    issuer: "Amazon Web Services"
-    year: "2024"
+domains:
+  - "Healthcare (Medicaid, HEDIS, HIPAA)"
+  - "Finance"
+  - "Logistics/Operations"
+  - "Legal/Professional Services"
+  - "Technology Portfolio Management"
 
-leadership:
-  - role: "President"
-    organization: "Computer Science Club"
-    location: "Example University"
-    start: "Sep 2022"
-    end: "May 2023"
-    description: >
-      Led a student club of 80 members, organizing 10 technical workshops and
-      growing event attendance by 40 percent year over year.
+certifications: []
 
-awards:
-  - name: "Hackathon Winner"
-    issuer: "Example University Hackathon"
-    year: "2023"
-    description: "First place out of 50 teams for a full-stack productivity app."
+leadership: []
+
+awards: []
+
+projects: []

@@ -4,7 +4,7 @@ from functools import lru_cache
 from typing import Any, Dict, List, Optional
 
 app = App()
-resume_path = "/Users/dineshchhantyal/Documents/ResumeCoverLetterGenerator/mcp/about_dinesh_chhantyal.yml"
+resume_path = "/Users/roh/AI_apply/Apply_Ai/ResumeCoverLetterGenerator/mcp/about_rohan_shrestha.yml"
 
 
 @lru_cache(maxsize=1)
@@ -394,7 +394,7 @@ def get_scholarships_section():
 
 @app.tool(
     name="about_me_brief",
-    description="Return a short, easy bio about Dinesh Chhantyal (name, location, one-line summary, and key contacts) from YAML.",
+    description="Return a short, easy bio about Rohan Shrestha (name, location, one-line summary, and key contacts) from YAML.",
 )
 def about_me_brief():
     return _about_me_brief_text()
@@ -402,7 +402,7 @@ def about_me_brief():
 
 @app.tool(
     name="about_me_detailed",
-    description="Return a detailed overview about Dinesh Chhantyal with education, highlights of experience, skills, and selected projects from YAML.",
+    description="Return a detailed overview about Rohan Shrestha with education, highlights of experience, skills, and selected projects from YAML.",
 )
 def about_me_detailed():
     return _about_me_detailed_text()
@@ -410,7 +410,7 @@ def about_me_detailed():
 
 @app.tool(
     name="about_me_answer",
-    description="Answer natural-language questions about Dinesh using the YAML knowledge source. Routes to relevant sections automatically.",
+    description="Answer natural-language questions about Rohan using the YAML knowledge source. Routes to relevant sections automatically.",
 )
 def about_me_answer(question: str):
     q = (question or "").lower()
@@ -436,9 +436,9 @@ def about_me_answer(question: str):
             "bio",
             "about you",
             "about me",
-            "who is dinesh",
+            "who is rohan",
             "who are you",
-            "dinesh chhantyal",
+            "rohan shrestha",
         ]
     ):
         return about_me_brief()

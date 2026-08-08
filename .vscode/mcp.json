@@ -2,9 +2,9 @@
 	"servers": {
 		"resume_refinement_contents": {
 			"type": "stdio",
-			"command": "/Users/dineshchhantyal/Documents/ResumeCoverLetterGenerator/.venv/bin/python3",
+			"command": "/Users/roh/AI_apply/Apply_Ai/ResumeCoverLetterGenerator/.venv/bin/python3",
 			"args": [
-				"/Users/dineshchhantyal/Documents/ResumeCoverLetterGenerator/mcp/resume.py"
+				"/Users/roh/AI_apply/Apply_Ai/ResumeCoverLetterGenerator/mcp/resume.py"
 			]
 		}
 	},

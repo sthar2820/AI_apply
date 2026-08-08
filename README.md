@@ -58,8 +58,8 @@ This project is agent-first. After you clone it, you mostly just talk to Claude 
 1. **Install Claude Code and the prerequisites.** Install the Claude Code CLI, Python 3.8+, a LaTeX distribution (TeX Live or MiKTeX), and Node.js. See [docs/SETUP.md](docs/SETUP.md).
 2. **Clone the repository.**
    ```bash
-   git clone https://github.com/dineshchhantyal/job-application-agent.git
-   cd job-application-agent
+   git clone https://github.com/sthar2820/AI_apply.git
+   cd AI_apply
    pip install -r requirements.txt
    ```
 3. **Start the agent.** From inside the repo, launch Claude Code:
