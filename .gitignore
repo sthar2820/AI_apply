@@ -1,14 +1,16 @@
 output/
-__pycache__/
-*.pyc
-.venv/
-venv/
-.DS_Store
-*.pdf
-*.tex
-*.aux
-*.log
-applications/
 
-# Keep the rendered demo PDFs under examples/ tracked
-!examples/**/*.pdf
+.DS_Store
+.venv/
+__pycache__/
+
+# Ignore resume and cover letter files
+resume/resume.yml
+coverletter/coverletter.yml
+applications/*
+
+# Personal data
+mcp/about_dinesh_chhantyal.yml
+mcp/about_dinesh_chhantyal.json
+# Environment / secrets
+.env

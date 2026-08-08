@@ -1,5 +1,5 @@
 from PyQt6.QtWidgets import (QWidget, QVBoxLayout, QPlainTextEdit,
-                           QPushButton)
+                           QPushButton, QMessageBox)
 import yaml
 
 class YamlEditor(QWidget):

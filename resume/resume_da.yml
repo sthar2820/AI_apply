@@ -1,0 +1,93 @@
+# AI Processing Instructions:
+# - For LaTeX output, use '%' directly; it does not need to be escaped (e.g., as \%).
+# - In Skill name, & needs escaped (e.g., as \&)
+# - The 'summary' should be concise, with a maximum of two lines.
+# - DONT change factual information e.g role, company, location, metrics
+# - Do not invent or assume new technologies not already in this document.
+
+personal:
+  name: Rohan Shrestha
+  location: Austin, TX
+  phone: 318-570-3783
+  email: sthar2820@gmail.com
+  linkedin: https://linkedin.com/in/shrestharo2002
+  website: https://rohan-shrestha.online
+  github: https://github.com/sthar2820
+  relocation: Open to relocation
+  work_authorization: "OPT/EAD valid until June 2029; 100k Fee Exempt"
+
+summary: >
+  Data Analyst with experience transforming large, distributed datasets into reliable, decision-ready insights using \textbf{SQL}, \textbf{Python}, and
+  \textbf{Power BI}. Proven ability to identify data quality issues, develop scalable reporting systems, and deliver actionable insights.
+
+education:
+  - name: University of Louisiana at Monroe
+    location: Monroe, LA
+    degree: Bachelor of Science in Computer Science
+    GPA: 3.68 / 4.0
+    date: Aug 2022 – May 2026
+    courses: "Dean's Scholar; NSA Vice-President; Elevator Pitch Contest – 3rd Place"
+
+experience:
+  - title: Business Intelligence \& Analytics Intern
+    company: Dura-Shiloh Industries
+    location: Remote
+    date: Aug 2025 – Dec 2025
+    achievements:
+      - Partnered with cross-functional stakeholders to translate business questions into actionable insights, defining \textbf{15+ KPIs} aligned with operational priorities across \textbf{14 facilities}.
+      - Developed interactive \textbf{Power BI} dashboards enabling self-service analytics, becoming the primary source for weekly executive decision-making across \textbf{\$50M+} in operational KPIs.
+      - Built and maintained \textbf{SQL}/\textbf{Python} pipelines integrating \textbf{100+ datasets} into analytics-ready models, ensuring data consistency and reporting reliability across systems.
+      - Translated business requirements into scalable data models and reporting solutions, aligning analytics outputs with operational needs.
+
+  - title: Data Analytics \& Special Projects Intern
+    company: Dura-Shiloh Industries
+    location: Auburn Hills, MI
+    date: Jun 2025 – Aug 2025
+    achievements:
+      - Identified a \textbf{\$500K inventory discrepancy} through SQL-based anomaly detection and data validation, implementing data quality controls to prevent future errors.
+      - Redesigned and automated monthly reporting workflows using \textbf{Python}, reducing cycle time by \textbf{1 week} and improving reporting accuracy across finance operations.
+      - Built a scalable \textbf{Power BI} dashboard for the HR director tracking intern performance across cohorts — automated via \textbf{Power Automate} and \textbf{SharePoint}, published to \textbf{Microsoft Fabric}.
+
+  - title: Data Analyst Intern
+    company: Nepal Red Cross Society
+    location: Ramechhap, Nepal
+    date: Jun 2024 – Aug 2024
+    achievements:
+      - Developed operational dashboards enabling real-time decision-making across \textbf{6 districts}, improving visibility into field program performance.
+      - Structured and validated \textbf{500+ patient records} into a \textbf{SQL} database with defined schema and data quality standards, reducing manual effort by \textbf{40\%}.
+
+  - title: IT Support Analyst
+    company: University of Louisiana at Monroe
+    location: Monroe, LA
+    date: Feb 2023 – May 2025
+    achievements:
+      - Queried and analyzed ticket data independently to surface recurring patterns; built automated \textbf{Python} workflows and \textbf{Power BI} dashboards cutting triage time by \textbf{60\%} and repeat incidents by \textbf{20\%}.
+
+projects:
+  - name: Healthcare Readmissions Reporting Platform
+    description: Built an end-to-end reporting platform analyzing readmission risk across \textbf{4,000+ hospitals} using CMS and CDC datasets. Applied statistical analysis and data modeling to develop segmented risk profiles — delivered \textbf{Power BI} dashboards enabling self-serve insights for \textbf{600+ at-risk facilities}.
+    link: https://github.com/sthar2820/readmissions-risk-pipeline
+    date: Dec 2025
+    tech: SQL, Power BI, Python
+
+  - name: Autonomous Data Analysis Pipeline
+    description: Engineered a scalable \textbf{ETL pipeline} using \textbf{LLM agents} to ingest, clean, validate, and visualize datasets with automated data quality checks.
+    link: https://github.com/sthar2820/Agentic_data_pipeline
+    date: Nov 2025
+    tech: Python, Gemini API, DuckDB, Streamlit
+
+skills:
+  - name: Languages \& Querying
+    items: SQL (complex joins, subqueries, window functions), Python (pandas, NumPy)
+
+  - name: Data Engineering
+    items: ETL Pipelines, Workflow Automation, Data Modeling, dbt, Databricks, DuckDB, Power Automate
+
+  - name: Visualization \& BI
+    items: Power BI (DAX, Power Query), Tableau, Excel, Streamlit, Matplotlib
+
+  - name: AI \& ML
+    items: Claude CLI, LLM-Based Data Pipelines (Gemini API), n8n, Statistical Analysis, Feature Engineering
+
+  - name: Cloud \& Tools
+    items: Azure, GCP, BigQuery, Microsoft Fabric, Azure DevOps, Git/GitHub

@@ -14,12 +14,8 @@ class ResumeGenerator(DocumentGenerator):
         self.latex_preamble = self.get_latex_preamble()
 
     def get_latex_preamble(self):
-        """Returns the LaTeX preamble with all package imports and custom commands"""
-        personal = getattr(self, 'data', {}).get("personal", {})
-        name = personal.get("name", "Professional Resume")
-
-        return (
-            r"""\documentclass[letterpaper,10pt]{article}
+        """Returns Jake's resume LaTeX preamble."""
+        return r"""\documentclass[letterpaper,11pt]{article}
 
 \usepackage{latexsym}
 \usepackage[empty]{fullpage}
@@ -28,85 +24,62 @@ class ResumeGenerator(DocumentGenerator):
 \usepackage[usenames,dvipsnames]{color}
 \usepackage{verbatim}
 \usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
 \usepackage{fancyhdr}
 \usepackage[english]{babel}
 \usepackage{tabularx}
-\usepackage{setspace}
-\usepackage[T1]{fontenc}
-\usepackage{helvet}
-\renewcommand{\familydefault}{\sfdefault}
-% ATS-friendly packages
-\input{glyphtounicode}
-\pdfgentounicode=1
-\usepackage{accsupp}
-\usepackage[hidelinks,pdfusetitle]{hyperref}
-\hypersetup{
-  pdftitle={Professional Resume},
-  pdflang={en-US},
-  pdfcreator={pdfLaTeX},
-  pdfduplex={Simplex},
-  pdftoolbar=false,
-  pdffitwindow=true,
-  pdfnewwindow=true,
-  colorlinks=false,
-  linktoc=all,
-  pdfpagemode=UseNone,
-  pdfdisplaydoctitle=true,
-  pdfborder={0 0 0}
-}
+\ifdefined\pdfgentounicode
+  \input{glyphtounicode}
+  \pdfgentounicode=1
+\fi
 
-% Add PDF metadata for ATS systems using hypersetup instead of pdfinfo
-\hypersetup{
-  pdftitle={"""
-            + name
-            + r""" - Professional Resume},
-  pdfsubject={Professional Experience and Qualifications},
-  pdfkeywords={resume, qualifications, skills, experience, professional}
-}
-
-% Page setup
 \pagestyle{fancy}
 \fancyhf{}
 \fancyfoot{}
 \renewcommand{\headrulewidth}{0pt}
 \renewcommand{\footrulewidth}{0pt}
 
-% Margins: balanced top/bottom (0.3in) and standard side (0.5in) per user pref
-% Smaller top/bottom buys budget for inter-bullet breathing room in Experience
-\usepackage[top=0.3in,bottom=0.3in,left=0.5in,right=0.5in]{geometry}
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1.0in}
 
 \urlstyle{same}
 \raggedbottom
 \raggedright
 \setlength{\tabcolsep}{0in}
 
-% Section formatting (industry standard \large smallcaps per Jake template)
-% Small inter-section breathing room via less negative pre-section vspace
 \titleformat{\section}{
-  \vspace{-2pt}\scshape\raggedright\large
+  \vspace{-4pt}\scshape\raggedright\large
 }{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
 
-% Custom commands
 \newcommand{\resumeItem}[1]{
-  \item\small{
-    {#1 \vspace{-2pt}}
-  }
+  \item\small{{#1 \vspace{-2pt}}}
 }
 
 \newcommand{\resumeSubheading}[4]{
-  \vspace{1pt}\item
+  \vspace{-2pt}\item
     \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
-      \textbf{\small#1} & \small#2 \\
+      \textbf{#1} & #2 \\
       \textit{\small#3} & \textit{\small #4} \\
-    \end{tabular*}\vspace{-5pt}
+    \end{tabular*}\vspace{-7pt}
 }
+
+\newcommand{\resumeProjectHeading}[2]{
+  \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & #2 \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
 
 \newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
 \newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
 \newcommand{\resumeItemListStart}{\begin{itemize}}
 \newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
 """
-        )
 
     def escape_latex(self, text):
         """Escape special LaTeX characters"""
@@ -116,8 +89,10 @@ class ResumeGenerator(DocumentGenerator):
         # Define replacements in order of precedence
         replacements = [
             ("#", "\\#"),  # Escape the # character
+            # Handle already-escaped & and % before processing raw ones
+            ("\\&", "AMP_PLACEHOLDER"),
             ("&", "\\&"),
-            # Only escape % if it's not already escaped
+            ("AMP_PLACEHOLDER", "\\&"),
             ("\\%", "PERCENT_PLACEHOLDER"),  # Temporarily replace already escaped %
             ("%", "\\%"),
             ("PERCENT_PLACEHOLDER", "\\%"),  # Restore already escaped %
@@ -148,43 +123,51 @@ class ResumeGenerator(DocumentGenerator):
         return text
 
     def generate_header(self, personal):
-        """Generate the header section with personal information"""
+        """Generate the header section in Jake's style."""
+        name = self.escape_latex(personal.get('name', ''))
+        phone = self.escape_latex(personal.get('phone', ''))
+        email = personal.get('email', '')
+        website = personal.get('website', '')
+        linkedin = personal.get('linkedin', '')
+        location = self.escape_latex(personal.get('location', ''))
+
+        website_display = website.replace('https://www.', '').replace('https://', '')
+        linkedin_display = linkedin.replace('https://', '')
+
         return f"""\\begin{{center}}
-        \\textbf{{\\LARGE {self.escape_latex(personal['name'])}}} \\\\ \\vspace{{0.2pt}}
-        \\small {self.escape_latex(personal['phone'])} $|$
-        \\href{{mailto:{self.escape_latex(personal['email'])}}}{{{self.escape_latex(personal['email'])}}} $|$
-        \\href{{{self.escape_latex(personal['website'])}}}{{{self.escape_latex(personal['website'].replace('https://www.', ''))}}} $|$
-        \\href{{{self.escape_latex(personal['linkedin'])}}}{{{self.escape_latex(personal['linkedin'].replace('https://', ''))}}}
-        $|$
-        {self.escape_latex(personal['location'])}
-    \\end{{center}}
-    """
+    \\textbf{{\\Huge \\scshape {name}}} \\\\ \\vspace{{1pt}}
+    \\small {phone} $|$
+    \\href{{mailto:{email}}}{{\\underline{{{email}}}}} $|$
+    \\href{{{linkedin}}}{{\\underline{{{linkedin_display}}}}} $|$
+    \\href{{{website}}}{{\\underline{{{website_display}}}}} $|$
+    {location}
+\\end{{center}}
+"""
 
     def generate_education(self, education):
         """Generate the education section"""
         content = []
-        content.append("\\section*{\\textbf{Education}}")
+        content.append("\\section{Education}")
         content.append("\\resumeSubHeadingListStart")
 
         for school in education or []:
             if not isinstance(school, dict):
                 continue
             content.append("\\resumeSubheading")
-            name = school.get('name', '')
-            location = school.get('location', '')
-            degree = school.get('degree', '')
+            name = self.escape_latex(school.get('name', ''))
+            location = self.escape_latex(school.get('location', ''))
+            degree = self.escape_latex(school.get('degree', ''))
             gpa = school.get('GPA', '')
-            date = school.get('date', '')
+            date = self.escape_latex(school.get('date', ''))
             courses = school.get('courses')
             content.append(f"{{{name}}}{{{location}}}")
-            degree_line = f"{degree}, {{GPA: {gpa}}}" if gpa else degree
             content.append(
-                f"{{{degree_line}}}{{{date}}}"
+                f"{{{degree}, {{GPA: {gpa}}}}}{{{date}}}"
             )
 
             if courses:
                 content.append("\\resumeItemListStart")
-                content.append(f"\\resumeItem{{{courses}}}")
+                content.append(f"\\resumeItem{{{self.escape_latex(courses)}}}")
                 content.append("\\resumeItemListEnd")
 
         content.append("\\resumeSubHeadingListEnd")
@@ -193,7 +176,7 @@ class ResumeGenerator(DocumentGenerator):
     def generate_experience(self, experience):
         """Generate the experience section"""
         content = []
-        content.append("\\section*{\\textbf{Experience}}")
+        content.append("\\section{Experience}")
         content.append("\\resumeSubHeadingListStart")
 
         for job in experience or []:
@@ -201,7 +184,7 @@ class ResumeGenerator(DocumentGenerator):
                 continue
             content.append("\\resumeSubheading")
             title = self.escape_latex(job.get('title', ''))
-            date = job.get('date', '')
+            date = self.escape_latex(job.get('date', ''))
             company = self.escape_latex(job.get('company', ''))
             location = self.escape_latex(job.get('location', ''))
             content.append(f"{{{title}}}{{{date}}}")
@@ -215,39 +198,44 @@ class ResumeGenerator(DocumentGenerator):
                 content.append(f"\\resumeItem{{{escaped_achievement}}}")
             content.append("\\resumeItemListEnd")
 
-            # Uniform 1pt breathing (matches projects + skills for consistency)
-            content.append("\\vspace{1pt}")
+            # Add minimal spacing between jobs
+            content.append("\\vspace{2pt}")
 
         content.append("\\resumeSubHeadingListEnd")
         return "\n".join(content)
 
     def generate_projects(self, projects):
-        """Generate the projects section"""
+        """Generate the projects section in Jake's style."""
         content = []
-        content.append("\\section*{\\textbf{Projects}}")
-        content.append("\\resumeItemListStart{}")
+        content.append("\\section{Projects}")
+        content.append("\\resumeSubHeadingListStart")
         for project in projects or []:
             if not isinstance(project, dict):
                 continue
             name = self.escape_latex(project.get("name", ""))
             description = self.escape_latex(project.get("description", ""))
-            link = project.get("link")
+            link = project.get("link", "")
+            tech = self.escape_latex(project.get("tech", ""))
+
+            heading = f"\\textbf{{{name}}}"
+            if tech:
+                heading += f" $|$ \\emph{{{tech}}}"
             if link:
-                # Make the project name itself a hyperlink (no visual indication in PDF)
-                item = f"\\resumeItem{{\\href{{{link}}}{{\\textbf{{{name}}}}} $|$ {description}}}"
-            else:
-                item = f"\\resumeItem{{\\textbf{{{name}}} $|$ {description}}}"
-            content.append(item)
-            # Uniform 1pt breathing (matches roles + skills for consistency)
-            content.append("\\vspace{1pt}")
-        content.append("\\resumeItemListEnd")
+                link_display = self.escape_latex(link.replace("https://", ""))
+                heading += f" $|$ \\href{{{link}}}{{\\underline{{{link_display}}}}}"
+
+            content.append(f"\\resumeProjectHeading{{{heading}}}{{}}")
+            content.append("\\resumeItemListStart")
+            content.append(f"\\resumeItem{{{description}}}")
+            content.append("\\resumeItemListEnd")
+        content.append("\\resumeSubHeadingListEnd")
         return "\n".join(content)
 
     def generate_skills(self, skills):
         """Generate the skills section"""
         content = []
-        content.append("\\section*{\\textbf{Skills}}")
-        content.append("\\begin{itemize}[leftmargin=0.15in, label={}, itemsep=1pt, topsep=0pt, parsep=0pt]")
+        content.append("\\section{Technical Skills}")
+        content.append("\\begin{itemize}[leftmargin=0.15in, label={}, itemsep=0pt, topsep=0pt, parsep=0pt]")
 
         for category in skills or []:
             if not isinstance(category, dict):
@@ -357,17 +345,16 @@ class ResumeGenerator(DocumentGenerator):
     def generate_certifications(self, certifications):
         """Generate the certifications section"""
         content = []
-        content.append("\\section*{\\textbf{Certifications}}")
+        content.append("\\section{Certifications}")
         content.append("\\resumeItemListStart{}")
         for cert in certifications:
-            title = self.escape_latex(cert.get("title") or cert.get("name", ""))
-            issuer = self.escape_latex(cert.get("issuer", ""))
-            date = self.escape_latex(cert.get("date", ""))
+            title = self.escape_latex(cert["title"])
+            issuer = self.escape_latex(cert["issuer"])
+            date = self.escape_latex(cert["date"])
 
-            issuer_part = f", {issuer}" if issuer else ""
             formatted_cert = (
                 f"\\resumeItem{{"
-                f"\\textbf{{{title}}}{issuer_part} "
+                f"\\textbf{{{title}}} -- {issuer} "
                 f"\\hfill {date}"
                 f"}}"
             )
@@ -379,7 +366,7 @@ class ResumeGenerator(DocumentGenerator):
     def generate_leadership(self, leadership, awards=None):
         """Generate the leadership section with optional awards"""
         content = []
-        content.append("\\section*{\\textbf{Leadership \\& Awards}}")
+        content.append("\\section{Leadership \\& Awards}")
         content.append("\\resumeItemListStart{}")
 
         for item in leadership or []:
@@ -429,7 +416,7 @@ class ResumeGenerator(DocumentGenerator):
     def generate_activities(self, activities):
         """Generate the activities section"""
         content = []
-        content.append("\\section*{\\textbf{Activities \\& Club Involvement}}")
+        content.append("\\section{Activities}")
         content.append("\\resumeItemListStart{}")
         for activity in activities:
             name = self.escape_latex(activity["name"])
@@ -468,18 +455,17 @@ class ResumeGenerator(DocumentGenerator):
         ]
 
         if summary_text:
-            content.append("\\section*{\\textbf{Summary}}")
+            content.append("\\section{Summary}")
             content.append("\\small{" + self.escape_latex(summary_text.strip()) + "}")
 
-        # Cofounder / Founding-Engineer order per [[feedback_resume_bullet_patterns_research]]:
-        # Summary -> Experience -> Projects -> Skills -> Education -> Leadership
-        # Cofounder evidence outranks school for AI startup / non-FAANG audiences.
         content.extend(
             [
+                self.generate_education(self.data.get("education", [])),  # Education after summary
+                self.generate_skills(
+                    self.data.get("skills", [])
+                ),  # Skills before experience
                 self.generate_experience(self.data.get("experience", [])),
                 self.generate_projects(self.data.get("projects", [])),
-                self.generate_skills(self.data.get("skills", [])),
-                self.generate_education(self.data.get("education", [])),
             ]
         )
 
@@ -516,48 +502,52 @@ class ResumeGenerator(DocumentGenerator):
         return output_file_path
 
     def compile_pdf(self, tex_file):
-        """Compile LaTeX file to PDF using pdflatex with ATS-friendly settings"""
+        """Compile LaTeX file to PDF using pdflatex or tectonic."""
         try:
-            # Get the directory containing the tex file
             output_dir = os.path.dirname(tex_file)
 
-            # Try to find pdflatex in common locations
+            # Try pdflatex first
             pdflatex_paths = [
-                "pdflatex",  # If it's in PATH
+                "pdflatex",
                 "/usr/local/texlive/2024/bin/universal-darwin/pdflatex",
                 "/usr/local/texlive/2024/bin/x86_64-darwin/pdflatex",
                 "/Library/TeX/texbin/pdflatex",
             ]
-
             pdflatex_cmd = None
             for path in pdflatex_paths:
-                if os.path.exists(path) or path == "pdflatex":
+                try:
+                    subprocess.run([path, "--version"], check=True, capture_output=True)
+                    pdflatex_cmd = path
+                    break
+                except (subprocess.CalledProcessError, FileNotFoundError):
+                    continue
+
+            if pdflatex_cmd:
+                for _ in range(2):
+                    subprocess.run(
+                        [pdflatex_cmd, "-interaction=nonstopmode",
+                         "-output-directory=" + output_dir, tex_file],
+                        check=True, capture_output=True,
+                    )
+            else:
+                # Fallback: tectonic (self-contained, downloads packages automatically)
+                tectonic_paths = ["tectonic", "/opt/homebrew/bin/tectonic"]
+                tectonic_cmd = None
+                for path in tectonic_paths:
                     try:
-                        subprocess.run(
-                            [path, "--version"], check=True, capture_output=True
-                        )
-                        pdflatex_cmd = path
+                        subprocess.run([path, "--version"], check=True, capture_output=True)
+                        tectonic_cmd = path
                         break
                     except (subprocess.CalledProcessError, FileNotFoundError):
                         continue
-
-            if not pdflatex_cmd:
-                raise Exception(
-                    "pdflatex not found. Please install LaTeX (MacTeX) or add it to PATH"
-                )
-
-            # Run pdflatex twice to ensure proper generation of references
-            for _ in range(2):
+                if not tectonic_cmd:
+                    raise Exception(
+                        "No LaTeX engine found. Install BasicTeX (brew install --cask basictex) "
+                        "or tectonic (brew install tectonic)."
+                    )
                 subprocess.run(
-                    [
-                        pdflatex_cmd,
-                        "-interaction=nonstopmode",
-                        "-output-directory=" + output_dir,
-                        # ATS-friendly settings - remove -dPDFA flag since it's causing issues
-                        tex_file,
-                    ],
-                    check=True,
-                    capture_output=True,
+                    [tectonic_cmd, "-o", output_dir, tex_file],
+                    check=True, capture_output=True,
                 )
 
             # Clean up auxiliary files

@@ -14,7 +14,7 @@ def latex_escape(text: str) -> str:
         "%": r"\%",
         "$": r"\$",
         "#": r"\#",
-        "_": r"\textunderscore{}",
+        "_": r"\_",
         "{": r"\{",
         "}": r"\}",
         "~": r"\textasciitilde{}",
@@ -47,7 +47,9 @@ class CoverLetterGenerator(DocumentGenerator):
             if key in data["letter"] and data["letter"][key]:
                 data["letter"][key] = data["letter"][key].replace("[Company Name]", company_name)
 
-        # Note: recipient fields are escaped later via latex_escape() in generate_tex()
+        # Basic escaping for recipient/title
+        if "title" in data.get("recipient", {}):
+            data["recipient"]["title"] = data["recipient"]["title"].replace("&", "\\&")
 
         self.data = data
         return data
@@ -55,14 +57,13 @@ class CoverLetterGenerator(DocumentGenerator):
     def generate_tex(self, company_name: str):
         self.replace_placeholders(company_name)
         personal = self.data["personal_information"]
-        sign_name = personal.get("name", "")
         recipient = self.data["recipient"]
         letter = self.data["letter"]
 
         # Sender block: address and contact only (no name), flush left
         addr_line = personal['address'].get('line', '')
         postal = personal['address'].get('postal_code', '')
-        # Format like: "City, ST 00000" (no country)
+        # Format like: "Monroe, LA 71203" (no country)
         address_first_line = f"{addr_line} {postal}".strip()
 
         email = personal.get('email', '')
@@ -124,24 +125,12 @@ class CoverLetterGenerator(DocumentGenerator):
 
         latex_content = f"""\\documentclass[12pt, letterpaper]{{article}}
 \\usepackage[utf8]{{inputenc}}
-\\usepackage[T1]{{fontenc}}
-\\usepackage[margin=0.75in]{{geometry}}
+            \\usepackage[margin=0.75in]{{geometry}}
 \\usepackage{{helvet}}
 \\usepackage{{calligra}}
 \\renewcommand{{\\familydefault}}{{\\sfdefault}}
 \\usepackage[hidelinks]{{hyperref}}
 \\usepackage{{setspace}}
-
-% ATS-friendly: ensure proper Unicode mapping for text extraction
-\\input{{glyphtounicode}}
-\\pdfgentounicode=1
-
-% PDF metadata for ATS systems
-\\hypersetup{{
-  pdfauthor={{{latex_escape(personal['name'])}}},
-  pdftitle={{Cover Letter - {latex_escape(personal['name'])} - {latex_escape(recipient.get('title', ''))}}},
-  pdfsubject={{Cover Letter for {latex_escape(recipient.get('company', ''))}}},
-}}
 
 % Black-and-white, full-block format
 \\pagenumbering{{gobble}}
@@ -180,7 +169,11 @@ Sincerely,
 
 % Digital signature line
 \\vspace{{6pt}}
-{{\\fontsize{{20}}{{24}}\\selectfont\\calligra {sign_name}}}
+{{\\fontsize{{20}}{{24}}\\selectfont\\calligra {typed_name}}}
+\\vspace{{4pt}}
+
+% Typed name
+{typed_name}
 
 \\end{{document}}
 """
@@ -211,46 +204,51 @@ Sincerely,
     def compile_pdf(self, tex_file, output_dir):
         try:
             output_dir = os.path.dirname(tex_file)
-            # Try to find pdflatex in common locations
+
+            # Try pdflatex first
             pdflatex_paths = [
-                "pdflatex",  # If it's in PATH
+                "pdflatex",
                 "/usr/local/texlive/2024/bin/universal-darwin/pdflatex",
                 "/usr/local/texlive/2024/bin/x86_64-darwin/pdflatex",
                 "/Library/TeX/texbin/pdflatex",
             ]
-
             pdflatex_cmd = None
             for path in pdflatex_paths:
-                if os.path.exists(path) or path == "pdflatex":
+                try:
+                    subprocess.run([path, "--version"], check=True, capture_output=True)
+                    pdflatex_cmd = path
+                    break
+                except (subprocess.CalledProcessError, FileNotFoundError):
+                    continue
+
+            if pdflatex_cmd:
+                for _ in range(2):
+                    subprocess.run(
+                        [pdflatex_cmd, "-interaction=nonstopmode",
+                         "-output-directory=" + output_dir, tex_file],
+                        check=True, capture_output=True, text=True,
+                    )
+            else:
+                # Fallback: tectonic (self-contained, downloads packages automatically)
+                tectonic_paths = ["tectonic", "/opt/homebrew/bin/tectonic"]
+                tectonic_cmd = None
+                for path in tectonic_paths:
                     try:
-                        subprocess.run(
-                            [path, "--version"], check=True, capture_output=True
-                        )
-                        pdflatex_cmd = path
+                        subprocess.run([path, "--version"], check=True, capture_output=True)
+                        tectonic_cmd = path
                         break
                     except (subprocess.CalledProcessError, FileNotFoundError):
                         continue
-
-            if not pdflatex_cmd:
-                raise Exception(
-                    "pdflatex not found. Please install LaTeX (MacTeX) or add it to PATH"
+                if not tectonic_cmd:
+                    raise Exception(
+                        "No LaTeX engine found. Install BasicTeX (brew install --cask basictex) "
+                        "or tectonic (brew install tectonic)."
+                    )
+                subprocess.run(
+                    [tectonic_cmd, "-o", output_dir, tex_file],
+                    check=True, capture_output=True,
                 )
 
-            for _ in range(2):
-                result = subprocess.run(
-                    [
-                        pdflatex_cmd,
-                        "-interaction=nonstopmode",
-                        "-output-directory=" + output_dir,
-                        tex_file,
-                    ],
-                    check=True,
-                    capture_output=True,
-                    text=True,
-                )
-                if result.returncode != 0:
-                    print(result.stdout)
-                    print(result.stderr)
             base_name = os.path.splitext(tex_file)[0]
             for ext in [".aux", ".log", ".out"]:
                 aux_file = base_name + ext
